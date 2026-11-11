@@ -8,6 +8,7 @@ The rules, examples, and research in this project are derived from the following
 - [MES Certification Repository](https://cmsgov.github.io/CMCS-DSG-DSS-Certification/) ([source](https://github.com/CMSgov/CMCS-DSG-DSS-Certification)) — CMS-required outcomes, default metrics, Conditions for Enhanced Funding, and templates. *As of 2026-11-11 that repository's license file contains only a placeholder ("This is probably in the public domain, but CMMS needs to put their license here."). We treat its content as a U.S. government work and credit it here.*
 - [MES Testing Guidance Framework](https://www.medicaid.gov/medicaid/data-and-systems/downloads/mes-testing-guidance-framework.pdf)
 - [State Health Official letter #25-003](https://www.medicaid.gov/federal-policy-guidance/downloads/sho25003.pdf), August 6, 2025 — new MES templates
+- [Acceptable Risk Controls for ACA, Medicaid, and Partner Entities (ARC-AMPE), Volume I v1.02](https://www.cms.gov/files/document/arc-ampe-vol-1-v102-508-5cr-04112025.pdf), April 10, 2025 — the CMS security and privacy framework that "supersedes and replaces MARS-E" for ACA Administering Entities, including state Medicaid agencies. *Note: as of 2026-11-11 the MES Certification Repository's Planning page still refers to MARS-E; we follow ARC-AMPE.*
 - [Hospital Price Transparency tools](https://cmsgov.github.io/hpt-tool/) — design inspiration only; no code is used
 
 ## USDA Food and Nutrition Administration (FNA, formerly FNS)

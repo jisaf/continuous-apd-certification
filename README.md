@@ -47,15 +47,17 @@ The first project is one state, not named publicly. The assumed profile: a full 
 | [`docs/next-steps.md`](docs/next-steps.md) | What happens next, in order |
 | [`docs/research/`](docs/research/) | Row-by-row classification of the CMS E&E outcomes, CEFs, SNAP SIRT, and Go Live criteria, and notes on FNS Handbook 901 and CMS SHO #25-003 |
 | [`LICENSING.md`](LICENSING.md) | How code, data, and documents are licensed |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to contribute, including the contributor license agreement |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to contribute, with a Developer Certificate of Origin sign-off |
 | [`NOTICE.md`](NOTICE.md) | Sources and attributions |
 
 ## Licensing in short
 
-- **Code:** [GNU AGPL-3.0](LICENSE). A commercial license is available from the repository owner for uses the AGPL does not fit.
+Fully open source, with no commercial license:
+
+- **Code**, including connectors: [Apache License 2.0](LICENSE).
 - **Rules data, examples, and documentation:** [CC0 1.0](LICENSE-DATA) (public domain dedication).
 
-See [`LICENSING.md`](LICENSING.md) for details.
+See [`LICENSING.md`](LICENSING.md) for details and how third-party licenses are respected.
 
 ## Disclaimer
 
