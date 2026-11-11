@@ -4,6 +4,7 @@
 | --- | --- |
 | **Rule** | One certification requirement from a federal source: a CMS E&E outcome, a Condition for Enhanced Funding (CEF), a SNAP System Integrity Review Tool (SIRT) row, or a SNAP Go Live criterion. States can add their own. |
 | **Rule key** | The stable identifier of a rule, `<agency>:<set>:<id>`, for example `cms:ee:EE21`, `cms:cef:CEF12`, `fna:sirt:S0215`, `fna:golive:GL03`, `state:ee:STEE01`. Keys never change or get reused. |
+| **capd** | The name of the Python package and command-line tool, short for "continuous APD". |
 | **Catalog** | The versioned list of all rules (`src/capd/data/catalog/catalog.json`). A project pins one version; updates go through change control. |
 | **Gate** | A federal review point: `ORR` (CMS Operational Readiness Review), `CR` (CMS Certification Review), `FNA-UAT` (FNA UAT Go/No-Go), `FNA-PILOT` (FNA pilot Go/No-Go). |
 | **Evidence kind** | What proves a rule at a gate: `test`, `scan`, `metric`, `report`, `document`, `attestation`, `demonstration`, or `assessment`. |
