@@ -18,7 +18,7 @@ Status as of 2026-11-11. The full reasoning is in [`proposal.md`](proposal.md).
 
 - Connectors: GitHub, Azure DevOps (pipeline step and summary), Jira (defects in; one issue per rule or gate out), Snowflake (metric queries in; evidence tables out), email and chat digests.
 - Example test packs: SIRT pre-write candidates and the E&E outcomes with clear behaviour, as Gherkin with rule IDs tagged.
-- Golden case set for the policy indicators (seeded from published sources — research in progress).
+- Golden case set for the policy indicators (see below).
 - Package generators for the ORR and the FNA UAT Go/No-Go.
 - APD watch rules (gate forecasts against the approved APD baseline).
 
@@ -28,6 +28,13 @@ Status as of 2026-11-11. The full reasoning is in [`proposal.md`](proposal.md).
 - Legal review of the [contributor license agreement](../CLA.md).
 - Confirmation from FNA and CMS that generated files in their templates, and the reading of the pilot rule, are acceptable.
 
-## Research in progress
+## Golden case set
 
-- Published Medicaid and SNAP eligibility test cases (households with known expected outcomes) to seed the golden case set, rather than inventing new ones.
+Sources were researched on 2026-11-11 ([notes](research/notes/golden-case-sources.md)). Plan:
+
+1. Ask the state Medicaid agency for the 100 CMS PERM eligibility review test cases and the state's answer key, and for any regression test decks from its current eligibility system.
+2. Copy the 145 18F SNAP scenarios (U.S. government work, CC0) and the CMS MAGI worked examples into the CC0 set, and recompute every expected value for the target state and the current fiscal year.
+3. Adapt scenarios from the state's published renewal workbooks and desk aids, with citations.
+4. Use PolicyEngine US (AGPL-3.0) and MAGI in the Cloud (BSD-3) as independent engines to cross-check cases, without copying their cases into the CC0 set.
+5. Use the USDA SNAP QC public use file for statistical regression on the target state's households.
+6. Write new cases only for the gaps: expedited service, ABAWD month counting, notices, SNAP recertification, combined Medicaid and SNAP households, and state options.

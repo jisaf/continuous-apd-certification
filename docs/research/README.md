@@ -37,3 +37,4 @@ For E&E outcomes, `orr_type` and `cr_type` give the evidence at the ORR (pre-pro
 ## Notes (`notes/`)
 
 - `hb901-and-sho25-003-notes.md` — verbatim notes on FNS Handbook 901 v2.5 chapters 1, 4, 5, 7, 9 and appendices, and on CMS SHO #25-003. Read the editor's note at the top: two of its conclusions were checked and rejected.
+- `golden-case-sources.md` — published Medicaid and SNAP eligibility test cases that could seed the golden case set, with counts, licenses, and sample cases.
