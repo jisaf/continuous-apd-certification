@@ -51,7 +51,7 @@ snowflake = "capd.connectors.snowflake:SnowflakeSink"
 where = ["src"]
 
 [tool.setuptools.package-data]
-capd = ["data/schemas/*.json", "data/catalog/*.json", "data/cms_templates/*.xlsx", "report/*.css"]
+capd = ["data/schemas/*.json", "data/catalog/*.json", "data/cms_templates/*.xlsx", "data/fna_templates/*.xlsx", "report/*.css"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

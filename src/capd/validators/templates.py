@@ -9,12 +9,16 @@ from importlib import resources
 import openpyxl
 
 PINNED = {
-    "orw": "orw-template.xlsx",
-    "orw-validation": "orw-validation.xlsx",
-    "intake": "intake-form-template.xlsx",
+    "orw": ("capd.data.cms_templates", "orw-template.xlsx"),
+    "orw-validation": ("capd.data.cms_templates", "orw-validation.xlsx"),
+    "intake": ("capd.data.cms_templates", "intake-form-template.xlsx"),
+    "sirt": ("capd.data.fna_templates", "sirt-template.xlsx"),
 }
 SOURCE = {"repository": "https://github.com/CMSgov/CMCS-DSG-DSS-Certification",
           "commit": "c9db9cd049f6641373b1ad0bb5aa1e07bd0ce68a"}
+SIRT_SOURCE = {"url": "https://www.fna.usda.gov/sites/default/files/resource-files/SNAP_System_Integrity_Review_Tool_Excel.xlsx",
+               "sha256": "3807540101a44b334db75f7d7350b9819faba552d055299b7ce2dd200fee8249",
+               "retrieved": "2026-11-11"}
 
 
 def open_workbook(path):
@@ -24,7 +28,8 @@ def open_workbook(path):
 
 
 def pinned_path(name: str):
-    return resources.files("capd.data.cms_templates").joinpath(PINNED[name])
+    package, filename = PINNED[name]
+    return resources.files(package).joinpath(filename)
 
 
 def headers(ws) -> list[str]:
@@ -45,6 +50,8 @@ def fingerprint(wb, sheets: list[str]) -> str:
 
 ORW_SHEETS = ["Metric Definitions", "Metric Values"]
 INTAKE_SHEETS = ["Conditions for Enhanced Funding", "Outcomes & Metrics"]
+SIRT_SHEETS = ["Eligibility (A and B)", "Claims (C)", "Notices (D)", "Operations (E and F)",
+               "Reporting (E10 & E13)", "Data Match (E11 & E12)"]
 
 
 def known_fingerprints() -> dict[str, str]:
@@ -52,8 +59,20 @@ def known_fingerprints() -> dict[str, str]:
         orw = fingerprint(open_workbook(p), ORW_SHEETS)
     with resources.as_file(pinned_path("intake")) as p:
         intake = fingerprint(open_workbook(p), INTAKE_SHEETS)
+    with resources.as_file(pinned_path("sirt")) as p:
+        sirt = fingerprint(open_workbook(p), SIRT_SHEETS)
     return {orw: "CMS ORW template (MES Certification Repository @ c9db9cd)",
-            intake: "CMS SMC Intake Form, Appendix E template (MES Certification Repository @ c9db9cd)"}
+            intake: "CMS SMC Intake Form, Appendix E template (MES Certification Repository @ c9db9cd)",
+            sirt: "FNA SNAP System Integrity Review Tool, Excel version (retrieved 2026-11-11)"}
+
+
+def identify(path) -> str | None:
+    """Which pinned template a workbook follows: 'orw', 'intake', 'sirt', or None."""
+    wb = open_workbook(path)
+    for kind, sheets in (("orw", ORW_SHEETS), ("intake", INTAKE_SHEETS), ("sirt", SIRT_SHEETS)):
+        if all(s in wb.sheetnames for s in sheets) and fingerprint(wb, sheets) in known_fingerprints():
+            return kind
+    return None
 
 
 def orw_rules_conformance() -> list[str]:

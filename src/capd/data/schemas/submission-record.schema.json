@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jisaf/continuous-apd-certification/schemas/submission-record.schema.json",
+  "title": "Gate package submission record",
+  "description": "What a state's gate package held when it was checked: the checklist, workbook checks, and a SHA-256 for every file.",
+  "type": "object",
+  "required": ["schemaVersion", "gate", "createdAt", "capdVersion", "catalogVersion", "summary", "checklist", "workbooks", "files", "recordSha256"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "gate": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "capdVersion": { "type": "string" },
+    "catalogVersion": { "type": "string" },
+    "summary": {
+      "type": "object",
+      "required": ["present", "missing", "na", "workbookErrors", "complete"],
+      "properties": {
+        "present": { "type": "integer" }, "missing": { "type": "integer" }, "na": { "type": "integer" },
+        "workbookErrors": { "type": "integer" }, "complete": { "type": "boolean" }
+      }
+    },
+    "checklist": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "sourceId", "title", "owner", "kinds", "status", "files"],
+        "properties": {
+          "key": { "type": "string" },
+          "status": { "enum": ["present", "missing", "na"] },
+          "files": { "type": "array", "items": { "type": "string" } },
+          "missingFiles": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "workbooks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "name", "file", "errors", "warnings"],
+        "properties": {
+          "kind": { "enum": ["intake", "orw", "sirt"] },
+          "file": { "type": ["string", "null"] },
+          "errors": { "type": "array", "items": { "type": "string" } },
+          "warnings": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "bytes", "rules"],
+        "properties": {
+          "path": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "bytes": { "type": "integer" },
+          "rules": { "type": "array", "items": { "type": "string" } },
+          "template": { "enum": ["intake", "orw", "sirt"] }
+        }
+      }
+    },
+    "evidenceBundle": {
+      "type": "object",
+      "properties": { "build": { "type": "string" }, "recordsSha256": { "type": "string" } }
+    },
+    "recordSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+  }
+}

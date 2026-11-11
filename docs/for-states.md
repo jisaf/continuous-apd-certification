@@ -38,6 +38,7 @@ Every sample below is in this repository and works today.
 | Project configuration | Every option, commented | [`templates/config/capd.yaml`](../templates/config/capd.yaml) |
 | Mapping to your data | How your tables feed the federal metrics | [`templates/config/mapping.yaml`](../templates/config/mapping.yaml) |
 | Pipeline templates | Azure DevOps and GitHub Actions | [`templates/`](../templates/) |
+| Gate package and SIRT response | A checklist of the files a gate needs, a check of the SIRT answers, and a hashed record of what was sent | [`examples/sample-package/`](../examples/sample-package/) and [gate packages](gate-packages.md) |
 
 ## How you see it
 

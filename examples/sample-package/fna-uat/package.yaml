@@ -1,0 +1,11 @@
+# Sample FNA UAT gate package index (fictional). Each Go Live criterion lists the files that answer it.
+# capd hashes every file in this folder, checks the SIRT response workbook, and lists what is missing.
+#   capd package check FNA-UAT examples/sample-package/fna-uat -o out/package
+gate: FNA-UAT
+items:
+  fna:golive:GL01: [letters/transmittal-letter.md]
+  fna:golive:GL04: [plans/contingency-plan.md]
+  fna:golive:GL05: [plans/escalation-plan.md]
+  fna:golive:GL06: [plans/communication-plan.md]
+  fna:golive:GL08: [sirt-response.xlsx]
+  fna:golive:GL17: [plans/testing-goals-and-severity.md]

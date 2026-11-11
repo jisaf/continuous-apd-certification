@@ -9,7 +9,7 @@ from importlib import resources
 from jsonschema import Draft202012Validator
 from referencing import Registry, Resource
 
-NAMES = ["evidence-record", "evidence-bundle", "catalog-rule", "test-case", "config"]
+NAMES = ["evidence-record", "evidence-bundle", "catalog-rule", "test-case", "config", "submission-record"]
 
 
 @cache
