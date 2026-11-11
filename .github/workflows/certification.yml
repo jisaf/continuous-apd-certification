@@ -33,5 +33,5 @@ jobs:
     with:
       config: examples/sample-system/capd-ci.yaml
       reports-artifact: test-reports
-      capd-version: "file://${{ github.workspace }}"
+      capd-version: "."             # install capd from this checkout
     permissions: { contents: read, pull-requests: write, actions: read }

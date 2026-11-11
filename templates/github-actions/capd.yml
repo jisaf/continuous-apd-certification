@@ -18,7 +18,7 @@ on:
     inputs:
       config: { type: string, default: capd.yaml }
       reports-artifact: { type: string, default: test-reports }
-      capd-version: { type: string, default: "git+https://github.com/jisaf/continuous-apd-certification@main" }
+      capd-version: { type: string, default: "git+https://github.com/jisaf/continuous-apd-certification@main" }  # or "." for a local checkout
 
 jobs:
   capd:
@@ -28,7 +28,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
-      - run: python -m pip install --quiet "capd @ ${{ inputs.capd-version }}"
+      - name: Install capd
+        run: |
+          v="${{ inputs.capd-version }}"
+          case "$v" in .|./*|/*) python -m pip install --quiet "$v" ;;      # a local checkout
+                       *) python -m pip install --quiet "capd @ $v" ;; esac   # a git URL or release
       - uses: actions/download-artifact@v4
         with: { name: "${{ inputs.reports-artifact }}" }
       - name: Download baseline from the latest successful run on main
