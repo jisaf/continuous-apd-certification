@@ -14,7 +14,7 @@ The rules, examples, and research in this project are derived from the following
 ## USDA Food and Nutrition Administration (FNA, formerly FNS)
 
 - [FNS Handbook 901 v2.5](https://www.usda.gov/sites/default/files/guidance-documents/fns-handbook901-version2.5.pdf), updated 2025-12-11 ([handbook page](https://www.fna.usda.gov/sso/apd/handbook-901))
-- [SNAP System Integrity Review Tool (SIRT)](https://www.fna.usda.gov/snap/system-integrity-review-tool)
+- [SNAP System Integrity Review Tool (SIRT)](https://www.fna.usda.gov/snap/system-integrity-review-tool). The Excel version is included unchanged as `src/capd/data/fna_templates/sirt-template.xlsx` (retrieved 2026-11-11, SHA-256 `3807540101a44b334db75f7d7350b9819faba552d055299b7ce2dd200fee8249`) so the SIRT response check can recognize it. The filled sample in `examples/sample-package/` is fictional.
 - [SNAP Eligibility System Go Live Requirements](https://www.fna.usda.gov/sso/snap-eligibility-system-golive-requirements), December 2023
 - [Final Rule: System Testing, 7 CFR 277.18](https://www.fna.usda.gov/sso/fr-010214a)
 

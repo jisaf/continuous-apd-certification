@@ -106,6 +106,9 @@ request comment).
 | `capd report` | write the static HTML report |
 | `capd publish` | run the sinks in `capd.yaml` (`--dry-run` shows what would be sent) |
 | `capd validate orw FILE` / `intake FILE` | check an ORW or Intake Form against the pinned CMS template |
+| `capd validate sirt FILE [--bundle B]` | check a SIRT response workbook: every row answered, a reason for each N, no moved rows; with a bundle, warn on Y answers whose tagged tests fail |
+| `capd package check GATE DIR` | check a gate package folder and write a hashed submission record; see [gate packages](gate-packages.md) |
+| `capd package verify RECORD [DIR]` | check that a submission record and its files have not changed |
 | `capd validate templates` | check the pinned ORW template against CMS's ORW validation rules |
 | `capd validate cases DIR` | check golden test cases against the schema |
 | `capd catalog [--key K] [--search TEXT]` | browse the rules |

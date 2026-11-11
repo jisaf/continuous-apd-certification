@@ -6,7 +6,9 @@
     capd compare --bundle out/bundle.json --baseline baseline/bundle.json
     capd report --bundle out/bundle.json --comparison out/comparison.json -o out/report.html
     capd publish --config capd.yaml --bundle out/bundle.json --comparison out/comparison.json
-    capd validate orw|intake|templates|cases ...
+    capd validate orw|intake|sirt|templates|cases ...
+    capd package check FNA-UAT submissions/fna-uat --bundle out/bundle.json -o out/package
+    capd package verify out/package/submission-record.json --dir submissions/fna-uat
     capd catalog [--key KEY] [--search TEXT]
     capd connectors
 """
@@ -203,9 +205,40 @@ def cmd_validate(args, cfg=None) -> int:
         print(f"capd: checked test cases in {len(files)} file(s); {bad} invalid")
         return 1 if bad else 0
     cfg = cfg or load_config(getattr(args, "config", None))
-    result = orw.validate(args.path) if args.what == "orw" else intake.validate(args.path, load_catalog(cfg), args.module)
+    if args.what == "sirt":
+        from .validators import sirt
+
+        result = sirt.validate(args.path, load_catalog(cfg), load_bundle(args.bundle) if args.bundle else None)
+    elif args.what == "orw":
+        result = orw.validate(args.path)
+    else:
+        result = intake.validate(args.path, load_catalog(cfg), args.module)
     print(json.dumps(result, indent=1))
     return 1 if result["errors"] else 0
+
+
+def cmd_package(args) -> int:
+    from . import package
+
+    if args.action == "verify":
+        record = json.loads(Path(args.target).read_text(encoding="utf-8"))
+        problems = package.verify(record, args.dir)
+        for p in problems:
+            print(f"capd: {p}")
+        print("capd: submission record verified" if not problems else f"capd: {len(problems)} problem(s)")
+        return 1 if problems else 0
+    if not args.dir:
+        raise ValueError("package check needs the package folder: capd package check GATE FOLDER")
+    cfg = load_config(args.config)
+    record = package.build(args.dir, args.target, load_catalog(cfg), args.bundle)
+    out = Path(args.out)
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "submission-record.json").write_text(json.dumps(record, indent=1) + "\n", encoding="utf-8")
+    (out / "checklist.md").write_text(package.markdown(record), encoding="utf-8")
+    s = record["summary"]
+    print(f"capd: {record['gate']} package: {s['present']} present, {s['missing']} missing, {s['na']} N/A, "
+          f"{s['workbookErrors']} workbook error(s); record {record['recordSha256'][:16]} written to {out}")
+    return 0 if s["complete"] else 1
 
 
 def cmd_mapping(args) -> int:
@@ -277,8 +310,16 @@ def parser() -> argparse.ArgumentParser:
     build_flags(sp)
 
     sp = sub.add_parser("validate", help="validate agency files, pinned templates, or golden test cases")
-    sp.add_argument("what", choices=["orw", "intake", "templates", "cases"])
+    sp.add_argument("what", choices=["orw", "intake", "sirt", "templates", "cases"])
     sp.add_argument("path", nargs="?"), sp.add_argument("--module", default="ee"), sp.add_argument("--config")
+    sp.add_argument("--bundle", help="sirt: an evidence bundle, to warn on Y answers whose tagged tests fail")
+
+    sp = sub.add_parser("package", help="check a gate package folder and write a hashed submission record")
+    sp.add_argument("action", choices=["check", "verify"])
+    sp.add_argument("target", help="check: the gate (ORR, CR, FNA-UAT, FNA-PILOT); verify: a submission-record.json")
+    sp.add_argument("dir", nargs="?", help="the package folder (for verify, optional: also re-hash the files)")
+    sp.add_argument("--bundle", help="evidence bundle, linked into the record and used by the SIRT check")
+    sp.add_argument("--config"), sp.add_argument("-o", "--out", default="out/package")
 
     sp = sub.add_parser("mapping", help="turn mapping.yaml into metric-contract views, or check what it covers")
     sp.add_argument("action", choices=["views", "check"]), sp.add_argument("path")
@@ -307,6 +348,8 @@ def main(argv=None) -> int:
             cmd_publish(args)
         elif args.command == "validate":
             return cmd_validate(args)
+        elif args.command == "package":
+            return cmd_package(args)
         elif args.command == "mapping":
             return cmd_mapping(args)
         elif args.command == "catalog":

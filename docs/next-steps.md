@@ -25,8 +25,8 @@ Status as of 2026-11-11. The full reasoning is in [`proposal.md`](proposal.md).
 - Report layer on the state's existing data platform (first adaptation: Snowflake), mostly patterns and templates in portable SQL: certification schema, evidence load pattern, metric query templates, role and secure-view templates, starter dashboards, and loaders for external data (Jira defects, security findings).
 - Example test packs: SIRT pre-write candidates and the E&E outcomes with clear behaviour, as Gherkin with rule IDs tagged.
 - Golden case set for the policy indicators (see below).
-- Completeness checklists (preliminary and Complete and Final Test Plan, UAT and pilot Go/No-Go with all 26 Go Live criteria, ORR and CR packages, letters), template-version detection, and a hashed submission record.
-- APD watch rules (gate forecasts against the approved APD baseline).
+- Gate package checklists, template-version detection, and a hashed submission record: built (`capd package`, `capd validate sirt`; see [gate packages](gate-packages.md)).
+- APD watch rules: dropped. Scope is technical readiness; APD and cost allocation are tracked as dates only.
 
 ## Optional phase 2
 

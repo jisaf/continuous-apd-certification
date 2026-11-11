@@ -83,7 +83,9 @@ first use" items below.
 | Source connectors: JUnit, Cucumber, SARIF, axe | Unit tests with sample reports |
 | Pull request gate, static report, evidence bundle | Unit tests, the demo, and this repository's own pull requests |
 | GitHub pull request comment | Live, on this repository's pull requests |
-| ORW and Intake Form validators | Unit tests against the pinned CMS templates |
+| ORW, Intake Form, and SIRT response validators | Unit tests against the pinned CMS and FNA templates |
+| Gate package checklists and hashed submission records (`capd package`) | Unit tests and a [sample package](examples/sample-package/) |
+| Docker image | Built and run in CI on every pull request |
 | Report layer SQL and dashboard | Run on DuckDB with sample data; the SQL is checked to parse as Snowflake SQL |
 | Contributor path (connector template, conformance kit, DCO check) | A Playwright connector submitted as a contributor pull request (#9) |
 
@@ -96,7 +98,6 @@ first use" items below.
       the Streamlit in Snowflake dashboard. The SQL is checked only for syntax.
 - [ ] Test the Azure DevOps, Jira, and chat sinks against live services. They are tested only against
       simulated responses.
-- [ ] Build and test the Docker image.
 - [ ] Have a CMS and FNA subject matter expert review the catalog: gates, evidence kinds, and
       responsibility for each rule.
 
@@ -109,11 +110,10 @@ first use" items below.
 
 ### Not built yet
 
-- [ ] Completeness checklists for each gate package (test plans, Go/No-Go with the 26 Go Live criteria,
-      ORR and CR packages) and a hashed record of each submission.
-- [ ] A validator for FNA's SIRT response workbook.
-- [ ] APD watch rules: gate forecasts compared with the approved APD baseline.
 - [ ] Optional phase 2: rule tags inferred from Jira epics.
+
+APD watch rules (forecasts compared with the approved APD) are out of scope: the toolkit reports technical
+readiness only, and APD and cost allocation items are tracked as dates in the report layer.
 
 ## What is here
 
@@ -124,6 +124,7 @@ first use" items below.
 | [`templates/`](templates/) | Azure DevOps and GitHub Actions pipeline templates, and a commented `capd.yaml` |
 | [`report-layer/`](report-layer/) | Portable SQL (tables, rule status, blockers, metric queries), Snowflake setup and roles, DuckDB builder, dashboard |
 | [`examples/sample-system/`](examples/sample-system/) | The end-to-end demo: a sample system, its adapter, tagged tests, and configuration |
+| [`examples/sample-package/`](examples/sample-package/) | A sample FNA UAT gate package with a filled SIRT response, for `capd package` |
 | [`examples/golden-cases/`](examples/golden-cases/) | Golden test cases (household facts in, expected outcome out) |
 | [`examples/packs/`](examples/packs/) | Pre-written Gherkin templates: 588 SIRT scenarios and 26 CMS E&E features, already tagged |
 | [`examples/connector-template/`](examples/connector-template/) | A complete connector plugin (Visual Studio TRX test results) to copy |

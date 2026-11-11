@@ -27,6 +27,22 @@ jobs:
           python -m pip install -e examples/connector-template
           python -m pytest examples/connector-template
 
+  docker:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t capd .
+      - run: docker run --rm capd --version
+      - name: The pipeline step runs in the container
+        run: |
+          mkdir -p out && chmod 777 out
+          docker run --rm -v "$PWD:/work" capd collect --junit tests/fixtures/junit.xml --sarif tests/fixtures/security.sarif -o out/bundle.json
+          docker run --rm -v "$PWD:/work" capd compare --bundle out/bundle.json -o out/comparison.json --markdown out/summary.md
+          docker run --rm -v "$PWD:/work" capd report --bundle out/bundle.json --comparison out/comparison.json -o out/report.html
+          docker run --rm -v "$PWD:/work" capd validate sirt examples/sample-package/fna-uat/sirt-response.xlsx
+          test -s out/bundle.json && test -s out/report.html
+
   demo:
     runs-on: ubuntu-latest
     needs: test
