@@ -8,20 +8,27 @@ Status as of 2026-11-11. The full reasoning is in [`proposal.md`](proposal.md).
    - Extract the CMS-required E&E outcomes and the 22 CEFs from the [MES Certification Repository](https://github.com/CMSgov/CMCS-DSG-DSS-Certification), pinned to a reviewed commit.
    - Extract the SNAP SIRT from FNA's Excel version, the SNAP Go Live Requirements, and the FNA testing gates from Handbook 901.
    - Give every item a stable catalog key, because agency IDs repeat (524 unique SIRT IDs cover 821 rows).
-   - Record for each item: source and citation, gates, evidence type (from [`research/classification/`](research/classification/)), and whether it is a leading indicator.
+   - Record for each item: source and citation, gates, evidence type (from [`research/classification/`](research/classification/)), whether it is a leading indicator, responsibility (vendor, state, third party, shared), coverage (evidenced, tracked only, not covered), and whether state acceptance is required.
+   - Record the source that is authoritative for each rule, and flag stale references (for example, the CMS repository's Planning page still cites MARS-E, which ARC-AMPE replaced).
 2. **Schemas.** JSON Schemas for catalog entries, the evidence record, the evidence bundle, state configuration (`mapping.yaml`), the connector interface, the metric data contract, and the test case format.
 3. **File validators** for the agencies' current templates: the new CMS templates from SHO #25-003 (SMC Intake Form, Operational Report Workbook) and the FNA SIRT response workbook.
-4. **Static report generator.** One self-contained HTML file per build, built from the pipeline's evidence bundle alone. It never reads external data (Jira, production data, security findings, documents).
-5. **Two small contracts, not a data model.** The metric data contract (six record types: Application, Determination, Notice, Renewal, Work item, Appeal and account transfer — only the fields the metrics read) and the test case format (household facts in, expected outcome out).
+4. **Rule-status logic and one calendar for both agencies.** Publish the status definitions (N/A, No evidence, Not met, Stale, At risk, Met) and the combined CMS and FNA calendar, with gate order, APD update triggers for both agencies, ARC-AMPE timelines, and disaster recovery tests as configuration.
+5. **Static report generator.** One self-contained HTML file per build, built from the pipeline's evidence bundle alone. It never reads external data (Jira, production data, security findings, documents).
+6. **Two small contracts, not a data model.** The metric data contract (six record types: Application, Determination, Notice, Renewal, Work item, Appeal and account transfer — only the fields the metrics read) and the test case format (household facts in, expected outcome out).
 
 ## Phase 1 — Build to ORR (first state project)
 
-- Pipeline connectors: GitHub, Azure DevOps (pipeline step and summary), Jira (one issue per rule or gate out), email and chat digests.
+- Pull request gate: fail only when a tagged test that passed on main now fails; report-only by default; flaky-test quarantine; one comment updated in place.
+- Pipeline connectors: GitHub, Azure DevOps (pipeline step and summary), Jira (one issue per gate, plus blocker issues that close themselves), email and chat digests sent only on status changes.
 - Report layer on the state's existing data platform (first adaptation: Snowflake), mostly patterns and templates in portable SQL: certification schema, evidence load pattern, metric query templates, role and secure-view templates, starter dashboards, and loaders for external data (Jira defects, security findings).
 - Example test packs: SIRT pre-write candidates and the E&E outcomes with clear behaviour, as Gherkin with rule IDs tagged.
 - Golden case set for the policy indicators (see below).
-- Package generators for the ORR and the FNA UAT Go/No-Go.
+- Completeness checklists (preliminary and Complete and Final Test Plan, UAT and pilot Go/No-Go with all 26 Go Live criteria, ORR and CR packages, letters), template-version detection, and a hashed submission record.
 - APD watch rules (gate forecasts against the approved APD baseline).
+
+## Optional phase 2
+
+- Inferred tags: outcome tags from a Jira epic-to-outcome map, and program tags from each rule's agency. Not part of the core product.
 
 ## Decisions still needed
 

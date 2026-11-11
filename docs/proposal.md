@@ -12,7 +12,7 @@ The toolkit is a set of independent, additive modules for technical implementers
 
 1. **Rules catalog** — the 22 Conditions for Enhanced Funding (CEF), the 27 CMS-required E&E outcomes with their default metrics, state-specific outcomes, the SMC required artifacts, and the FNA testing gates and SNAP System Integrity Review Tool (SIRT) items, as versioned machine-readable files built from the [MES Certification Repository](https://cmsgov.github.io/CMCS-DSG-DSS-Certification/).
 2. **Evidence ledger** — every test run, metric value, document, and sign-off, linked to the rule it proves, with a date and an owner. It is optional: pipeline-only use keeps the evidence with each build.
-3. **Validators and CI plug-ins** — a CLI and pipeline step that fail a build when it breaks a certification metric, and that validate the SMC Intake Form and Operational Report Workbook (ORW).
+3. **Validators and CI plug-ins** — a CLI and pipeline step that fail a build when a tagged test regresses, and that validate the SMC Intake Form and Operational Report Workbook (ORW).
 4. **Director dashboard** — readiness per outcome and per gate (ORR, CR, FNA UAT, FNA pilot), with trends, gaps, and stale evidence.
 
 Expected gains:
@@ -38,11 +38,13 @@ The vendor's agile process already produces most of the needed signals: tests, d
 
 An integrated E&E module must clear about 58 CMS items and three FNA approval gates. The CMS items are 22 CEF, 27 CMS-required E&E outcomes (plus any state-specific outcomes), and 9 required artifacts. All of them are tracked in the SMC Intake Form from APD approval to the end of the CR.
 
+A note on names: USDA's Food and Nutrition Service (FNS) is now styled the Food and Nutrition Administration (FNA) on usda.gov. Older documents, including FNS Handbook 901 and the SIRT, still say FNS. This proposal uses FNA for the agency and keeps document titles as published.
+
 ### CMS: three elements and nine artifacts
 
-- **CEF (22).** From 42 CFR 433.112(b). Most evidence is the APD, contract language, or a state self-attestation. CEF09 and CEF12 need an independent third-party security and privacy assessment (SAR) and penetration test from the last two years. CEF17 needs proof of MAGI functionality through performance testing.
+- **CEF (22).** From 42 CFR 433.112(b). Most evidence is the APD, contract language, or a state self-attestation. CEF09 and CEF12 need an independent third-party security and privacy assessment (SAR) and penetration test, current under ARC-AMPE for E&E. CEF12 also needs a Section 508 test report showing WCAG Level AA conformance. CEF17 needs proof of MAGI functionality through performance testing.
 - **E&E outcomes (27).** EE1 to EE27 cover applications, automatic enrollment, MAGI and non-MAGI income rules, electronic verification, timely determinations, notices, MMIS enrollment, renewals, account transfers with the federal marketplace, accessibility, and appeals. EE21 covers multi-benefit applications in integrated systems: the system must pend one program without holding up the others.
-- **Metrics.** Each outcome has default metrics. A row-by-row review (below) found that 26 of the 27 E&E outcomes can be shown with automated tests at the ORR, and 20 rest on production data metrics at the CR. For E&E, examples are the share of fully automated determinations (EE5), the share of ex parte renewals (EE13), and test results for the eligibility hierarchy (EE15).
+- **Metrics.** Each outcome has default metrics. A row-by-row review (below) found that 26 of the 27 E&E outcomes can be shown mainly with automated tests at the ORR (six of these also need a demonstration or an outside party), and 20 rest on production data metrics at the CR. For E&E, examples are the share of fully automated determinations (EE5), the share of ex parte renewals (EE13), and test results for the eligibility hierarchy (EE15).
 - **Required artifacts (9).** Certification Request Letter, System Acceptance Letter, monthly project status reports, Master Test Plan, test summary reports, deployment plan, defect list, risk list, issue list. Five of these come from tools the vendor already runs.
 
 ### The review gates
@@ -56,7 +58,7 @@ An integrated E&E module must clear about 58 CMS items and three FNA approval ga
 | UAT Go/No-Go | FNA | After UAT, before the pilot | Go/No-Go document: UAT results against expected results, criteria, and metrics; failures by severity; open risks. FNA concurrence is needed to fund the pilot. FNA may also run a System Functional Requirements Review of the UAT or pilot documents (HB 901 §7.5.2) | [HB 901 §6.4.7, §6.7.2](https://www.usda.gov/sites/default/files/guidance-documents/fns-handbook901-version2.5.pdf) |
 | Pilot Go/No-Go | FNA | After a live pilot, usually at least 3 months, with a full caseload in the pilot area | Pilot report: cases processed; defects by severity going in, new, resolved, and open; conversion results; interface partner sign-off. FNA approval is needed for statewide rollout | [HB 901 §6.7.3](https://www.usda.gov/sites/default/files/guidance-documents/fns-handbook901-version2.5.pdf) |
 | CR | CMS | At least 6 months after go-live | Metric data from go-live to the last month end, a security and privacy assessment and penetration test current under ARC-AMPE (which replaced MARS-E for E&E), POA&M, Certification Request Letter, System Acceptance Letter, T-MSIS compliance | [Production page](https://cmsgov.github.io/CMCS-DSG-DSS-Certification/SMC%20Process/Production/) |
-| Operations | CMS and FNA | After CR and rollout | CMS: monthly ORW and an Operational APD. FNA: no monthly metric reporting, but a written security review summary at least every two years (7 CFR 277.18(m)(3)), an optional post-implementation review about 6 months after rollout, a possible SIRT review once statewide, a final APD Update before closure, and a new Implementation APD for major new functionality | [SMC Guidance §6.1.1](https://www.medicaid.gov/medicaid/data-and-systems/downloads/smc-certification-guidance.pdf); [HB 901 §6.10](https://www.usda.gov/sites/default/files/guidance-documents/fns-handbook901-version2.5.pdf) |
+| Operations | CMS and FNA | After CR and rollout | CMS: monthly ORW and an Operational APD. FNA: no ORW-style metric workbook, but the Major Changes report (monthly data, sent quarterly), a security review at least every two years (7 CFR 277.18(m)(3)) with a written summary (HB 901 §9.7), an optional post-implementation review about 6 months after rollout, a possible SIRT review once statewide, a final APD Update before closure, and a new Implementation APD for major new functionality | [SMC Guidance §6.1.1](https://www.medicaid.gov/medicaid/data-and-systems/downloads/smc-certification-guidance.pdf); [HB 901 §6.10](https://www.usda.gov/sites/default/files/guidance-documents/fns-handbook901-version2.5.pdf) |
 
 Two more dates recur: the APD Update is due to FNA 60 days before the approval anniversary, and FNA prior approval applies to procurements over $6 million and to contract amendments past 20% of base cost.
 
@@ -91,6 +93,34 @@ Most SNAP functional checks and most E&E outcomes can come from the vendor's pip
 | SNAP Go Live | 26 | 2 | 9 | 11 | 3 | 1 |
 
 Notes: 19 E&E outcomes are an automated test at the ORR and a data metric at the CR. The three outside-party outcomes rest on PERM results (EE4, EE16) or CMS-side data (EE22). In the SIRT, 588 of 821 rows are good candidates for pre-written example tests; the weakest sections are system performance, policy manuals, waivers, quality control, and reconciliation. The classification is one reviewer's judgment with a 72-row spot check; the row-level files are kept with the project.
+
+### One calendar for both agencies
+
+The CMS and FNA gates interlock, so the toolkit keeps one ordered calendar. How they line up for a given state (for example, whether the SNAP pilot start counts as the Medicaid go-live, which sets the CR clock and the start of retroactive enhanced match) is configuration, set once the CMS State Officer and the FNA Regional Office rule.
+
+| Order | Item | Agency | Timing | Source |
+| --- | --- | --- | --- | --- |
+| 1 | Combined APD, submitted separately to each agency; preliminary test plan in the FNA Implementation APD | Both | Before procurement | SMC §4; HB 901 §3, §6.1 |
+| 2 | Prior approval of RFPs and contracts | Both | CMS over $500,000; FNA SNAP over $6 million competitive or $1 million non-competitive | 45 CFR 95.611; HB 901 §4.3 |
+| 3 | Monthly project status reports | CMS | Monthly from project start | SMC §5 |
+| 4 | Complete and Final Test Plan | FNA | Before UAT starts | HB 901 §6.1 |
+| 5 | SIRT completed and comments returned | FNA | Before UAT completes | HB 901 §6.1; Go Live Requirements |
+| 6 | Disaster recovery test | CMS | Before go-live, then yearly | MES Certification Repository, Planning page |
+| 7 | ORR entry criteria; ORR with live demonstrations | CMS | Up to 3 months before; before go-live | SMC §5.1 |
+| 8 | UAT Go/No-Go | FNA | After UAT, before the pilot | HB 901 §6.4.7 |
+| 9 | Major Change notification | FNA | 120 days before implementation | 7 CFR 272.15; Go Live Requirements |
+| 10 | Pilot (new system is system of record), usually at least 3 months | FNA | After UAT concurrence | 7 CFR 277.18(g)(2)(ii); HB 901 §6.7.3 |
+| 11 | Pilot Go/No-Go, then statewide rollout | FNA | After the pilot | HB 901 §6.7.3 |
+| 12 | Monthly ORW from go-live; T-MSIS files within one month of each period | CMS | Monthly | SMC §6, §6.1.1 |
+| 13 | CR with live demonstrations in production | CMS | At least 6 months after go-live | SMC §6.1 |
+| 14 | Security assessment and penetration test | CMS | Per ARC-AMPE submission timelines (configured) | ARC-AMPE Vol. I |
+| 15 | Security review | FNA | At least every two years | 7 CFR 277.18(m)(3) |
+| 16 | Annual APD Update | Both | FNA: 60 days before the approval anniversary | HB 901 §3; 45 CFR 95.611 |
+| 17 | As-Needed APD Update | Both | On a trigger; see "Keeping agile inside the approved APD" | 45 CFR 95.611(c); HB 901 §3.3.4 |
+| 18 | Post-implementation review (optional) | FNA | About 6 months after rollout | HB 901 §7.6 |
+| 19 | Retroactive claims warning | CMS | Before the two-year claiming limit | Production page |
+
+The calendar warns on whichever agency's date or threshold comes first.
 
 ### Agile is already allowed
 
@@ -151,7 +181,7 @@ interface SinkConnector {
 
 interface Evidence {
   ruleIds: string[];                // "CMS:EE21", "FNA-SIRT:AP-1#3", "FNA-GOLIVE:reports"
-  kind: "test" | "metric" | "document" | "attestation" | "assessment";
+  kind: "test" | "metric" | "document" | "attestation" | "assessment" | "demonstration";
   result: "pass" | "fail" | "value" | "present";
   value?: number;
   program?: ("medicaid" | "snap")[];
@@ -173,10 +203,12 @@ The example packs start where the sources already state the test. The SIRT alone
 - **SIRT items.** Many items are a single checkable behaviour ("Does the system capture the application date?", AP-1). Each gets a Gherkin scenario with the 7 CFR citation and the rule ID already tagged.
 - **CMS E&E outcomes.** Scenarios for outcomes with clear system behaviour, such as EE15 (eligibility hierarchy) and EE21 (pending one program without holding up another).
 - **Metric queries.** Reference queries for the default E&E metrics and the Go Live numbers (timeliness, backlog buckets, notice counts), written against the metric data contract.
-- **Report checks.** Checks that the Go Live reports can be produced and match source data, with the 95% accuracy threshold built in.
+- **Report checks.** Optional checks, through a vendor-supplied report adapter, that compare each Go Live report with the system's own source totals against the 95% accuracy threshold; without an adapter, these reports are tracked only.
 - **File checks.** The ORW field rules from `ORW_Validation.xlsx`, ready to run in CI.
 
 Vendor systems differ, so each example binds to the vendor's system through a thin adapter (step definitions, for tests, or a view that maps the vendor's tables to the metric data contract). The examples are starting points the state still reviews; they do not replace the state's own test design.
+
+Two kinds of adapter are involved, and only one is per-system. **Tool connectors** (GitHub, Azure DevOps, Jira, a data platform) are standard: built once in the toolkit and reused by every state. **System adapters** map the test case format to one state's E&E system, because every system's interfaces differ. A system adapter is small when the system exposes a test-facing determination API that accepts household facts and returns the decision; it is large when tests must drive the user interface. RFPs should therefore require such an API in test environments.
 
 ### Mapping is configuration; extension is code
 
@@ -222,7 +254,7 @@ The toolkit needs a state's data for two jobs only, so it defines two small cont
 | Work item | type, created time, status, due date | Go Live backlog and daily reports |
 | Appeal and account transfer | type, channel, received time, completed time, status | EE22–EE24, EE27 |
 
-**2. Test case format.** Golden cases and example tests describe household facts in and the expected outcome out: eligibility, category, benefit amount, and notices. Household members, income, expenses, and deductions live only here. The vendor writes one adapter that turns a case into a call to its own system. SIRT items such as the excess shelter deduction are proven by these tests; the toolkit never reads that data from the state's systems.
+**2. Test case format.** Golden cases and example tests describe household facts in and the expected outcome out: eligibility, category, benefit amount, and notices. Household members, income, expenses, and deductions live only here. The vendor writes one system adapter that turns a case into a call to its own system. Reports the state's system produces, such as the Go Live reports, are tracked only: the toolkit records that each exists, its date, and the result of the state's accuracy check, and does not recompute them. SIRT items such as the excess shelter deduction are proven by these tests; the toolkit never reads that data from the state's systems.
 
 ## Proposed approach
 
@@ -251,13 +283,16 @@ evidence:
     metric: "% of determinations fully automated"
     cadence: monthly
 freshness: 30d
+responsibility: vendor      # vendor | state | third_party | shared
+coverage: evidenced         # evidenced | tracked_only | not_covered
+acceptance: not_required    # required for documents, attestations, demonstrations
 ```
 
 The citation shown is illustrative; the generator copies the repository's regulatory sources as published. A **state profile** sits on top of the catalog. It adds state-specific outcomes (IDs such as `ST-EE-01`, following the Intake Form convention), marks outcomes N/A with the required justification, and holds the ORW metric definitions. Changes to the profile are reviewed like code, and an outcome change raises a flag that an APD Update is needed.
 
 ### 2. Evidence ledger
 
-An optional, append-only record of every piece of evidence across runs: rule ID, kind (test, metric, document, attestation, external assessment), source system, build or release ID, environment, time, owner, and a content hash. Large or sensitive files (SAR, screen prints with PHI) stay in the state's document store; the ledger holds a link and the hash, so it can prove what was submitted without copying it.
+An optional, append-only record of every piece of evidence across runs: rule ID, kind (test, metric, document, attestation, external assessment, demonstration), source system, build or release ID, environment, time, owner, and a content hash. Large or sensitive files (SAR, screen prints with PHI) stay in the state's document store; the ledger holds a link and the hash, so it can prove what was submitted without copying it.
 
 Source connectors collect evidence from tools the vendor already runs. The core writes it to a per-run evidence bundle, and the ledger connector stores it when a ledger is in use:
 
@@ -276,12 +311,43 @@ Of these, test results, coverage and traceability, and scans run in CI come from
 
 The engine evaluates each rule against the ledger and gives one status: **Met**, **At risk**, **Not met**, **No evidence**, **Stale**, or **N/A (justified)**. Each status carries the reason and the evidence behind it. Validators check the CMS files themselves: the ORW against `ORW_Validation.xlsx`, and the Intake Form against the catalog (every CMS-required outcome and CEF listed, N/A rows justified, evidence file names that exist in the upload set).
 
+**How a status is decided.** Each rule lists, per gate, the evidence kinds it needs. The engine applies these definitions in order:
+
+1. **N/A (justified):** a justification is recorded and the state has accepted it.
+2. **No evidence:** a required evidence kind has no record for this gate.
+3. **Not met:** the latest required evidence failed: a test failed, a metric is below its threshold, or a document is past due.
+4. **Stale:** the latest required evidence is older than the rule's freshness limit.
+5. **At risk:** evidence passes but will expire before the planned gate date, a leading indicator is trending below its threshold, or a due date is near and the item is not complete.
+6. **Met:** every required evidence kind is present, passing, and fresh, and, where the rule says acceptance is required, a named state role has accepted it. By default, documents, attestations, and demonstrations need acceptance; automated tests do not.
+
+Rule status is evaluated in the report layer, where acceptance records live. The pipeline itself never decides Met; it only reports test results and regressions.
+
+**Responsibility and coverage.** Every catalog rule also records who is responsible (vendor, state, third party, or shared) and how far the toolkit covers it: *evidenced* (the toolkit produces or checks the evidence), *tracked only* (the toolkit records status, date, and a link, such as a signed letter or a Go Live report the state's system produces), or *not covered*. Contract obligations should attach only to vendor-owned rules, and every view shows the coverage, so a green dashboard is never mistaken for a complete submission.
+
 ### 4. Outputs
 
 - **CLI and pipeline steps** for GitHub Actions, GitLab CI, and Azure DevOps. They write JUnit-style results, so certification checks show up beside normal tests.
 - **Browser validator** for state staff, like the HPT online validator: drop in an Intake Form or ORW and get errors, with nothing uploaded.
 - **Generated packages**: a filled Intake Form, the ORW, a draft monthly status report, and an ORR or CR upload manifest with the exact file names CMS asks for.
 - **Director dashboard**, described below.
+
+### Completeness checklists and the submission record
+
+Federal documents are written and signed by people. The toolkit gives each one a completeness checklist; it does not generate the document itself. Each checklist field has an owner, a signer, a due date, an evidence link, and a status.
+
+| Checklist | Built from |
+| --- | --- |
+| Preliminary test plan (in the Implementation APD) | HB 901 §6.1 |
+| Complete and Final Test Plan | HB 901 §6.1: milestones, resources, roles, approach, items to be tested, rollback plan, risk, security, load testing, data conversion, Go/No-Go criteria, SIRT results |
+| UAT Go/No-Go | HB 901 §6.4.7 and §6.7.2: expected and actual results, criteria and metrics, exit criteria, a named state verifier for each criterion, a reason for each unmet item, failures by severity, open risks |
+| Pilot Go/No-Go | HB 901 §6.7.3 pilot report items, plus all 26 Go Live criteria, including pilot case-mix statistics |
+| ORR and CR packages | SMC Appendix B required artifacts, Intake Form tabs, entry criteria, demonstration agenda |
+| Certification Request Letter and System Acceptance Letter | SMC Appendix B; MES Certification Repository templates |
+| Training and change management evidence | SMC §5.1 (ORR) |
+
+**Template versions.** Generators detect the version of each agency template and refuse a version they do not know, rather than guess. The Intake Form and ORW reference numbers are cross-checked against each other before release.
+
+**Submission record.** Every package sent to an agency is kept as an unchangeable, hashed copy with the template version, date, and recipient. This matters because CMS overwrites ORW data on resubmission, so the state needs its own record of what it sent.
 
 ### Where the dashboard lives: no new hosting
 
@@ -290,18 +356,20 @@ A hosted app would trigger a security review in every state, so the views are de
 | Step | How it works | New hosting | History | Who can see it |
 | --- | --- | --- | --- | --- |
 | 1. Static report per build | Each run writes one self-contained HTML file (no external scripts, no server) and its evidence JSON. The pipeline commits both to a dedicated reports branch or a separate private reports repository, never to the code branch. | None | Latest run, plus links to earlier files | Anyone who can read that repository |
-| 2. Git as the ledger | Each run's evidence JSON is a signed commit on a protected reports branch, so the branch is an append-only history. The report generator reads the branch to draw trends. | None | Full | Same as step 1 |
+| 2. Git as the ledger | Evidence from builds on main is committed to a protected reports branch at most once a day or once per release, as a signed commit, so the branch is an append-only history without a commit for every run. This step is optional. The report generator reads the branch to draw trends. | None | Full | Same as step 1 |
 | 3. Report layer tables | The pipeline also loads the evidence JSON into a certification schema in the state's existing data platform (for the first project, Snowflake), next to the metric data it already holds. External data (production metrics, security findings, Jira defects) joins the evidence here, never in the static report. | None (existing account) | Full, queryable | Platform roles mapped to state groups |
 | 4. Existing BI tools | Starter dashboards on those tables in the BI tool the state already licenses: Power BI, Tableau, or a native tool of its data platform (for example Streamlit in Snowflake). The toolkit ships the table schema and templates. | None (existing tools) | Full | The BI tool's own access control |
-| Side channels | A Jira sink keeps one Jira issue per rule or gate with its current status, so the director sees certification in Jira dashboards the team already uses. A pipeline digest posts a weekly summary to email or chat. | None | Per tool | Per tool |
+| Side channels | A Jira sink keeps one Jira issue per gate (ORR, CR, UAT Go/No-Go, pilot Go/No-Go) with a checklist, plus an issue only for each blocker, which closes itself when the rule is restored. The director sees certification in Jira dashboards the team already uses. A pipeline digest posts a weekly summary to email or chat. | None | Per tool | Per tool |
 
 Static reports contain only data the pipeline produced, so they need no access rules beyond the repository's own. Using existing tools avoids a new system, not data classification: the state still classifies whatever it loads into the report layer under its own policy.
+
+**Keeping the noise down.** Every output speaks only when something changes: one pull request comment updated in place; alerts only on a status change, and a test failure counts only after two runs in a row; a weekly digest in place of most alerts; and flaky tests quarantined so they are reported but never block.
 
 ### What each layer shows
 
 The two layers have different data and different jobs.
 
-- **Static report: pipeline data only.** It shows only what the pipeline produced in that run: test results, rule status, coverage, scans run in the pipeline, file validation results, and gate dates from configuration. It never pulls external data: no security assessment findings, no Jira text, no production metrics. Its readers can already see everything the pipeline sees, so it needs no roles or evidence classes. Whoever can read the repository can read the report; if the repository is public, so is the report.
+- **Static report: pipeline data only.** It shows only what the pipeline produced in that run: test results grouped by rule, coverage, scan results as counts by severity (never details, since the repository may be public), file validation results, and gate dates from configuration. Rule status such as Met is decided in the report layer, not here. It never pulls external data: no security assessment findings, no Jira text, no production metrics. Its readers can already see everything the pipeline sees, so it needs no roles or evidence classes. Whoever can read the repository can read the report; if the repository is public, so is the report.
 - **Report layer: where external data joins.** Production metrics from case data, third-party security findings and the POA&M, and Jira defect data are combined with the pipeline evidence here, behind the data platform's roles. It runs on whatever SQL data platform the state already has; nothing in it requires a particular product.
 
 **The report layer is mostly patterns and templates, not product code.** Every state's data platform, data, security model, and BI tool differ, so the toolkit ships templates in portable SQL, with a first adaptation for the first project's platform (Snowflake):
@@ -315,33 +383,49 @@ The two layers have different data and different jobs.
 
 States adapt these with their own data and security teams. The code the toolkit owns and maintains stays in the pipeline: the core, the connectors, and the static report.
 
+**Agency scoping.** Program tags also control what leaves the report layer. Each agency's package includes only that agency's evidence (for example, FNA quality control access is limited to SNAP information), and the state runs a privacy review before any package is released.
+
 ### Trust and independence
 
-A vendor should not grade its own work. Collectors run in pipelines the state can audit, evidence records are hashed and tied to a build, and some rules need a named state reviewer or IV&V sign-off before they count as Met. The toolkit shows evidence; the state and CMS still judge it.
+A vendor should not grade its own work. Collectors run in pipelines the state can audit, evidence records are hashed and tied to a build, and rules whose acceptance setting is "required" count as Met only after a named state role, or IV&V where the contract says so, accepts the evidence. The toolkit shows evidence; the state and CMS still judge it.
 
 FNA makes this explicit: the development contractor must not perform UAT and may not take part in the pilot ([HB 901 §6.7.2–6.7.3](https://www.usda.gov/sites/default/files/guidance-documents/fns-handbook901-version2.5.pdf)). The ledger records who ran each test, so UAT and pilot evidence can be shown to come from state testers.
 
 ## How a vendor works with it
 
-The vendor's only new habit is tagging: each test, story, and metric query names the rule it proves. Everything else runs in the pipeline they already have.
+Most of the vendor's work is one-time setup inside the pipeline it already has. The recurring work is real but bounded: keeping rule tags, system adapters, and metric queries correct as the system changes, and responding to the state's review of evidence.
 
 ### In the contract
 
 The Testing Guidance Framework already expects testing requirements in the contract (Test Planning, Expectation 1). The RFP adds one more: the vendor feeds the state's evidence ledger from its pipeline, tags tests to outcome IDs, and delivers ORW metric queries as code. This makes visibility a deliverable, not a favour. FNA's handbook supports the same contract shape: the RFP should require "an incremental system demonstration every few months" (HB 901 §4.6.1), payment should follow state review and acceptance of each major deliverable (§4.7.8), and the same contractor must never "perform the work and then evaluate it" (§4.8.6). The state, QA, or IV&V therefore owns rule thresholds and pass/fail acceptance; the rules and ledger become the machine-readable part of the state's quality assurance plan and requirements traceability.
 
+The RFP should also say who owns each artifact, so nothing is disputed later:
+
+| Artifact | Default owner |
+| --- | --- |
+| Rule tags on tests; system adapter for example tests and golden cases | Vendor |
+| Metric queries against the metric data contract | Vendor |
+| `mapping.yaml` and the state profile (state-specific outcomes, N/A justifications, thresholds, gate order) | State, with vendor input |
+| Golden case expected outcomes | State policy staff |
+| Report layer (schema, loads of external data, roles, dashboards) | State data team |
+| Acceptance of evidence; checklists, letters, and signatures | State |
+| Independent assessments, demonstrations as observer, IV&V ratings | Third parties named in the contract |
+
+The contract should also name the minimum toolkit version it relies on, and allow a manual fallback that records the same evidence format if a toolkit feature is late.
+
 ### Sprint 0
 
 1. Load the rules catalog and write the state profile: state-specific outcomes, N/A justifications, ORW metric definitions.
 2. Map each epic or release to the outcomes it delivers. The repository already asks agile states to map phases to outcomes; this keeps that map in the backlog tool, where it stays current.
-3. Connect the collectors: test reports, Jira or Azure DevOps, scans, the document store.
-4. Write each ORW metric as a query that runs against synthetic data in test environments, as the Testing Guidance Framework recommends (Recommendation 3). A metric that cannot be computed shows up in sprint 1, not at the CR.
+3. Connect the pipeline connectors: test reports and scans. External sources (Jira, the document store) connect to the state's report layer, not to the pipeline.
+4. Define each ORW metric against the metric data contract and compile-check the queries from sprint 1. On a rebuild the vendor's tables do not exist yet, so the queries run against synthetic data (Testing Guidance Framework, Recommendation 3) as soon as the data model does. A metric that cannot be computed shows up months before the CR, not at it.
 
 ### Every story
 
 The Definition of Done adds three checks for any story that touches an outcome:
 
 - Its acceptance tests carry the outcome ID and, for an integrated system, the program: Medicaid, SNAP, or both.
-- If it changes data an outcome metric uses, the metric query still runs and its result is in range.
+- No per-story metric step: a pipeline check compiles every metric query on each build, and runs them against synthetic data once the data model exists.
 - No new critical vulnerability and no new accessibility failure.
 
 ```gherkin
@@ -354,12 +438,12 @@ Scenario: SNAP verification pending does not hold the Medicaid determination
   And the SNAP case stays pending
 ```
 
-The same tags work as a pytest marker, a JUnit annotation, or a test-management field.
+The same tags work as a pytest marker, a JUnit annotation, or a test-management field. Tags can sit on a single test, or once on a feature file or test class so every test inside inherits them, which keeps the number of tags in the dozens per outcome area rather than in the hundreds. Pre-written example packs arrive already tagged. Inferring tags automatically (from a Jira epic-to-outcome map, or program tags from each rule's agency) is an optional phase 2 automation, not part of the core product.
 
 ### Every pipeline run
 
-1. **Pull request:** run the tests, evaluate the rules they touch, and comment the result. A change that turns a Met rule into Not met fails the build, like any other regression.
-2. **Merge to main:** write the evidence to the ledger with the build ID.
+1. **Pull request:** run the tests and compare tagged results with the last build on main. The build fails only when a tagged test that passed on main now fails. One pull request comment is updated in place, and only when a result changes. Report-only mode is the default until the team turns blocking on, and tests that flip without a code change are quarantined: they still run but do not block.
+2. **Merge to main:** keep the evidence bundle as a pipeline artifact with the build ID; it becomes the baseline for the next pull requests. Evidence is committed to the reports branch at most once a day or once per release, not on every run.
 3. **Nightly:** run scans and metric queries, and mark evidence that has passed its freshness limit as Stale.
 4. **Promotion to UAT or production:** produce a gate report for that environment. It becomes part of the deployment record.
 
@@ -369,18 +453,28 @@ The dashboard replaces the status slide. The state product owner reviews new evi
 
 ### Integrated E&E: one evidence set, two agencies
 
-Program tags let one ledger answer both agencies. The FNA UAT package is the UAT evidence tagged SNAP; the CMS ORR package is the same run filtered to Medicaid outcomes. The same tags can feed the cost allocation story in the APD, since they show which work served which program.
+Program tags let one ledger answer both agencies. The FNA UAT package is the UAT evidence tagged SNAP; the CMS ORR package is the same run filtered to Medicaid outcomes. Program tags are never used for cost allocation.
 
 HB 901 already allows for this. It says the Complete and Final Test Plan covers a system delivered "in whole or in part (e.g., builds when using Agile)", and that the test timeline needs multiple functional iterations for agile projects. The per-release gate reports supply the results for each iteration.
 
 ### Keeping agile inside the approved APD
 
-Two FNA rules limit how far a backlog can move without new approval.
+Two rules limit how far a backlog can move without new approval. FNA states them most directly, and CMS has matching rules with tighter thresholds.
 
 - **One project.** "Incremental efforts which may be under approval thresholds individually, but which support a unified outcome, will be regarded by FNS as a single project, and … a cumulative threshold will apply" (HB 901 §1.5.1.1). Releases cannot be split up to stay under approval thresholds. The APD covers the whole system, budget, and schedule.
 - **No retroactive approval.** Changes in cost, scope, schedule, or procurement "must be submitted as an APD Update (APDU) and approved by FNS before new significant costs may be incurred" (§7.4.3.3). "Retroactive approvals are granted only in the most extreme circumstances" (§3), and costs outside the approved APD are at the state's risk until approval.
 
-An APDU As-Needed is required (§3.3.4.3) for a SNAP cost increase over $10 million or 10% of total project cost, whichever is less; a major milestone slip over 120 days; a change in procurement approach or scope; a change in system concept or project scope; a change in cost allocation method; or a change in funding source. It is due as soon as the change is known, and no later than 90 days after it is anticipated (§3.3.4.5). On the CMS side, a change to outcomes or metrics also needs an APD-U.
+Both agencies require an As-Needed APD Update before costs are incurred, and their triggers differ:
+
+| Trigger | CMS (enhanced match) | FNA (SNAP) |
+| --- | --- | --- |
+| Cost increase | $300,000 or 10% of project cost, whichever is less | $10 million or 10% of total project cost, whichever is less |
+| Schedule | Major milestone slips more than 60 days | Major milestone slips more than 120 days |
+| Other | Contract amendments over $500,000 or extensions over 60 days need prior approval | Change in procurement approach, system concept or scope, cost allocation method, or funding source |
+| Due | No later than 60 days after the change occurs | As soon as known, no later than 90 days after the change is anticipated |
+| Source | [45 CFR 95.611(c)](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-A/part-95/subpart-F/section-95.611) | HB 901 §3.3.4.3, §3.3.4.5 |
+
+For an integrated project the stricter CMS limits bind first. On the CMS side, a change to outcomes or metrics also needs an APD Update.
 
 What this means for an agile project:
 
@@ -388,7 +482,7 @@ What this means for an agile project:
 - Tie APD milestones to gates (test plan, UAT, pilot, rollout, ORR, CR), not to sprint dates, with realistic buffer.
 - Structure the contract around releases or capabilities; FNA prefers fixed-price contracts (§4.8.1).
 
-The toolkit adds an **APD watch** rule set. The approved APD baseline (milestones, budget, and the list of outcomes and capabilities) goes in configuration, and each run compares it with the backlog and gate forecasts. It warns when a gate forecast moves more than 120 days, when an outcome or capability is added or dropped, or when spend data the state chooses to load approaches the 10% line. That gives the state time to file an APDU before costs are incurred, not after.
+The toolkit adds an **APD watch** rule set. The approved APD baseline (milestones, budget, and the list of outcomes and capabilities) goes in configuration, and each run compares it with the backlog and gate forecasts. It warns on whichever agency's trigger comes first: a gate forecast slipping more than 60 days, an outcome or capability added or dropped, or loaded spend data approaching $300,000 or 10%. The APD watch runs in the state's report layer, because the baseline, forecasts, and spend are state data. That gives the state time to file an APDU before costs are incurred, not after.
 
 ## What the director sees
 
@@ -417,13 +511,24 @@ A red cell names its blocker and owner. Most outcomes should reach stage 4 long 
 | Paperwork tracker | CEF documents, letters, plans, and sign-offs with owner, due date, and status | The half of certification no pipeline can produce |
 | Expiry and calendar | SAR and penetration test age against the 2-year limit at the planned review date; Authority to Connect; APD Update due 60 days before the anniversary | Dates that silently block a review |
 | Two agencies | The same evidence filtered to CMS gates and to FNA gates | One story told to both funders |
-| Change log | Each regression, who caused it, and when it was fixed | Contract oversight with facts, not opinions |
+| Change log | Each regression by rule: when it broke, the linked change, and time to restore; no person is named | Contract oversight with facts, not opinions |
 
 During the FNA pilot, a pilot view tracks the measures HB 901 recommends for the pilot report: cases processed in the new system; defects by severity going in, new, resolved, and open; conversion results; and interface partner sign-off.
 
 ### Alerts, not reports
 
-The director and the state project manager get a short alert when something changes state: a Met rule regresses, evidence goes stale, a security assessment will expire before the planned review, or an outcome change needs an APD Update. The Testing Guidance Framework asks states to escalate persistent quality issues and hold vendors accountable (Test Execution, Expectation 6); alerts give that process a trigger.
+The team channel gets a short alert when something changes state, and the director and the state project manager hear when an item passes an agreed age: a Met rule regresses, evidence goes stale, a security assessment will expire before the planned review, or an outcome change needs an APD Update. The Testing Guidance Framework asks states to escalate persistent quality issues and hold vendors accountable (Test Execution, Expectation 6); alerts give that process a trigger.
+
+### Blameless accountability
+
+Accountability attaches to the system, the rule, and the responsible party agreed in the contract, never to a person.
+
+1. **Report by rule, not by author.** For example: "EE21 broke in build 1423 on November 3 and was restored on November 5, after 2 days." The linked change stays for audit; git already records authorship if an investigation needs it.
+2. **Measure the team over time.** Time to restore, regressions per release, age of open blockers, and flaky-test rate, shown as trends.
+3. **Learning reviews.** A regression that threatens a gate, or stays open past an agreed age, gets a short review: what happened, why the system allowed it, and what will change (a test, a rule, or the process). These reviews also meet the Testing Guidance Framework's expectation of root-cause analysis.
+4. **Contract measures stay separate from daily signals.** They use only vendor-owned rules, over agreed periods, for example "95% of vendor-owned regressions restored within 5 working days." Formal remedies such as a cure notice stay in the contract process.
+5. **Escalate by age, not by event.** Alerts go to the team channel first; leaders hear only when an item passes an agreed age.
+6. **More tagging is good news.** More tagged tests means more coverage and never more exposure.
 
 ## Where it cuts risk and time
 
@@ -449,7 +554,7 @@ The largest gains come from finding metric and security gaps early, because thos
 - **Go/No-Go criteria under change control.** HB 901 requires the state to tell FNA before it changes Go/No-Go criteria. Keeping criteria in the versioned catalog makes each change visible and dated.
 - **SIRT done continuously.** SIRT items tested sprint by sprint mean the pre-UAT SIRT pass confirms known results instead of finding gaps.
 
-The Go Live Requirements add a measurable layer. Report accuracy, timeliness, QC sample counts, notice accuracy, and defect counts can all be computed from the ledger and production data, so the director sees the FNA readiness numbers months before the Go/No-Go document is due, not when it is written.
+The Go Live Requirements add a measurable layer. Timeliness, notice accuracy, and defect counts can be computed from pipeline and production data. Report accuracy and QC samples come from the state's own checks and are tracked. Either way, the director sees the FNA readiness numbers months before the Go/No-Go document is due, not when it is written.
 
 ### Leading indicators before certification
 
@@ -457,7 +562,7 @@ Some final measures only exist late: PERM error rates come from a federal sample
 
 | Final measure | Leading indicator | How | Limit |
 | --- | --- | --- | --- |
-| EE26 accessibility | Automated WCAG checks on key pages and full user journeys, every build | axe-core through Playwright, Pa11y CI, or Lighthouse CI | Automated tools find only part of WCAG issues; screen-reader and keyboard testing by people and an accessibility conformance report are still needed |
+| CEF12 accessibility (Section 508, WCAG Level AA) | Automated WCAG checks on key pages and full user journeys, every build | axe-core through Playwright, Pa11y CI, or Lighthouse CI | Automated tools find only part of WCAG issues; screen-reader and keyboard testing by people and an accessibility conformance report are still needed |
 | EE26 language access | Translation coverage of screens and notice templates; relay and TTY information present on notices | String and template checks in CI | Says nothing about translation quality |
 | EE4, EE16 (PERM); SNAP payment accuracy | Pass rate of a golden case suite: policy-authored cases with expected determinations and benefit amounts, run on every build | Rules test suite owned by state policy staff | Shows rule correctness, not caseworker or verification errors |
 | Same | Verification completeness: share of determinations with every required verification recorded | Data check on test, then production data | PERM errors often come from missing documentation; this tracks that risk, not the rate |
@@ -466,7 +571,7 @@ Some final measures only exist late: PERM error rates come from a federal sample
 | EE5 no-touch, EE13 ex parte | Share of a synthetic population determined or renewed with no manual step | Synthetic cases with stubbed data sources in test | Real data source match rates will differ |
 | EE6 and Go Live timeliness | Processing time and queue age in UAT and pilot workloads | Timestamps from test runs | Real staffing drives timeliness |
 | EE9 and Go Live notice accuracy | Every notice template matches approved text and contains required elements (dates, appeal rights); reading level | Snapshot and content checks in CI | Print and mail steps need a separate check |
-| Go Live reports (95% accuracy) | Each required report reconciled to its source data | Report checks on synthetic data each build | Final check is on pilot data |
+| Go Live reports (95% accuracy) | Each required report reconciled to the system's own source totals through a vendor-supplied report check; otherwise tracked only | Report checks on synthetic data each build | Final check is on pilot data |
 | CEF09, CEF12 security | Code, dependency, container, and infrastructure scans; automated web scans | CodeQL, OWASP ZAP, and similar | Does not replace the independent third-party assessment |
 | CEF10 modularity | API specifications present and valid; business rules kept outside program code | Structural checks | Structural only |
 | CEF15 T-MSIS | Generated T-MSIS files pass published data dictionary and data quality rules | File validation in CI | CMS's own assessment is final |
@@ -492,7 +597,7 @@ Gaps that need new cases: SNAP expedited service and its 7-day clock, ABAWD mont
 
 - It does not replace CMS or FNA judgment. Reviewers still rate evidence Satisfactory or Not Satisfactory.
 - It does not write the APD, the contract, or the security assessment. It tracks them.
-- It must not turn into a checkbox exercise. A rule that is Met on weak evidence is worse than one that is honestly red, so state acceptance is part of Met.
+- It must not turn into a checkbox exercise. A rule that is Met on weak evidence is worse than one that is honestly red, so acceptance by a named state role is part of Met wherever the rule requires it.
 
 ## Roadmap and first project
 
@@ -500,7 +605,7 @@ Build it in four phases, each ending at a real review, and try it first on one i
 
 ![Roadmap: four phases, each ending at a real review (not to scale)](images/roadmap.png)
 
-Phase 0 helps any state on day one, without vendor changes: like the HPT online validator, it checks the Intake Form and ORW in the browser. The first project should be far enough from its ORR that the toolkit can prove itself on that gate. Phase durations depend on the first project's schedule and are left open.
+Phase 0 helps any state on day one, without vendor changes: like the HPT online validator, it checks the Intake Form and ORW in the browser. The first project should be far enough from its ORR that the toolkit can prove itself on that gate. Phase durations depend on the first project's schedule and are left open. Optional phase 2 automations, outside the core product, include inferring rule and program tags from a Jira epic-to-outcome map and from each rule's agency.
 
 ## Decisions so far
 
@@ -521,7 +626,7 @@ Phase 0 helps any state on day one, without vendor changes: like the HPT online 
 
 **For CMS and FNA**
 
-- [ ] **Confirm assumptions.** Confirm with FNA and CMS during the first APD review that generated files in their templates are acceptable and that the pilot reading above is right.
+- [ ] **Confirm assumptions.** Confirm with FNA and CMS during the first APD review that generated files in their templates are acceptable and that the pilot reading above is right. Ask both agencies together how their gates line up for this state (the gate-order setting), and confirm the ARC-AMPE assessment and penetration-test timelines for the E&E module.
 
 **For the state and the first project**
 
