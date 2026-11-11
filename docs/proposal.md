@@ -425,26 +425,21 @@ The RFP should also say who owns each artifact, so nothing is disputed later:
 
 The work is expected to run as a time-and-materials order, so quality is measured through a Quality Assurance Surveillance Plan (QASP), not through deliverable acceptance. The task order names a released toolkit version and a pinned catalog version; catalog updates that add or change rules go through change control, not automatic adoption. Until the named release exists, the vendor's only obligation is tagged, standard test reports (JUnit XML or Cucumber JSON); work to fill toolkit gaps is ordinary backlog work under the order's ceiling. The solicitation lists the expected certification work so it can be planned and estimated: rule tags, the system adapter, a test-facing determination API, metric queries, synthetic data in test environments, pipeline integration, and any optional report-check adapters.
 
-#### Recommended QASP measures
+#### Recommended QASP additions
 
-The QASP starts from 18F's sample agile QASP ([De-risking Guide](https://guides.18f.org/derisking/qasp/), archived January 20, 2025) and adds certification measures the toolkit can report. Each is reviewed at the end of every sprint, from the static report and a live demonstration, by the state's contracting officer's representative or product owner. Measures cover only vendor-owned work; the state's own timeliness (for example, acceptance latency) is reported separately and never counted against the vendor.
+These measures add to the state's existing QASP; they do not replace it. General quality measures such as test coverage, code style, and deployment (as in [18F's sample agile QASP](https://guides.18f.org/derisking/qasp/), archived January 20, 2025) stay in the existing QASP. The additions cover only what continuous certification needs. Where the existing QASP already measures accessibility or security, the certification versions below add only that the results are published as certification evidence. Each measure is reviewed at the end of every sprint from the static report, covers only vendor-owned work, and never counts the state's own timeliness (for example, acceptance latency) against the vendor.
 
 | Measure | Performance standard | Acceptable quality level | Assessed by |
 | --- | --- | --- | --- |
-| Tested code (18F) | Substantial test coverage and a clean code base | At least 90% coverage | Pipeline coverage report |
-| Properly styled code (18F) | Agreed style guide and linters | 0 linting errors and 0 warnings | Pipeline lint results |
-| Accessibility (18F) | WCAG 2.2 AA; also feeds CEF12 Section 508 evidence | 0 errors from automated scans and 0 from manual testing of features demonstrated in the sprint | Automated scanner in CI (for example axe or Pa11y) plus manual testing |
-| Deployed (18F) | Builds and deploys to staging from a single command | Successful build and deploy every sprint | Live demonstration at sprint review |
-| Documented (18F) | Dependencies and licenses listed, major functions described in plain language, inline documentation, system diagram; also supports CEF20 | Complete for everything delivered in the sprint | Manual review |
-| Secure (18F) | OWASP ASVS 4.0.3 Level 2 | 0 unresolved medium or high static and dynamic findings; false positives documented | Pipeline scans (static analysis, dependency audit, OWASP ZAP) |
-| User research (18F) | Usability testing at regular intervals | Research artifacts at the end of each applicable sprint | Manual review |
 | Certification traceability | Tests for work that touches a catalog rule carry its rule key | 0 `check-tags` errors; every story linked to a rule has at least one tagged test by sprint end | Pipeline `check-tags` and the static report |
+| Evidence availability | Every build on main publishes its evidence bundle | 100% of main builds | Pipeline artifacts |
 | Regression restoration | Vendor-owned regressions in tagged tests are restored quickly | 95% restored within 5 working days | Time to restore in the static report |
+| Test reliability | Flaky tagged tests are fixed, not ignored | Every quarantined test fixed or removed within 2 sprints | Quarantine list in the static report |
 | Metric readiness | ORW and Go Live metric queries compile and run | 100% compile every sprint; 100% run against synthetic data once the data model exists | Nightly pipeline check |
 | Golden case correctness | System results match the state's expected outcomes | 100% of undisputed cases for rules in the sprint's scope pass | Nightly golden case suite |
-| Defect management | Defects tracked by severity, per the MES Testing Guidance Framework | 0 open critical defects in features demonstrated as done; aging within agreed limits by severity | Defect tracker export |
-| Test reliability | Flaky tests are fixed, not ignored | Every quarantined test fixed or removed within 2 sprints | Quarantine list in the static report |
-| Evidence availability | Every build on main publishes its evidence bundle | 100% of main builds | Pipeline artifacts |
+| Certification defect data | Defects carry severity, dates, and linked rules, as the MES Testing Guidance Framework expects (Test Execution, Expectation 4) | 100% of defects on tagged rules have severity and dates; 0 open critical defects in features demonstrated as done | Defect tracker export |
+| Accessibility evidence | Automated WCAG 2.2 AA results published as CEF12 Section 508 evidence | Results published every build; 0 automated errors in features demonstrated as done | Automated scanner in CI (for example axe or Pa11y) |
+| Security evidence | Pipeline scan results published to feed the POA&M | Results published every build; 0 unresolved medium or high findings, false positives documented | Static analysis, dependency audit, and dynamic scans in CI |
 
 When a measure falls short, the usual QASP path applies: discussion at sprint review, then a corrective action plan, then the formal remedies in the order. The measures are about the quality of the vendor's work; whether CMS or FNA approves the system is not a vendor measure, because neither agency's decision is in the vendor's control.
 

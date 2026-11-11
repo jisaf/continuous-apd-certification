@@ -32,7 +32,7 @@ Status as of 2026-11-11. The full reasoning is in [`proposal.md`](proposal.md).
 
 ## Solicitation support
 
-- Recommended QASP measures for a time-and-materials order (based on 18F's sample agile QASP plus certification measures), and an artifact ownership table.
+- Recommended QASP additions for a time-and-materials order: certification-specific measures that add to the state's existing QASP, and an artifact ownership table.
 
 ## Decisions still needed
 
