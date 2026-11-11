@@ -172,23 +172,23 @@ The example packs start where the sources already state the test. The SIRT alone
 
 - **SIRT items.** Many items are a single checkable behaviour ("Does the system capture the application date?", AP-1). Each gets a Gherkin scenario with the 7 CFR citation and the rule ID already tagged.
 - **CMS E&E outcomes.** Scenarios for outcomes with clear system behaviour, such as EE15 (eligibility hierarchy) and EE21 (pending one program without holding up another).
-- **Metric queries.** Reference queries for the default E&E metrics and the Go Live numbers (timeliness, backlog buckets, notice counts), written against a small reference data model.
+- **Metric queries.** Reference queries for the default E&E metrics and the Go Live numbers (timeliness, backlog buckets, notice counts), written against the metric data contract.
 - **Report checks.** Checks that the Go Live reports can be produced and match source data, with the 95% accuracy threshold built in.
 - **File checks.** The ORW field rules from `ORW_Validation.xlsx`, ready to run in CI.
 
-Vendor systems differ, so each example binds to the vendor's system through a thin adapter (step definitions, or a view that maps the vendor's tables to the reference data model). The examples are starting points the state still reviews; they do not replace the state's own test design.
+Vendor systems differ, so each example binds to the vendor's system through a thin adapter (step definitions, for tests, or a view that maps the vendor's tables to the metric data contract). The examples are starting points the state still reviews; they do not replace the state's own test design.
 
 ### Mapping is configuration; extension is code
 
 No state will reshape its data for this toolkit, so the toolkit meets each state where it is.
 
 - **Reference implementation.** It covers every tracked item: the 27 E&E outcomes, 22 CEF, all SIRT rows, the 26 Go Live criteria, and the ORW and Intake Form rules. Each item gets the strongest evidence form available: an example test, a metric query, a report check, or a document checklist with an owner and due date.
-- **Mapping (configuration).** A state's `mapping.yaml` points each reference entity and field at the state's own tables, views, or SQL expressions, and translates code values. Rule settings are configuration too: N/A with justification, thresholds, state-specific outcomes, Go/No-Go criteria, and which agency template version to fill.
+- **Mapping (configuration).** A state's `mapping.yaml` points each metric data contract field at the state's own tables, views, or SQL expressions, and translates code values. Rule settings are configuration too: N/A with justification, thresholds, state-specific outcomes, Go/No-Go criteria, and which agency template version to fill.
 - **Extension (code).** New connectors, new check types, new report formats, and metrics that SQL cannot express are plugin packages written against the core interface.
 
 ```yaml
 # mapping.yaml (example state, illustrative)
-entities:
+records:
   application:
     source: snowflake
     table: ANALYTICS.ELIG.APPLICATIONS_V
@@ -207,27 +207,30 @@ rules:
 
 A `check-mapping` command lists unmapped fields and the rules each one blocks, so a state can see what a partial mapping already gives it.
 
-#### Reference entities
+#### Two small contracts, not a data model
 
-The reference model covers every entity the tracked rules need. The first four are built first because they cover timeliness, automation, notices, renewals, and most Go Live numbers.
+The toolkit needs a state's data for two jobs only, so it defines two small contracts instead of a domain model.
 
-| Group | Entities | Used by |
+**1. Metric data contract.** Only the fields that the tracked metrics and report checks read. It grows only when a new metric needs a field.
+
+| Record | Fields | Used by |
 | --- | --- | --- |
-| First build | Application, Eligibility determination, Notice, Renewal / recertification | EE1, EE5, EE6, EE9, EE13, EE14; Go Live timeliness, backlog, notice, and daily reports; SIRT application and notice items |
-| People and case | Person, Household / case, Authorized representative | Most SIRT eligibility items; EE15, EE16 |
-| Intake | Program request, Interview, Presumptive eligibility application, Account transfer | EE12, EE22–EE24; SIRT AP items |
-| Verification and budget | Verification request, Data source match, Income, Resource, Expense / deduction | EE5, EE7, EE8; SIRT income, resource, deduction, and data match items |
-| Decision and benefit | Eligibility group / category, Benefit calculation (SNAP allotment), Coverage / enrollment segment (including transmission to MMIS and MCO assignment) | EE3, EE11, EE15–EE20; SIRT benefit items |
-| Ongoing case events | Change or periodic report, Work requirement status (work registration, E&T, ABAWD), Claim and repayment, Benefit restoration, Issuance (EBT), Appeal / fair hearing | EE27; SIRT B, C, F, and work items; FNS-209, FNS-46, FNS-388 |
-| Operations | Task / work item, Worker and office, QC sample case, Report run, Disaster SNAP case | Go Live daily and backlog reports, QC sampling; SIRT operations, QC, and D-SNAP items |
+| Application | ID, received time, channel, programs requested, expedited flag | EE1, EE6; Go Live timeliness, backlog, and daily reports |
+| Determination | application ID, program, result, decision time, automated flag, method (MAGI or non-MAGI) | EE5, EE6; Go Live timeliness |
+| Notice | type, channel, generated time, sent time, automatic or manual | EE9, EE10; Go Live notice report |
+| Renewal | due date, completed date, ex parte flag, prepopulated form sent | EE13, EE14 |
+| Work item | type, created time, status, due date | Go Live backlog and daily reports |
+| Appeal and account transfer | type, channel, received time, completed time, status | EE22–EE24, EE27 |
+
+**2. Test case format.** Golden cases and example tests describe household facts in and the expected outcome out: eligibility, category, benefit amount, and notices. Household members, income, expenses, and deductions live only here. The vendor writes one adapter that turns a case into a call to its own system. SIRT items such as the excess shelter deduction are proven by these tests; the toolkit never reads that data from the state's systems.
 
 ## Proposed approach
 
 The toolkit links three things that exist today but are not connected: the published rules, the vendor's delivery signals, and the state's review packages. The state owns the instance and the evidence; the vendor feeds it.
 
-![The pipeline tools work alone; the evidence history and dashboards add on](images/architecture.png)
+![Static reports use pipeline data only; external data joins in the optional Snowflake layer](images/architecture.png)
 
-Everything in the core box runs inside a pipeline with no server. The rules decide what each piece of evidence proves, and each run leaves an evidence bundle as a build artifact. The ledger and dashboard are add-ons that read those bundles.
+Everything in the core box runs inside a pipeline with no server. The rules decide what each piece of evidence proves, and each run leaves an evidence bundle as a build artifact. The static report is built from that bundle alone. External sources (Jira, production data, security findings, documents) never enter the pipeline; they join the evidence only in the optional Snowflake layer.
 
 ### 1. Rules catalog
 
@@ -267,6 +270,8 @@ Source connectors collect evidence from tools the vendor already runs. The core 
 | Production metrics | Queries against the reporting database | ORW rows; CR metrics |
 | Documents and sign-offs | State document store; e-signature | CEF evidence; letters; plans |
 
+Of these, test results, coverage and traceability, and scans run in CI come from the pipeline itself. Defects, production metrics, and documents come from external sources. Their connectors load into the Snowflake layer, not into the pipeline's evidence bundle, so the static report never contains them.
+
 ### 3. Rule engine and validators
 
 The engine evaluates each rule against the ledger and gives one status: **Met**, **At risk**, **Not met**, **No evidence**, **Stale**, or **N/A (justified)**. Each status carries the reason and the evidence behind it. Validators check the CMS files themselves: the ORW against `ORW_Validation.xlsx`, and the Intake Form against the catalog (every CMS-required outcome and CEF listed, N/A rows justified, evidence file names that exist in the upload set).
@@ -286,39 +291,29 @@ A hosted app would trigger a security review in every state, so the views are de
 | --- | --- | --- | --- | --- |
 | 1. Static report per build | Each run writes one self-contained HTML file (no external scripts, no server) and its evidence JSON. The pipeline commits both to a dedicated reports branch or a separate private reports repository, never to the code branch. | None | Latest run, plus links to earlier files | Anyone who can read that repository |
 | 2. Git as the ledger | Each run's evidence JSON is a signed commit on a protected reports branch, so the branch is an append-only history. The report generator reads the branch to draw trends. | None | Full | Same as step 1 |
-| 3. Snowflake tables | The pipeline also loads the evidence JSON into a certification schema in the state's Snowflake account, next to the metric data it already holds. | None (existing account) | Full, queryable | Snowflake roles mapped to state groups |
+| 3. Snowflake tables | The pipeline also loads the evidence JSON into a certification schema in the state's Snowflake account, next to the metric data it already holds. External data (production metrics, security findings, Jira defects) joins the evidence here, never in the static report. | None (existing account) | Full, queryable | Snowflake roles mapped to state groups |
 | 4. Existing BI tools | Starter dashboards on those tables in Streamlit in Snowflake, Snowsight, Power BI, or Tableau, whichever the state already licenses. The toolkit ships the table schema and templates. | None (existing tools) | Full | The BI tool's own access control |
 | Side channels | A Jira sink keeps one Jira issue per rule or gate with its current status, so the director sees certification in Jira dashboards the team already uses. A pipeline digest posts a weekly summary to email or chat. | None | Per tool | Per tool |
 
-Two cautions. Static reports are only as private as the repository, so restricted evidence (security findings, any case data, small-area counts) never goes into them; it stays in Snowflake behind restricted roles, or out of the toolkit. And using existing tools avoids a new system, not data classification: the state still classifies the evidence under its own policy.
+Static reports contain only data the pipeline produced, so they need no access rules beyond the repository's own. Using existing tools avoids a new system, not data classification: the state still classifies whatever it loads into Snowflake under its own policy.
 
-### Complete views without exposing sensitive evidence
+### What each layer shows
 
-The views show the status of every item; the details of sensitive items stay where they already live, behind the access controls they already have. Each evidence kind has a class in the catalog, which a state can override in configuration. Anything unclassified is treated as restricted.
+The two layers have different data and different jobs.
 
-| Class | Examples | In repository reports | In Snowflake | Details stay in |
-| --- | --- | --- | --- | --- |
-| Open | Rule status, test pass counts, coverage, gate dates, document present with date and owner | Yes | Yes | — |
-| Summary only | Defects: ID, severity, status, dates, linked rule; no free text | IDs and counts | Yes | Jira, under Jira permissions |
-| Restricted | Security assessment findings, penetration test results, POA&M items | Status only: present, dated, expiry date, count of open critical items | Restricted schema, security role only | The security tool or the state's secure document store |
-| Aggregate only | Production metrics computed from case data | Values, with counts under 11 suppressed | Aggregates only | The state's governed case data |
-| Never collected | Case records, PHI, PII, screenshots with case data | No | No | Source systems |
+- **Static report: pipeline data only.** It shows only what the pipeline produced in that run: test results, rule status, coverage, scans run in the pipeline, file validation results, and gate dates from configuration. It never pulls external data: no security assessment findings, no Jira text, no production metrics. Its readers can already see everything the pipeline sees, so it needs no roles or evidence classes. Whoever can read the repository can read the report; if the repository is public, so is the report.
+- **Snowflake dashboard: where external data joins.** Production metrics from case data, third-party security findings and the POA&M, and Jira defect data are combined with the pipeline evidence here, behind Snowflake roles.
 
-**Where Snowflake data comes from:**
+**The Snowflake layer is mostly patterns and templates, not product code.** Every state's Snowflake account, data, security model, and BI tool differ, so the toolkit ships:
 
-1. Evidence bundles from the pipeline (open and summary classes), loaded through a stage in the state's cloud storage.
-2. Metric and report queries that run inside Snowflake against the state's existing E&E data. Only aggregate results are written to the certification schema; case data never leaves its own schema.
-3. Restricted evidence through a separate connector run only by the security role, for example a POA&M export from the security team's tool, loaded into a restricted schema.
-4. Defect fields from Jira through the Jira connector.
+- a documented certification schema for evidence and rule status;
+- a load pattern for pipeline evidence bundles;
+- metric query templates written against the metric data contract;
+- role and secure-view templates: viewer, acceptor, security, and a write-only loader; views that show restricted items to viewers only as status and counts; suppression of counts under 11;
+- starter dashboards for Streamlit in Snowflake, Power BI, and Tableau, connecting with each person's own login so Snowflake roles apply;
+- guidance for loading restricted sources, such as a POA&M export run by the security role.
 
-**How it is secured:**
-
-- Two schemas: `CERT` and `CERT_RESTRICTED`.
-- Roles mapped to state groups through single sign-on: viewer (director, project manager, vendor), acceptor (state product owner), security (state security officer), and a write-only loader for the pipeline service identity.
-- Secure views show viewers restricted items only as status and counts, for example "3 open critical, oldest 21 days"; the security role sees details. Masking policies cover any free-text column.
-- Power BI, Tableau, and Streamlit connect with each person's own identity, so Snowflake roles apply in every tool. There is no shared viewing account.
-- Snowflake's access history gives an audit trail.
-- The static report generator only renders open and summary classes. This is enforced in code and covered by tests, so a configuration mistake cannot leak restricted fields into the repository.
+States adapt these with their own data and security teams. The code the toolkit owns and maintains stays in the pipeline: the core, the connectors, and the static report.
 
 ### Trust and independence
 
@@ -515,9 +510,9 @@ Phase 0 helps any state on day one, without vendor changes: like the HPT online 
 | FNA pilot | Assumed: a live pilot with the new system as system of record, plus an optional legacy comparison run, meets 7 CFR 277.18. Confirm with FNA. |
 | Shared catalog hosting | No CMS or FNA hosting assumed. The core repository is the upstream. |
 | First project | One state, not named publicly. Assumed profile: full rebuild from scratch by an agile-first civic tech vendor. GitHub for code, Azure DevOps for pipelines, Jira for issues, Snowflake for metrics. First connectors: GitHub, Azure DevOps, Jira, Snowflake. |
-| Dashboard and hosting | No dedicated hosted app for now, because it would trigger a state security review. Start with a static HTML report per build, committed to the repository. Then use tools the state already runs (Snowflake, Power BI, Tableau, Jira). A hosted app is paused. |
+| Dashboard and hosting | No dedicated hosted app for now, because it would trigger a state security review. Start with a static HTML report per build, committed to the repository. Then use tools the state already runs (Snowflake, Power BI, Tableau, Jira). A hosted app is paused. Static reports show pipeline data only; external data joins only in Snowflake, which ships mainly as patterns and templates. |
 | Program tags | Used only for the toolkit's own purposes (filtering evidence by agency, gates, and views). Never used for cost allocation. |
-| Data model | Fully configurable. A complete reference implementation covers every tracked item; states map their own data to it through configuration, and extend it through code plugins. No state is expected to adopt the reference schema. |
+| Data model | No data model. Two small contracts: a metric data contract (only the fields the metrics read) and a test case format (household facts in, expected outcome out). A complete reference implementation covers every tracked item; states map fields through configuration and extend through code plugins. |
 | Language and packaging | Language-neutral contracts (JSON Schema, documented CLI) with one reference implementation shipped as a package and a container image. |
 | Catalog maintenance | The core repository owner maintains the upstream catalog. States fork and maintain their own copy, pulling from the core repository or directly from CMS and FNA sources. |
 | License | Code: AGPL-3.0, with a commercial license available from the owner. Contributors sign a contributor license agreement so dual licensing stays possible. Rules data and examples: CC0. Agency templates: the new CMS templates from SHO #25-003 are the target. Repository: github.com/jisaf/continuous-apd-certification. |
@@ -530,11 +525,11 @@ Phase 0 helps any state on day one, without vendor changes: like the HPT online 
 
 **For the state and the first project**
 
-- [ ] **Access and restricted evidence.** Agree which evidence never goes into repository reports (security findings, any case data) and which state roles see it in Snowflake or BI tools.
+- [ ] **Access and restricted evidence.** Agree which Snowflake roles see which external data, starting from the role templates.
 
 **For the design**
 
-- [ ] **Reference entity order.** Agree the order of entities for the reference implementation (proposed: Application, Determination, Notice, Renewal first).
+- [ ] **Metric data contract.** Confirm the six record types and their fields with the first state's data team.
 - [ ] **License.** Decided: AGPL-3.0 plus commercial for code; CC0 for data and examples. A draft contributor license agreement is in the repository and needs legal review. Constraints: software built with federal funds must be owned by the state, with a royalty-free federal license (HB 901 Appendix A16; CMS CEF05 and CEF06), and FNA warns against accepting free software from a party that would gain an unfair advantage on follow-on work (A16.8). Building the core outside any state contract keeps it the owner's to license; state-funded extensions belong to the state.
 
 **Research still to do**
