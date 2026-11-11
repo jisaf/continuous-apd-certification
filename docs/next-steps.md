@@ -8,15 +8,16 @@ Status as of 2026-11-11. The full reasoning is in [`proposal.md`](proposal.md).
    - Extract the CMS-required E&E outcomes and the 22 CEFs from the [MES Certification Repository](https://github.com/CMSgov/CMCS-DSG-DSS-Certification), pinned to a reviewed commit.
    - Extract the SNAP SIRT from FNA's Excel version, the SNAP Go Live Requirements, and the FNA testing gates from Handbook 901.
    - Give every item a stable catalog key, because agency IDs repeat (524 unique SIRT IDs cover 821 rows).
-   - Record for each item: source and citation, gates, evidence type (from [`research/classification/`](research/classification/)), evidence class (open, summary only, restricted, aggregate only), and whether it is a leading indicator.
-2. **Schemas.** JSON Schemas for catalog entries, the evidence record, the evidence bundle, state configuration (`mapping.yaml`), and the connector interface.
+   - Record for each item: source and citation, gates, evidence type (from [`research/classification/`](research/classification/)), and whether it is a leading indicator.
+2. **Schemas.** JSON Schemas for catalog entries, the evidence record, the evidence bundle, state configuration (`mapping.yaml`), the connector interface, the metric data contract, and the test case format.
 3. **File validators** for the agencies' current templates: the new CMS templates from SHO #25-003 (SMC Intake Form, Operational Report Workbook) and the FNA SIRT response workbook.
-4. **Static report generator.** One self-contained HTML file per build from an evidence bundle. It renders only the open and summary-only evidence classes; this is enforced in code and tested.
-5. **Reference entities, first four.** Application, Eligibility determination, Notice, Renewal — with reference metric queries for the default E&E metrics and the Go Live numbers.
+4. **Static report generator.** One self-contained HTML file per build, built from the pipeline's evidence bundle alone. It never reads external data (Jira, production data, security findings, documents).
+5. **Two small contracts, not a data model.** The metric data contract (six record types: Application, Determination, Notice, Renewal, Work item, Appeal and account transfer — only the fields the metrics read) and the test case format (household facts in, expected outcome out).
 
 ## Phase 1 — Build to ORR (first state project)
 
-- Connectors: GitHub, Azure DevOps (pipeline step and summary), Jira (defects in; one issue per rule or gate out), Snowflake (metric queries in; evidence tables out), email and chat digests.
+- Pipeline connectors: GitHub, Azure DevOps (pipeline step and summary), Jira (one issue per rule or gate out), email and chat digests.
+- Report layer on the state's existing data platform (first adaptation: Snowflake), mostly patterns and templates in portable SQL: certification schema, evidence load pattern, metric query templates, role and secure-view templates, starter dashboards, and loaders for external data (Jira defects, security findings).
 - Example test packs: SIRT pre-write candidates and the E&E outcomes with clear behaviour, as Gherkin with rule IDs tagged.
 - Golden case set for the policy indicators (see below).
 - Package generators for the ORR and the FNA UAT Go/No-Go.
@@ -24,7 +25,7 @@ Status as of 2026-11-11. The full reasoning is in [`proposal.md`](proposal.md).
 
 ## Decisions still needed
 
-- Which evidence classes each state role may see, and the exact restricted list.
+- Which report layer roles see which external data, starting from the role templates.
 - Legal review of the [contributor license agreement](../CLA.md).
 - Confirmation from FNA and CMS that generated files in their templates, and the reading of the pilot rule, are acceptable.
 

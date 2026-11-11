@@ -31,9 +31,9 @@ The model is CMS's own [Hospital Price Transparency tools](https://cmsgov.github
 3. **Pre-written examples where the test is known** — for example, 588 of the 821 SNAP SIRT rows are single, checkable behaviours.
 4. **Connectors against one core interface.** GitHub, Azure DevOps, Jira, Snowflake, email, and chat are plugins; adding one is a documented, tested process.
 5. **Mapping is configuration; extension is code.** No state will reshape its data for this toolkit, so the toolkit maps to each state's data.
-6. **No new hosting.** Static HTML reports per build first, then the state's existing tools (Snowflake, Power BI, Tableau, Jira). A hosted application is deliberately out of scope for now, because it would trigger a separate security review in every state.
+6. **No new hosting.** Static HTML reports per build first, built from pipeline data only. External data (production metrics, security findings, Jira defects) joins only in an optional report layer on the state's existing data platform and BI tools, delivered mostly as patterns and templates. A hosted application is deliberately out of scope for now, because it would trigger a separate security review in every state.
 
-![The pipeline tools work alone; the evidence history and dashboards add on](docs/images/architecture.png)
+![Static reports use pipeline data only; external data joins in the optional report layer](docs/images/architecture.png)
 
 ## First project
 
