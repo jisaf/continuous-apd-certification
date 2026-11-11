@@ -7,7 +7,7 @@ shared conformance kit, and ships as its own Python package. Adding one never ne
 
 | Kind | Interface | Job | Built in |
 | --- | --- | --- | --- |
-| **Source** | `collect(ctx, options) -> list[evidence record]` | Read a report the pipeline produced and return evidence records | `junit`, `cucumber`, `sarif`, `axe` |
+| **Source** | `collect(ctx, options) -> list[evidence record]` | Read a report the pipeline produced and return evidence records | `junit`, `cucumber`, `playwright`, `sarif`, `axe` |
 | **Sink** | `publish(result, ctx, options) -> dict` | Send a run's results somewhere | `file`, `github`, `azure-devops`, `jira`, `chat`, `snowflake` |
 
 Both are defined in [`src/capd/connectors/base.py`](../src/capd/connectors/base.py):

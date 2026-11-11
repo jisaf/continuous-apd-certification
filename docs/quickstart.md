@@ -22,6 +22,7 @@ file or test class once to cover every test in it.
 | --- | --- | --- |
 | Gherkin (Cucumber, SpecFlow, Behave, pytest-bdd) | `@rule:fna:sirt:S0215` on a Feature or Scenario | Cucumber JSON |
 | pytest | `@pytest.mark.rule("fna:sirt:S0215", "cms:ee:EE15")` (the plugin installs with capd) | JUnit XML with `-o junit_family=xunit1` |
+| Playwright | `{ tag: '@rule:cms:ee:EE21' }` on a test or describe block, or `@rule:...` in the title | Playwright JSON (`--reporter=json`) |
 | JUnit 5, Jest, others | A `<property name="rule" value="cms:ee:EE21"/>` on the test case in the JUnit XML | JUnit XML |
 | .NET MSTest / VSTest | `[TestCategory("rule:cms:ee:EE21")]` with the [TRX connector](../examples/connector-template/) | TRX |
 | Anything else | A sidecar file mapping test IDs (glob patterns) to rule keys (`sidecarTags` in `capd.yaml`) | Any of the above |

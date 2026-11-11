@@ -24,6 +24,8 @@ sources:
     paths: ["test-results/**/*.xml"]
   - connector: cucumber               # Cucumber, SpecFlow, Behave, pytest-bdd --cucumberjson
     paths: ["test-results/**/cucumber*.json"]
+  - connector: playwright             # npx playwright test --reporter=json
+    paths: ["test-results/playwright.json"]
   - connector: sarif                  # CodeQL, Semgrep, Trivy, ruff, ZAP converters
     paths: ["scan-results/**/*.sarif"]
     options: { rules: ["cms:cef:CEF09"], failAt: warning }
