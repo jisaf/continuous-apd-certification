@@ -477,6 +477,22 @@ Some final measures only exist late: PERM error rates come from a federal sample
 | CEF15 T-MSIS | Generated T-MSIS files pass published data dictionary and data quality rules | File validation in CI | CMS's own assessment is final |
 | Performance (SIRT system items, Go Live) | Response time under load, trended per release | Load tests in the pipeline | Test load is an estimate |
 
+#### The golden case set: seeded from published cases
+
+Several indicators need households with known correct outcomes. No published source gives a ready, licensed, state-specific set, so the set is seeded from existing work and only the gaps are written new. Every expected value is recomputed for current federal rules and the state's options, because SNAP rules changed in 2025.
+
+| Source | What it gives | License | How we use it |
+| --- | --- | --- | --- |
+| CMS PERM eligibility review pilot (2014): 100 test cases with state answer keys, on CMS's login-only state site | MAGI and CHIP outcomes by eligibility group, including mixed households, emergency-only non-citizens, and the adult group | Federal work | Request from the state Medicaid agency or CMS first; strongest authority |
+| [18F SNAP API prototypes](https://github.com/18F/snap-api-prototype) (Python and JavaScript) | 145 Gherkin scenarios with eligibility and benefit amounts: income tests, broad-based categorical eligibility, deductions, utility allowances | U.S. government work, plus CC0 | Copy into the CC0 set; recompute for the state and the current fiscal year |
+| CMS "Income Eligibility Using MAGI Rules" (2021) | Two fully worked MAGI households, including tax-filer and non-filer rules | Federal work | Copy and adapt to the state's thresholds |
+| State Medicaid renewal workbooks and eligibility desk aids | State renewal, ex parte, and reinstatement scenarios with outcomes and notices | State work, no public-domain grant | Adapt and cite |
+| [PolicyEngine US](https://github.com/PolicyEngine/policyengine-us) | About 2,500 current SNAP, Medicaid, and CHIP tests, some state-specific | AGPL-3.0 | Use as an independent engine to check our cases; do not copy cases |
+| MAGI in the Cloud (CMS-funded MAGI engine) | 209 rule-level MAGI tests with reason codes (2014–15 rules) | BSD-3 with notice | Use as a cross-check, or keep in a separate third-party folder with its notice |
+| SNAP QC public use file (USDA, FY2024) | 44,891 reviewed SNAP households, each with a state code, income, deductions, benefit, and expedited flags | Federal data | Statistical regression check, not hand-checked golden cases |
+
+Gaps that need new cases: SNAP expedited service and its 7-day clock, ABAWD month counting, notice content, SNAP recertification, households with both Medicaid and SNAP outcomes, and state-specific options. A state's own system test scripts are usually not public; ask the state Medicaid and SNAP agencies, or use the state's open records process.
+
 ### What it does not do
 
 - It does not replace CMS or FNA judgment. Reviewers still rate evidence Satisfactory or Not Satisfactory.
@@ -524,7 +540,7 @@ Phase 0 helps any state on day one, without vendor changes: like the HPT online 
 **Research still to do**
 
 - [ ] **Evidence-type split.** Done; see "How much can be automated".
-- [ ] **Unread sources.** Done for HB 901 chapters 1, 4, 5, 7, and 9 and SHO #25-003; findings are in the gates table, the contract section, and above. Templates: target the new SHO #25-003 templates directly. Still open: sources for a golden case set (research in progress).
+- [ ] **Unread sources.** Done for HB 901 chapters 1, 4, 5, 7, and 9 and SHO #25-003; findings are in the gates table, the contract section, and above. Templates: target the new SHO #25-003 templates directly. Golden case sources: researched; see "The golden case set". Next: request the CMS PERM test cases and the state's answer key from the state Medicaid agency.
 
 ## Sources
 
