@@ -59,6 +59,7 @@ BUILTIN = {
     "cucumber": "capd.connectors.cucumber:CucumberSource",
     "sarif": "capd.connectors.sarif:SarifSource",
     "axe": "capd.connectors.axe:AxeSource",
+    "playwright": "capd.connectors.playwright:PlaywrightSource",
     "file": "capd.connectors.file_sink:FileSink",
     "github": "capd.connectors.github:GitHubSink",
     "azure-devops": "capd.connectors.azure_devops:AzureDevOpsSink",

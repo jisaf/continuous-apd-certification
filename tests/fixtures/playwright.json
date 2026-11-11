@@ -1,0 +1,22 @@
+{
+  "config": {},
+  "suites": [
+    {
+      "title": "apply.spec.ts", "file": "apply.spec.ts",
+      "specs": [],
+      "suites": [
+        {
+          "title": "Multi-benefit application @rule:cms:ee:EE1", "file": "apply.spec.ts",
+          "specs": [
+            {"title": "pends SNAP without holding Medicaid", "file": "apply.spec.ts", "tags": ["@rule:cms:ee:EE21"],
+             "tests": [{"projectName": "chromium", "results": [{"status": "failed", "duration": 900}, {"status": "passed", "duration": 800}]}]},
+            {"title": "shows the notice in the preferred language @rule:cms:ee:EE10", "file": "apply.spec.ts", "tags": [],
+             "tests": [{"projectName": "chromium", "results": [{"status": "timedOut", "duration": 30000}]}]},
+            {"title": "skipped flow", "file": "apply.spec.ts", "tags": ["@smoke"],
+             "tests": [{"projectName": "chromium", "results": [{"status": "skipped", "duration": 0}]}]}
+          ]
+        }
+      ]
+    }
+  ]
+}
