@@ -44,7 +44,7 @@ A note on names: USDA's Food and Nutrition Service (FNS) is now styled the Food 
 
 - **CEF (22).** From 42 CFR 433.112(b). Most evidence is the APD, contract language, or a state self-attestation. CEF09 and CEF12 need an independent third-party security and privacy assessment (SAR) and penetration test, current under ARC-AMPE for E&E. CEF12 also needs a Section 508 test report showing WCAG Level AA conformance. CEF17 needs proof of MAGI functionality through performance testing.
 - **E&E outcomes (27).** EE1 to EE27 cover applications, automatic enrollment, MAGI and non-MAGI income rules, electronic verification, timely determinations, notices, MMIS enrollment, renewals, account transfers with the federal marketplace, accessibility, and appeals. EE21 covers multi-benefit applications in integrated systems: the system must pend one program without holding up the others.
-- **Metrics.** Each outcome has default metrics. A row-by-row review (below) found that 26 of the 27 E&E outcomes can be shown mainly with automated tests at the ORR (six of these also need a demonstration or an outside party), and 20 rest on production data metrics at the CR. For E&E, examples are the share of fully automated determinations (EE5), the share of ex parte renewals (EE13), and test results for the eligibility hierarchy (EE15).
+- **Metrics.** Each outcome has default metrics. A row-by-row review (below) found that 26 of the 27 E&E outcomes can be shown mainly with automated tests at the ORR (every ORR also needs live demonstrations, and six of these outcomes also need a demonstration or an outside party), and 20 rest on production data metrics at the CR. For E&E, examples are the share of fully automated determinations (EE5), the share of ex parte renewals (EE13), and test results for the eligibility hierarchy (EE15).
 - **Required artifacts (9).** Certification Request Letter, System Acceptance Letter, monthly project status reports, Master Test Plan, test summary reports, deployment plan, defect list, risk list, issue list. Five of these come from tools the vendor already runs.
 
 ### The review gates
@@ -57,12 +57,12 @@ A note on names: USDA's Food and Nutrition Service (FNS) is now styled the Food 
 | ORR | CMS | Before go-live, after most UAT | Unredacted evidence, artifacts, Intake Form, ORW, agenda, and presentation uploaded 2 weeks before | [SMC Guidance §5.1](https://www.medicaid.gov/medicaid/data-and-systems/downloads/smc-certification-guidance.pdf) |
 | UAT Go/No-Go | FNA | After UAT, before the pilot | Go/No-Go document: UAT results against expected results, criteria, and metrics; failures by severity; open risks. FNA concurrence is needed to fund the pilot. FNA may also run a System Functional Requirements Review of the UAT or pilot documents (HB 901 §7.5.2) | [HB 901 §6.4.7, §6.7.2](https://www.usda.gov/sites/default/files/guidance-documents/fns-handbook901-version2.5.pdf) |
 | Pilot Go/No-Go | FNA | After a live pilot, usually at least 3 months, with a full caseload in the pilot area | Pilot report: cases processed; defects by severity going in, new, resolved, and open; conversion results; interface partner sign-off. FNA approval is needed for statewide rollout | [HB 901 §6.7.3](https://www.usda.gov/sites/default/files/guidance-documents/fns-handbook901-version2.5.pdf) |
-| CR | CMS | At least 6 months after go-live | Metric data from go-live to the last month end, a security and privacy assessment and penetration test current under ARC-AMPE (which replaced MARS-E for E&E), POA&M, Certification Request Letter, System Acceptance Letter, T-MSIS compliance | [Production page](https://cmsgov.github.io/CMCS-DSG-DSS-Certification/SMC%20Process/Production/) |
+| CR | CMS | At least 6 months after go-live | Metric data from go-live to the last month end, a security and privacy assessment and penetration test current under ARC-AMPE (which replaced MARS-E for E&E) and no older than two years (45 CFR 95.621(f)(3)), POA&M, Certification Request Letter, System Acceptance Letter, T-MSIS compliance | [Production page](https://cmsgov.github.io/CMCS-DSG-DSS-Certification/SMC%20Process/Production/) |
 | Operations | CMS and FNA | After CR and rollout | CMS: monthly ORW and an Operational APD. FNA: no ORW-style metric workbook, but the Major Changes report (monthly data, sent quarterly), a security review at least every two years (7 CFR 277.18(m)(3)) with a written summary (HB 901 §9.7), an optional post-implementation review about 6 months after rollout, a possible SIRT review once statewide, a final APD Update before closure, and a new Implementation APD for major new functionality | [SMC Guidance §6.1.1](https://www.medicaid.gov/medicaid/data-and-systems/downloads/smc-certification-guidance.pdf); [HB 901 §6.10](https://www.usda.gov/sites/default/files/guidance-documents/fns-handbook901-version2.5.pdf) |
 
 Two more dates recur: the APD Update is due to FNA 60 days before the approval anniversary, and FNA prior approval applies to procurements over $6 million and to contract amendments past 20% of base cost.
 
-CMS is also changing its templates. [SHO letter #25-003](https://www.medicaid.gov/federal-policy-guidance/downloads/sho25003.pdf) (August 6, 2025) issues new MES templates, including the APD, Operational APD, an updated ORW, the Analysis of Alternatives, the project status report, an RFP checklist, and an SMC Intake Form that now covers EVV. States must move to them within 6 months of Paperwork Reduction Act approval. It restates monthly ORW reporting from go-live and warns that states that do not report "could lose enhanced Medicaid FFP". It also describes SMC as emphasizing "metric data and operational reporting rather than checklists", which is the premise of this toolkit. For the design, this means the generators must track template versions and fill whichever version the agency currently requires.
+CMS is also changing its templates. [SHO letter #25-003](https://www.medicaid.gov/federal-policy-guidance/downloads/sho25003.pdf) (August 6, 2025) issues new MES templates, including the APD, Operational APD, an updated ORW, the Analysis of Alternatives, the project status report, an RFP checklist, and an SMC Intake Form that now covers EVV. CMS expects states to move to them within 6 months of Paperwork Reduction Act approval. It restates monthly ORW reporting from go-live and warns that states that do not report "could lose enhanced Medicaid FFP". It also describes SMC as emphasizing "metric data and operational reporting rather than checklists", which is the premise of this toolkit. For the design, this means the generators must track template versions and fill whichever version the agency currently requires.
 
 ### FNA: SIRT and the Go Live Requirements
 
@@ -76,7 +76,7 @@ FNA publishes two checklists that turn its gates into concrete items. Both fit t
   - Notices: the percent of accurate client notices in the pilot area.
   - Defects: outstanding defects by severity, for example no outstanding critical defects, and a tested workaround for any open defect that affects SNAP eligibility.
   - Conversion: conversion rate against a minimum threshold, and the clean-up workload.
-  - Dates and documents: Major Change notification to FNA 120 days before implementation (7 CFR 272.15); contingency, escalation, communication, and training plans; interface partner attestations and an EBT processor letter; QA or IV&V ratings.
+  - Dates and documents: Major Change notification to FNA 120 days before implementation or before entering into contracts to implement it (7 CFR 272.15); contingency, escalation, communication, and training plans; interface partner attestations and an EBT processor letter; QA or IV&V ratings.
 
 The SIRT's testing appendix also settles what counts as a pilot. The new system must be the system of record in the pilot area. A run where the legacy system still decides eligibility and the new system only repeats the work "does not demonstrate how the new system operates in production and is, therefore, not in compliance with the regulation." Running the legacy system alongside a live pilot to compare results is still encouraged ([HB 901 §6.7.3](https://www.usda.gov/sites/default/files/guidance-documents/fns-handbook901-version2.5.pdf)).
 
@@ -96,7 +96,7 @@ Notes: 19 E&E outcomes are an automated test at the ORR and a data metric at the
 
 ### One calendar for both agencies
 
-The CMS and FNA gates interlock, so the toolkit keeps one ordered calendar. How they line up for a given state (for example, whether the SNAP pilot start counts as the Medicaid go-live, which sets the CR clock and the start of retroactive enhanced match) is configuration, set once the CMS State Officer and the FNA Regional Office rule.
+The CMS and FNA gates interlock, so the toolkit keeps one ordered calendar. How they line up for a given state (for example, whether the SNAP pilot start counts as the Medicaid go-live, which sets the CR clock and the start of retroactive enhanced match) is configuration, set once the CMS State Officer and the FNA Regional Office rule. Configuration cannot break the fixed limits: the ORR comes before any Medicaid go-live, including a SNAP pilot that also serves Medicaid applicants; the CR comes at least 6 months after go-live; and UAT cannot start before the Complete and Final Test Plan is submitted. The toolkit ships named, tested scenarios, for example "the pilot is the Medicaid go-live" and "Medicaid goes live at statewide rollout".
 
 | Order | Item | Agency | Timing | Source |
 | --- | --- | --- | --- | --- |
@@ -108,7 +108,7 @@ The CMS and FNA gates interlock, so the toolkit keeps one ordered calendar. How 
 | 6 | Disaster recovery test | CMS | Before go-live, then yearly | MES Certification Repository, Planning page |
 | 7 | ORR entry criteria; ORR with live demonstrations | CMS | Up to 3 months before; before go-live | SMC §5.1 |
 | 8 | UAT Go/No-Go | FNA | After UAT, before the pilot | HB 901 §6.4.7 |
-| 9 | Major Change notification | FNA | 120 days before implementation | 7 CFR 272.15; Go Live Requirements |
+| 9 | Major Change notification | FNA | 120 days before implementation or before signing contracts to implement it, whichever is earlier; Major Changes reports from the quarter before implementation | 7 CFR 272.15; Go Live Requirements |
 | 10 | Pilot (new system is system of record), usually at least 3 months | FNA | After UAT concurrence | 7 CFR 277.18(g)(2)(ii); HB 901 §6.7.3 |
 | 11 | Pilot Go/No-Go, then statewide rollout | FNA | After the pilot | HB 901 §6.7.3 |
 | 12 | Monthly ORW from go-live; T-MSIS files within one month of each period | CMS | Monthly | SMC §6, §6.1.1 |
@@ -120,7 +120,7 @@ The CMS and FNA gates interlock, so the toolkit keeps one ordered calendar. How 
 | 18 | Post-implementation review (optional) | FNA | About 6 months after rollout | HB 901 §7.6 |
 | 19 | Retroactive claims warning | CMS | Before the two-year claiming limit | Production page |
 
-The calendar warns on whichever agency's date or threshold comes first.
+The calendar warns on whichever agency's date or threshold comes first. Items outside the system's technical readiness, such as APD submissions and cost allocation approval, appear in the dashboard by status and date only; the pipeline never handles them.
 
 ### Agile is already allowed
 
@@ -200,7 +200,7 @@ interface Evidence {
 
 Adding a connector follows one documented path: implement the interface, declare its config schema, and pass a shared conformance test suite that runs it against recorded fixtures. Connectors ship as separate packages, so a state can add a Jira or ServiceNow connector without a new core release.
 
-**One rule key syntax.** Every rule has one key of the form `<agency>:<set>:<id>`, for example `cms:ee:EE21`, `cms:cef:CEF09`, `fna:sirt:S0031`, `fna:golive:GL05`, and `state:ee:ST-EE-01` for state-specific outcomes. The same key is used in tags, the catalog, configuration, and reports. SIRT rows get catalog-assigned keys that never change or get reused; FNA's own ID and the row text are kept as attributes, so if FNA reorders or renumbers rows, the catalog's change log maps old to new and no test tag breaks.
+**One rule key syntax.** Every rule has one key of the form `<agency>:<set>:<id>`, for example `cms:ee:EE21`, `cms:cef:CEF09`, `fna:sirt:S0031`, `fna:golive:GL05`, and `state:ee:STEE01` for state-specific outcomes. The same key is used in tags, the catalog, configuration, and reports. SIRT rows get catalog-assigned keys that never change or get reused; FNA's own ID and the row text are kept as attributes, so if FNA reorders or renumbers rows, the catalog's change log maps old to new and no test tag breaks.
 
 **Integration contract, released before any obligation.** Before an RFP relies on the toolkit, a versioned integration contract is published: JSON Schemas for the evidence record, evidence bundle, catalog entry, test case format, and `mapping.yaml`; the rule key syntax; tag conventions for each supported test framework; a reference Azure DevOps pipeline file and a GitHub Actions equivalent; a `check-tags` lint; and a one-day quickstart. Schemas are versioned, and a breaking change needs a new major version.
 
@@ -211,7 +211,7 @@ The example packs start where the sources already state the test. The SIRT alone
 - **SIRT items.** Many items are a single checkable behaviour ("Does the system capture the application date?", AP-1). Each gets a Gherkin scenario with the 7 CFR citation and the rule key already tagged, and the same case in the framework-neutral test case format for teams that do not use Cucumber.
 - **CMS E&E outcomes.** Scenarios for outcomes with clear system behaviour, such as EE15 (eligibility hierarchy) and EE21 (pending one program without holding up another).
 - **Metric queries.** Reference queries for the default E&E metrics and the Go Live numbers (timeliness, backlog buckets, notice counts), written against the metric data contract.
-- **Report checks.** Optional checks, through a vendor-supplied report adapter, that compare each Go Live report with the system's own source totals against the 95% accuracy threshold; without an adapter, these reports are tracked only.
+- **Report checks.** Optional consistency checks, through a vendor-supplied report adapter, that compare each Go Live report with the system's own source totals. They catch report bugs early but are not the 95% accuracy check FNA expects, which stays with the state; every Go Live report, including the second-tier ones, is tracked.
 - **File checks.** The ORW field rules from `ORW_Validation.xlsx`, ready to run in CI.
 
 Vendor systems differ, so each example binds to the vendor's system through a thin adapter (step definitions, for tests, or a view that maps the vendor's tables to the metric data contract). The examples are starting points the state still reviews; they do not replace the state's own test design.
@@ -251,7 +251,7 @@ A `check-mapping` command lists unmapped fields and the rules each one blocks, s
 
 The toolkit needs a state's data for two jobs only, so it defines two small contracts instead of a domain model.
 
-**1. Metric data contract.** Only the fields that the tracked metrics and report checks read. It grows only when a new metric needs a field.
+**1. Metric data contract.** Only the fields that the tracked metrics and report checks read. It grows only when a new metric needs a field. Outcomes whose CMS metrics need data from other systems, such as EE17 and EE18 (MMIS claims), are tracked only. EE6 timeliness is defined to match the state's existing Performance Indicator data, so the two never disagree.
 
 | Record | Fields | Used by |
 | --- | --- | --- |
@@ -296,7 +296,7 @@ coverage: evidenced         # evidenced | tracked_only | not_covered
 acceptance: not_required    # required for documents, attestations, demonstrations
 ```
 
-The citation shown is illustrative; the generator copies the repository's regulatory sources as published. A **state profile** sits on top of the catalog. It adds state-specific outcomes (IDs such as `ST-EE-01`, following the Intake Form convention), marks outcomes N/A with the required justification, and holds the ORW metric definitions. Changes to the profile are reviewed like code, and an outcome change raises a flag that an APD Update is needed.
+The citation shown is illustrative; the generator copies the repository's regulatory sources as published. A **state profile** sits on top of the catalog. It adds state-specific outcomes (IDs such as `STEE01`, following the Intake Form convention), marks outcomes N/A with the required justification, and holds the ORW metric definitions. Changes to the profile are reviewed like code, and an outcome change raises a flag that an APD Update is needed.
 
 ### 2. Evidence ledger
 
@@ -328,7 +328,7 @@ The engine evaluates each rule against the ledger and gives one status: **Met**,
 5. **At risk:** evidence passes but will expire before the planned gate date, a leading indicator is trending below its threshold, or a due date is near and the item is not complete.
 6. **Met:** every required evidence kind is present, passing, and fresh, and, where the rule says acceptance is required, a named state role has accepted it. By default, documents, attestations, and demonstrations need acceptance; automated tests do not.
 
-Rule status is evaluated in the report layer, where acceptance records live. The pipeline itself never decides Met; it only reports test results and regressions.
+Rule status is evaluated in the report layer, where acceptance records live. The pipeline itself never decides Met; it only reports test results and regressions. Met is the toolkit's readiness signal, not CMS's finding of "Evidence Satisfactory" or FNA's concurrence; only the agencies make those findings.
 
 Two more statuses keep the state's own work visible. **Awaiting acceptance** means the evidence passes and is waiting for the state; the state has a configured review deadline (for example 10 working days), and time spent waiting is shown as the state's, not the vendor's. **Disputed** means the vendor or the state has challenged the evidence or an expected result; a disputed item is excluded from pass rates until it is resolved.
 
@@ -350,16 +350,18 @@ Federal documents are written and signed by people. The toolkit gives each one a
 | Checklist | Built from |
 | --- | --- |
 | Preliminary test plan (in the Implementation APD) | HB 901 §6.1 |
-| Complete and Final Test Plan | HB 901 §6.1: milestones, resources, roles, approach, items to be tested, rollback plan, risk, security, load testing, data conversion, Go/No-Go criteria, SIRT results |
-| UAT Go/No-Go | HB 901 §6.4.7 and §6.7.2: expected and actual results, criteria and metrics, exit criteria, a named state verifier for each criterion, a reason for each unmet item, failures by severity, open risks |
-| Pilot Go/No-Go | HB 901 §6.7.3 pilot report items, plus all 26 Go Live criteria, including pilot case-mix statistics |
-| ORR and CR packages | SMC Appendix B required artifacts, Intake Form tabs, entry criteria, demonstration agenda |
+| Complete and Final Test Plan | HB 901 §6.1: milestones, resources, roles, approach, items to be tested, rollback plan, risk, security, load testing, data conversion, Go/No-Go criteria, SIRT results, test environments and equipment, the training milestone, agile iterations, interfaces and interface partners (including the issuance interface), end-to-end and performance testing, and FNA's review questions (for example, whether the state vetted the scripts) |
+| UAT Go/No-Go | HB 901 §6.4.7 and §6.7.2: expected and actual results, criteria and metrics, exit criteria, a named state verifier for each criterion, a reason for each unmet item, failures by severity, open risks; the §6.7.2 UAT deliverables; the rollback plan (§6.9.1); and the Go Live criteria as they apply to the move from UAT to pilot |
+| Pilot Go/No-Go | HB 901 §6.7.3 pilot report items, plus all 26 Go Live criteria, the rollback plan, and a pilot coverage matrix showing that every interface (including EBT processor reconciliation), QC sampling, the required reports, the caseload share, and case-mix diversity were exercised (SIRT Appendix G1) |
+| ORR and CR packages | SMC Appendix B required artifacts, Intake Form tabs, entry criteria, a demonstration script for each outcome (CR demonstrations run in production without entering test data), ORR observations and their follow-up for the CR, a system acceptance date before the CR, and the current status report template, including its T-MSIS Compliance Plan section. SIRT responses are signed off row by row by the state |
 | Certification Request Letter and System Acceptance Letter | SMC Appendix B; MES Certification Repository templates |
 | Training and change management evidence | SMC §5.1 (ORR) |
 
 **Template versions.** Generators detect the version of each agency template and refuse a version they do not know, rather than guess. The Intake Form and ORW reference numbers are cross-checked against each other before release.
 
-**Submission record.** Every package sent to an agency is kept as an unchangeable, hashed copy with the template version, date, and recipient. This matters because CMS overwrites ORW data on resubmission, so the state needs its own record of what it sent.
+**When agency files disagree.** CMS's ORW template and its `ORW_Validation.xlsx` do not match today: the validation file expects three columns the template lacks (Metric Reporting Frequency, OAPD Metric Status, and Related System). The toolkit pins both files, runs a conformance test that fails whenever a pinned template and its rules disagree, and does not ship an ORW generator until CMS confirms the format in writing. Until then it validates against the template and reports the differences.
+
+**Submission record.** Every package sent to an agency is kept as an unchangeable, hashed copy with the template version, date, and recipient. This matters because CMS overwrites ORW data on resubmission, so the state needs its own record of what it sent. The record lives in write-once storage the state already operates, kept for the period its records schedule and federal rules require; a git branch is not enough.
 
 ### Where the dashboard lives: no new hosting
 
@@ -381,7 +383,7 @@ Static reports contain only data the pipeline produced, so they need no access r
 
 The two layers have different data and different jobs.
 
-- **Static report: pipeline data only.** It shows only what the pipeline produced in that run: test results grouped by rule, coverage, scan results as counts by severity (never details, since the repository may be public), file validation results, and gate dates from configuration. Rule status such as Met is decided in the report layer, not here. It never pulls external data: no security assessment findings, no Jira text, no production metrics. Its readers can already see everything the pipeline sees, so it needs no roles or evidence classes. Whoever can read the repository can read the report; if the repository is public, so is the report.
+- **Static report: pipeline data only.** It shows only what the pipeline produced in that run: test results grouped by rule, coverage, scan results as pass or fail only (counts and details stay in the report layer, since the repository may be public), file validation results, and gate dates from configuration. Rule status such as Met is decided in the report layer, not here. It never pulls external data: no security assessment findings, no Jira text, no production metrics. Its readers can already see everything the pipeline sees, so it needs no roles or evidence classes. Whoever can read the repository can read the report; if the repository is public, so is the report.
 - **Report layer: where external data joins.** Production metrics from case data, third-party security findings and the POA&M, and Jira defect data are combined with the pipeline evidence here, behind the data platform's roles. It runs on whatever SQL data platform the state already has; nothing in it requires a particular product.
 
 **The report layer is mostly patterns and templates, not product code.** Every state's data platform, data, security model, and BI tool differ, so the toolkit ships templates in portable SQL, with a first adaptation for the first project's platform (Snowflake):
@@ -395,7 +397,7 @@ The two layers have different data and different jobs.
 
 States adapt these with their own data and security teams. The code the toolkit owns and maintains stays in the pipeline: the core, the connectors, and the static report.
 
-**Agency scoping.** Program tags also control what leaves the report layer. Each agency's package includes only that agency's evidence (for example, FNA quality control access is limited to SNAP information), and the state runs a privacy review before any package is released.
+**Agency scoping.** Program tags also control what leaves the report layer. Each agency's package includes only that agency's evidence (for example, FNA quality control access is limited to SNAP information), and the state runs a privacy review before any package is released. Each package gets a data classification step that flags protected health information, SNAP client data, and federal tax information, which carries its own IRS handling rules. CMS asks for unredacted evidence, so scoping means each package carries only what its agency needs, not that evidence is redacted.
 
 ### Trust and independence
 
@@ -500,7 +502,7 @@ Both agencies require an As-Needed APD Update before costs are incurred, and the
 | --- | --- | --- |
 | Cost increase | $300,000 or 10% of project cost, whichever is less | $10 million or 10% of total project cost, whichever is less |
 | Schedule | Major milestone slips more than 60 days | Major milestone slips more than 120 days |
-| Other | Contract amendments over $500,000 or extensions over 60 days need prior approval | Change in procurement approach, system concept or scope, cost allocation method, or funding source |
+| Other | Significant change in procurement approach or scope; change in system concept or project scope; change to the approved cost methodology; change of more than 10% in estimated cost benefits. Contract amendments over $500,000 or extensions over 60 days need prior approval | Change in procurement approach, system concept or scope, cost allocation method, or funding source. Contract amendments over a cumulative 20% of base cost need prior approval |
 | Due | No later than 60 days after the change occurs | As soon as known, no later than 90 days after the change is anticipated |
 | Source | [45 CFR 95.611(c)](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-A/part-95/subpart-F/section-95.611) | HB 901 §3.3.4.3, §3.3.4.5 |
 
@@ -512,7 +514,7 @@ What this means for an agile project:
 - Tie APD milestones to gates (test plan, UAT, pilot, rollout, ORR, CR), not to sprint dates, with realistic buffer.
 - Structure the contract around releases or capabilities; FNA prefers fixed-price contracts (§4.8.1).
 
-The toolkit adds an **APD watch** rule set. The approved APD baseline (milestones, budget, and the list of outcomes and capabilities) goes in configuration, and each run compares it with the backlog and gate forecasts. It warns on whichever agency's trigger comes first: a gate forecast slipping more than 60 days, an outcome or capability added or dropped, or loaded spend data approaching $300,000 or 10%. The APD watch runs in the state's report layer, because the baseline, forecasts, and spend are state data. Gate forecasts come from the state project manager's schedule, not raw Jira estimates, so nobody is pushed toward optimistic forecasts. That gives the state time to file an APDU before costs are incurred, not after.
+The toolkit adds an **APD watch** rule set. The approved APD baseline (milestones, budget, and the list of outcomes and capabilities) goes in configuration, and each run compares it with the backlog and gate forecasts. It warns on whichever agency's trigger comes first: a gate forecast slipping more than 60 days, an outcome or capability added or dropped, or the state's projected cost approaching $300,000 or 10%. The APD watch runs in the state's report layer, because the baseline, forecasts, and spend are state data. Gate forecasts come from the state project manager's schedule, not raw Jira estimates, so nobody is pushed toward optimistic forecasts. That gives the state time to file an APDU before costs are incurred, not after.
 
 ## What the director sees
 
@@ -536,7 +538,7 @@ A red cell names its blocker and owner. Most outcomes should reach stage 4 long 
 
 | View | What it shows | Why the director cares |
 | --- | --- | --- |
-| Next gate | Rules Met against all rules for the next gate (ORR, FNA UAT, FNA pilot, CR); entry criteria with their due dates (3 months, 4 weeks, and 2 weeks before) | Whether to book the review date or move it |
+| Next gate | Open blockers for the next gate (ORR, FNA UAT, FNA pilot, CR), listed without percentages so 821 SIRT rows cannot hide one missing letter; entry criteria with their due dates (3 months, 4 weeks, and 2 weeks before) | Whether to book the review date or move it |
 | Trends by sprint | Rules Met over time; defects by severity; defect age; open and close rates; requirement coverage | Whether the vendor is converging or slipping; these are the test metrics CMS already expects |
 | Paperwork tracker | CEF documents, letters, plans, and sign-offs with owner, due date, and status | The half of certification no pipeline can produce |
 | Expiry and calendar | SAR and penetration test age against the 2-year limit at the planned review date; Authority to Connect; APD Update due 60 days before the anniversary | Dates that silently block a review |
@@ -667,7 +669,7 @@ Phase 0 helps any state on day one, without vendor changes: like the HPT online 
 **For the design**
 
 - [ ] **Metric data contract.** Confirm the six record types and their fields with the first state's data team.
-- [ ] **License.** Decided: Apache-2.0 for all code, including connectors, and CC0 for data and examples; no commercial license and no contributor license agreement. Constraints: software built with federal funds must be owned by the state, with a royalty-free federal license (HB 901 Appendix A16; CMS CEF05 and CEF06), and FNA warns against accepting free software from a party that would gain an unfair advantage on follow-on work (A16.8). A permissive license avoids both problems: states and vendors can own and reuse what they build, and no party holds a follow-on advantage.
+- [ ] **License.** Decided: Apache-2.0 for all code, including connectors, and CC0 for data and examples; no commercial license and no contributor license agreement. Constraints: software built with federal funds must be owned by the state, with a royalty-free federal license (HB 901 Appendix A16; CMS CEF05 and CEF06), and FNA warns against accepting free software from a party that would gain an unfair advantage on follow-on work (A16.8). A permissive license lets states and vendors own and reuse what they build. It does not by itself settle A16.8, which is about the offeror: whoever contributes to the toolkit for a state should not also define work they then bid on (HB 901 §4.8.6).
 
 * [ ] **Maintainers and funding.** The upstream has one owner today. Decide how releases, catalog updates, and security fixes are staffed and funded before a state contract relies on the toolkit.
 
