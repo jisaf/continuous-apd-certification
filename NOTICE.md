@@ -21,3 +21,11 @@ The rules, examples, and research in this project are derived from the following
 ## Community projects
 
 - [MES Certification Navigator](https://github.com/jeff-prov-adv/mes-navigator) by Provenance Advisors (MIT License; unofficial). Its pinned-upstream model informs our catalog maintenance. If we reuse any of its code, its MIT notice will be kept with that code.
+
+## Sample system and golden cases
+
+- [18F SNAP API prototype](https://github.com/18F/snap-api-prototype) (commit 215f3f3b, 2020-08-17). A U.S. government
+  work with a CC0 1.0 waiver. Its benefit calculator is included unchanged in `examples/sample-system/vendor/`
+  (see `LICENSE-18F.md` there) as the demo's stand-in system, and its Gherkin scenarios are converted into the
+  golden cases in `examples/golden-cases/snap/`. Expected values are 18F's FY2020 results.
+

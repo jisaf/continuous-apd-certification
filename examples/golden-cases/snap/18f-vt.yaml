@@ -1,0 +1,55 @@
+# Golden cases converted from 18F snap-api-prototype vt.feature (commit 215f3f3b).
+# CC0 1.0. Historical FY2020 values: a state must recompute expected values for its own rules and year.
+- id: snap-18f-vt-01
+  program: snap
+  state: VT
+  policyPeriod: FY2020
+  rules:
+  - fna:sirt:S0215
+  title: VT scenario 1
+  source:
+    name: 18F SNAP API prototype
+    url: https://github.com/18F/snap-api-prototype
+    file: features/vt.feature@215f3f3b
+    line: 7
+    license: CC0-1.0 (U.S. government work)
+  household:
+    emergencyAllotment: false
+    size: 1
+    elderlyOrDisabled: false
+    earnedIncome: 0
+    otherIncome: 0
+    assets: 0
+  expected:
+    eligible: true
+    monthlyBenefit: 194
+  status: active
+- id: snap-18f-vt-02
+  program: snap
+  state: VT
+  policyPeriod: FY2020
+  rules:
+  - fna:sirt:S0109
+  - fna:sirt:S0176
+  - fna:sirt:S0208
+  - fna:sirt:S0215
+  title: Household that would (just barely) fail the Gross Income test if
+  source:
+    name: 18F SNAP API prototype
+    url: https://github.com/18F/snap-api-prototype
+    file: features/vt.feature@215f3f3b
+    line: 17
+    license: CC0-1.0 (U.S. government work)
+  household:
+    emergencyAllotment: false
+    size: 3
+    elderlyOrDisabled: false
+    earnedIncome: 3000
+    otherIncome: 0
+    assets: 0
+    dependentCare: 300
+    rentOrMortgage: 2000
+  expected:
+    eligible: true
+    monthlyBenefit: 100
+  status: active

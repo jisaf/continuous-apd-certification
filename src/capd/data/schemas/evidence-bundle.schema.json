@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jisaf/continuous-apd-certification/schemas/evidence-bundle.schema.json",
+  "title": "Evidence bundle",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "catalogVersion",
+    "generatedAt",
+    "build",
+    "records",
+    "recordsSha256"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "catalogVersion": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "build": {
+      "type": "object",
+      "required": [
+        "id",
+        "commit"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "pipeline": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "pullRequest": {
+          "type": "string"
+        }
+      }
+    },
+    "environment": {
+      "type": "string"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "evidence-record.schema.json"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recordsSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

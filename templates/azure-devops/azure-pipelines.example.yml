@@ -1,0 +1,39 @@
+# Example: a vendor's existing Azure pipeline with continuous certification added.
+# Only the two "template:" lines and the test report flags are new.
+
+trigger:
+  branches: { include: [main] }
+pr:
+  branches: { include: [main] }
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - checkout: self
+
+  # --- The vendor's normal build and tests (unchanged, except for writing reports where capd.yaml looks) ---
+  - task: UsePythonVersion@0
+    inputs: { versionSpec: "3.12" }
+  - script: |
+      pip install -r requirements.txt
+      # pytest writes rule marks to JUnit XML (xunit1); pytest-bdd writes Gherkin @rule: tags to Cucumber JSON.
+      pytest -o junit_family=xunit1 --junitxml=test-results/junit.xml --cucumberjson=test-results/cucumber.json || true
+    displayName: Tests
+  - task: PublishTestResults@2
+    condition: succeededOrFailed()
+    inputs: { testResultsFiles: "test-results/*.xml" }
+
+  # Optional scans, written where capd.yaml looks for them.
+  - script: |
+      pip install semgrep
+      semgrep scan --config auto --sarif --output scan-results/semgrep.sarif || true
+    displayName: Security scan (SARIF)
+
+  # --- Continuous certification ---
+  - template: templates/azure-devops/capd-steps.yml
+    parameters:
+      config: capd.yaml
+  - template: templates/azure-devops/capd-publish-reports.yml
+    parameters:
+      reportsRepo: https://dev.azure.com/yourorg/yourproject/_git/certification-reports

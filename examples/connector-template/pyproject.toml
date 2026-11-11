@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "capd-trx"
+version = "0.1.0"
+description = "capd source connector for Visual Studio TRX test results (.NET, Azure DevOps VSTest)"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+dependencies = ["capd"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+# This entry point is how capd finds the connector: `capd connectors` lists it and
+# capd.yaml can use `connector: trx`.
+[project.entry-points."capd.connectors"]
+trx = "capd_trx:TrxSource"
+
+[tool.setuptools.packages.find]
+where = ["src"]

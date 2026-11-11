@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "capd"
+version = "0.1.0"
+description = "Continuous APD certification: check CMS SMC and FNA SNAP certification readiness on every build."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+authors = [{ name = "Continuous APD Certification contributors" }]
+dependencies = [
+  "pyyaml>=6",
+  "jsonschema>=4.18",
+  "openpyxl>=3.1",
+  "requests>=2.31",
+]
+
+[project.optional-dependencies]
+snowflake = ["snowflake-connector-python>=3.6"]
+duckdb = ["duckdb>=1.0"]
+dev = [
+  "pytest>=8",
+  "pytest-bdd>=7",
+  "duckdb>=1.0",
+  "ruff>=0.5",
+]
+
+[project.scripts]
+capd = "capd.cli:main"
+
+[project.entry-points.pytest11]
+capd = "capd.pytest_plugin"
+
+[project.entry-points."capd.connectors"]
+junit = "capd.connectors.junit:JUnitSource"
+cucumber = "capd.connectors.cucumber:CucumberSource"
+sarif = "capd.connectors.sarif:SarifSource"
+axe = "capd.connectors.axe:AxeSource"
+file = "capd.connectors.file_sink:FileSink"
+github = "capd.connectors.github:GitHubSink"
+azure-devops = "capd.connectors.azure_devops:AzureDevOpsSink"
+jira = "capd.connectors.jira:JiraSink"
+chat = "capd.connectors.chat:ChatDigestSink"
+snowflake = "capd.connectors.snowflake:SnowflakeSink"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+capd = ["data/schemas/*.json", "data/catalog/*.json", "data/cms_templates/*.xlsx", "report/*.css"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]

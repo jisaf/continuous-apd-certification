@@ -1,0 +1,14 @@
+[
+ {"uri": "features/notices.feature", "name": "Notices", "tags": [{"name": "@rule:cms:ee:EE9"}],
+  "elements": [
+   {"type": "background", "name": "", "steps": [{"name": "setup", "result": {"status": "passed"}}]},
+   {"type": "scenario", "id": "notices;denial-notice;;2", "name": "Denial notice", "line": 10,
+    "tags": [{"name": "@rule:fna:sirt:S0215"}, {"name": "@smoke"}],
+    "steps": [{"name": "a", "result": {"status": "passed", "duration": 1000000}},
+              {"name": "b", "result": {"status": "passed", "duration": 2000000}}]},
+   {"type": "scenario", "id": "notices;denial-notice;;3", "name": "Denial notice", "line": 11,
+    "steps": [{"name": "a", "result": {"status": "failed"}}]},
+   {"type": "scenario", "id": "notices;pending", "name": "Pending step", "line": 20,
+    "steps": [{"name": "a", "result": {"status": "undefined"}}]}
+  ]}
+]

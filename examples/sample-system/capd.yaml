@@ -1,0 +1,23 @@
+# capd configuration for the sample system. See templates/config/capd.yaml for every option.
+catalogVersion: "1.0.0"           # pinned; catalog updates go through change control
+state: XX                         # two-letter state code (sample)
+environment: ci
+gateMode: report-only             # the state and vendor agree, in a reviewed change, when to switch to blocking
+quarantineFile: quarantine.txt
+sidecarTags: sidecar-tags.yaml
+taggedPaths:
+  - "tests.test_golden_cases::*"   # every test matching these test IDs must carry a rule key
+sources:
+  - connector: junit
+    paths: ["../../out/demo/current/junit.xml"]
+    options: { exclude: ["tests.test_features::*"] }   # the Gherkin scenarios come from Cucumber JSON below
+  - connector: cucumber
+    paths: ["../../out/demo/current/cucumber.json"]
+  - connector: sarif
+    paths: ["../../out/demo/current/security.sarif"]
+    options: { rules: ["cms:cef:CEF09"], failAt: error }
+sinks:
+  - connector: file
+    options: { dir: "../../out/demo/current" }
+  - connector: chat                # posts only when the summary changes; skipped without CAPD_CHAT_WEBHOOK
+    options: { stateFile: "../../out/demo/chat-state.json" }

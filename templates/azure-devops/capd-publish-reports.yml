@@ -1,0 +1,37 @@
+# Azure Pipelines step template: publish the static report to a separate PRIVATE reports repository,
+# at most once a day, from builds on main only. Use after capd-steps.yml.
+#
+#   - template: templates/azure-devops/capd-publish-reports.yml
+#     parameters:
+#       reportsRepo: https://dev.azure.com/yourorg/yourproject/_git/certification-reports
+#
+# The build service identity needs Contribute permission on the reports repository.
+
+parameters:
+  - name: reportsRepo
+    type: string
+  - name: mainBranch
+    type: string
+    default: refs/heads/main
+
+steps:
+  - bash: |
+      set -euo pipefail
+      today=$(date -u +%Y-%m-%d)
+      git clone --quiet --depth 1 \
+        -c http.extraheader="AUTHORIZATION: bearer $SYSTEM_ACCESSTOKEN" "${{ parameters.reportsRepo }}" reports
+      cd reports
+      if [ -f latest/PUBLISHED_ON ] && [ "$(cat latest/PUBLISHED_ON)" = "$today" ]; then
+        echo "Report already published today; skipping."; exit 0
+      fi
+      mkdir -p latest "history/$today"
+      cp "$(Build.ArtifactStagingDirectory)/capd/report.html" latest/index.html
+      cp "$(Build.ArtifactStagingDirectory)/capd/bundle.json" "history/$today/bundle.json"
+      echo "$today" > latest/PUBLISHED_ON
+      git add -A
+      git -c user.name="capd" -c user.email="capd@pipeline.local" commit --quiet -m "Certification report $today (build $(Build.BuildId))"
+      git -c http.extraheader="AUTHORIZATION: bearer $SYSTEM_ACCESSTOKEN" push --quiet
+    displayName: "capd: publish report to the reports repository (daily)"
+    condition: and(succeededOrFailed(), eq(variables['Build.SourceBranch'], '${{ parameters.mainBranch }}'))
+    env:
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)

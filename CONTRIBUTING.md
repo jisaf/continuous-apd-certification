@@ -1,31 +1,58 @@
 # Contributing
 
-This project is in the planning stage. The most useful contributions right now are:
+Thank you for helping. States, vendors, IV&V teams, federal reviewers, and developers are all welcome.
+
+## Ways to help
 
 - **Corrections** to how we read CMS and FNA requirements, with a citation to the source.
-- **Experience** from states, vendors, IV&V teams, or federal reviewers: what slowed your last ORR, CR, UAT Go/No-Go, or pilot.
-- **Pointers to published test cases** for Medicaid and SNAP eligibility (see [`docs/next-steps.md`](docs/next-steps.md)).
+- **Connectors** for other tools: see [`docs/connectors.md`](docs/connectors.md).
+- **Golden test cases** from public, licensed sources: see [`examples/golden-cases/`](examples/golden-cases/).
+- **Report-layer adaptations** for other data platforms (BigQuery, Databricks, SQL Server, Postgres).
+- **Experience**: what slowed your last ORR, CR, UAT Go/No-Go, or pilot.
 
-Open a GitHub issue for any of these.
+Open an issue first for anything large.
 
 ## Ground rules
 
-- **Never include real case data.** No applicant or recipient names, identifiers, case numbers, screenshots of real cases, or protected health information — in issues, pull requests, test data, or examples. Use synthetic data only.
+- **Never include real case data.** No applicant or recipient names, identifiers, case numbers, screenshots
+  of real cases, or protected health information, in issues, pull requests, tests, fixtures, or examples.
 - **Never include security findings** about any real system.
-- **Cite sources.** For any rule, give the document, section, and a link.
+- **Cite sources** for any rule: document, section, and a link.
+- **Respect licenses.** Do not copy material whose license is incompatible (see "Third-party material" in
+  [`LICENSING.md`](LICENSING.md)).
 
-## Licensing and sign-off
-
-Code contributions are accepted under Apache-2.0, and data and documentation under CC0 (see [`LICENSING.md`](LICENSING.md)). There is no contributor license agreement. Instead, sign off each commit under the [Developer Certificate of Origin](https://developercertificate.org/):
+## Development setup
 
 ```sh
-git commit -s -m "Describe the change"
+python -m venv .venv && . .venv/bin/activate
+pip install -e ".[dev]"
+pytest                                       # unit, integration, and report-layer (DuckDB) tests
+ruff check src tests tools report-layer
+examples/sample-system/run-demo.sh           # end-to-end demo
 ```
 
-The sign-off certifies that you wrote the change or otherwise have the right to submit it under the project's licenses. Do not submit code copied from projects whose licenses are not compatible (see "Third-party material" in `LICENSING.md`).
+Generated files must stay in sync with their sources; CI checks this:
 
-When code exists, every change will also need:
+```sh
+python tools/build_catalog.py    # rules catalog, from catalog/sources and docs/research/classification
+python tools/build_packs.py      # pre-written Gherkin packs, from the catalog
+```
 
-- tests;
-- for connectors, a passing run of the shared connector conformance suite;
-- for rules, a citation to the CMS or FNA source.
+Rule keys are permanent. Never renumber or reuse a key; add new rules with new keys and record changes in
+the catalog's change log.
+
+## Pull requests
+
+1. Fork and branch from `main`.
+2. Add tests. Connectors must pass the conformance kit (`capd.connectors.testing`).
+3. Run `pytest` and `ruff check`.
+4. Sign off each commit under the [Developer Certificate of Origin](https://developercertificate.org/):
+
+   ```sh
+   git commit -s -m "Describe the change"
+   ```
+
+   The sign-off certifies that you wrote the change or otherwise have the right to submit it under the
+   project's licenses (Apache-2.0 for code, CC0 for data and documentation). There is no contributor
+   license agreement.
+5. Open the pull request with a short description of the change and how you tested it.

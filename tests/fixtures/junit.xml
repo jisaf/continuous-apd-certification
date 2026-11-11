@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="pytest" tests="6">
+    <testcase classname="tests.test_rules" name="test_standard_deduction" time="0.010">
+      <properties><property name="rule" value="fna:sirt:S0215"/></properties>
+    </testcase>
+    <testcase classname="tests.test_rules" name="test_earned_income" time="0.020">
+      <properties><property name="rule" value="fna:sirt:S0109"/><property name="rule" value="cms:ee:EE21"/></properties>
+      <failure message="assert 1 == 2"/>
+    </testcase>
+    <testcase classname="tests.test_rules" name="test_earned_income" time="0.020">
+      <properties><property name="rule" value="fna:sirt:S0109"/><property name="rule" value="cms:ee:EE21"/></properties>
+    </testcase>
+    <testcase classname="tests.test_rules" name="test_skipped" time="0">
+      <properties><property name="rules" value="@rule:cms:ee:EE5, cms:ee:EE6"/></properties>
+      <skipped message="not ready"/>
+    </testcase>
+    <testcase classname="tests.test_rules" name="test_unknown_key" time="0">
+      <properties><property name="rule" value="cms:ee:EE999"/></properties>
+    </testcase>
+    <testcase classname="tests.test_misc" name="test_untagged" time="0"/>
+  </testsuite>
+</testsuites>

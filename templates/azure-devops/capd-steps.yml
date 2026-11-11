@@ -1,0 +1,73 @@
+# Azure Pipelines step template: continuous certification checks.
+# Use from your pipeline AFTER your tests and scans have written their reports:
+#
+#   - template: templates/azure-devops/capd-steps.yml   # copy this file into your repository
+#     parameters:
+#       config: capd.yaml
+#
+# What it does:
+#   1. Installs capd (pinned version).
+#   2. Downloads the evidence bundle from the latest successful build on main (the baseline).
+#   3. Runs capd: collect -> check tags -> compare with main -> static report -> publish (run summary,
+#      one sticky PR thread, and any other sinks in capd.yaml).
+#   4. Publishes the evidence bundle as the "capd-evidence" artifact, which later PRs use as their baseline.
+# The build service needs "Contribute to pull requests" on the repository for the PR thread.
+
+parameters:
+  - name: config
+    type: string
+    default: capd.yaml
+  - name: capdVersion
+    type: string
+    default: "git+https://github.com/jisaf/continuous-apd-certification@main"   # pin a release tag in production
+  - name: pythonVersion
+    type: string
+    default: "3.12"
+  - name: mainBranch
+    type: string
+    default: refs/heads/main
+
+steps:
+  - task: UsePythonVersion@0
+    displayName: "capd: use Python"
+    inputs:
+      versionSpec: ${{ parameters.pythonVersion }}
+
+  - script: python -m pip install --quiet "capd @ ${{ parameters.capdVersion }}"
+    displayName: "capd: install"
+
+  - task: DownloadPipelineArtifact@2
+    displayName: "capd: download baseline from main"
+    condition: and(succeededOrFailed(), ne(variables['Build.SourceBranch'], '${{ parameters.mainBranch }}'))
+    continueOnError: true            # the first run on a new pipeline has no baseline yet
+    inputs:
+      buildType: specific
+      project: $(System.TeamProjectId)
+      definition: $(System.DefinitionId)
+      buildVersionToDownload: latestFromBranch
+      branchName: ${{ parameters.mainBranch }}
+      artifactName: capd-evidence
+      targetPath: $(Pipeline.Workspace)/capd-baseline
+
+  - script: >
+      capd run --config ${{ parameters.config }}
+      --out-dir "$(Build.ArtifactStagingDirectory)/capd"
+      --baseline "$(Pipeline.Workspace)/capd-baseline/bundle.json"
+      --report-url "$(System.CollectionUri)$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=artifacts"
+    displayName: "capd: check certification readiness"
+    condition: succeededOrFailed()   # run even when tests failed: failures are what we want to see
+    env:
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+      # JIRA_EMAIL: $(JIRA_EMAIL)                  # optional sinks: map secret variables explicitly
+      # JIRA_API_TOKEN: $(JIRA_API_TOKEN)
+      # CAPD_CHAT_WEBHOOK: $(CAPD_CHAT_WEBHOOK)
+      # SNOWFLAKE_ACCOUNT: $(SNOWFLAKE_ACCOUNT)
+      # SNOWFLAKE_USER: $(SNOWFLAKE_USER)
+      # SNOWFLAKE_PRIVATE_KEY_PATH: $(snowflakeKey.secureFilePath)
+
+  - task: PublishPipelineArtifact@1
+    displayName: "capd: publish evidence"
+    condition: succeededOrFailed()
+    inputs:
+      targetPath: $(Build.ArtifactStagingDirectory)/capd
+      artifact: capd-evidence
