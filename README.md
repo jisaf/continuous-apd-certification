@@ -19,8 +19,9 @@ gives the state a running view of readiness:
 - **For an analyst:** a report layer of SQL templates and a dashboard that run on the state's existing data
   platform (Snowflake first) or locally on DuckDB. → [Report layer](docs/report-layer.md)
 
-> **Status: MVP.** The catalog, CLI, connectors, static report, report layer, sample system, and templates
-> work end to end and are tested. Nothing here is a CMS or FNA product or finding.
+> **Status: MVP, not yet released.** It runs end to end in a real GitHub pipeline (this repository's own
+> [certification build](.github/workflows/certification.yml)), but some parts have not run against live
+> services. See [Status and to do](#status-and-to-do). Nothing here is a CMS or FNA product or finding.
 
 ![Static report from the sample pull request build](docs/images/sample-report.png)
 
@@ -63,6 +64,56 @@ and the [pull request comment](docs/sample-report/pull-request-comment.md).
 
 The full design, the federal rules behind it, and the decisions made so far are in the
 [proposal](docs/proposal.md).
+
+## Status and to do
+
+Status as of 2026-11-11. The package and CLI are named `capd`, short for "continuous APD". The detailed plan
+is in [next steps](docs/next-steps.md).
+
+**Can it run in a production pipeline today?** The pipeline step can. It reads only test and scan reports,
+and it is report-only by default, so it does not block a build or touch the system under test. It runs on
+every pull request in this repository on GitHub Actions. Before a state relies on it, finish the "Before
+first use" items below.
+
+### Done and tested
+
+| Part | How it is tested |
+| --- | --- |
+| Rules catalog (896 rules), schemas, `capd` CLI | Unit tests on Python 3.10 and 3.12 |
+| Source connectors: JUnit, Cucumber, SARIF, axe | Unit tests with sample reports |
+| Pull request gate, static report, evidence bundle | Unit tests, the demo, and this repository's own pull requests |
+| GitHub pull request comment | Live, on this repository's pull requests |
+| ORW and Intake Form validators | Unit tests against the pinned CMS templates |
+| Report layer SQL and dashboard | Run on DuckDB with sample data; the SQL is checked to parse as Snowflake SQL |
+| Contributor path (connector template, conformance kit, DCO check) | A Playwright connector submitted as a contributor pull request (#9) |
+
+### Before first use
+
+- [ ] Tag a release (for example `v0.1.0`) and publish the package, so an order can name a fixed version.
+      Today you install from the `main` branch.
+- [ ] Run the Azure DevOps template in a real Azure DevOps project. It is checked only for structure.
+- [ ] Run the report layer on a real Snowflake account: schemas, roles, loads, the `snowflake` sink, and
+      the Streamlit in Snowflake dashboard. The SQL is checked only for syntax.
+- [ ] Test the Azure DevOps, Jira, and chat sinks against live services. They are tested only against
+      simulated responses.
+- [ ] Build and test the Docker image.
+- [ ] Have a CMS and FNA subject matter expert review the catalog: gates, evidence kinds, and
+      responsibility for each rule.
+
+### Content to add for a state project
+
+- [ ] Golden cases for the target state and current fiscal year. The 37 sample cases use historical
+      FY2020 values from 18F and are for the demo only. There are no Medicaid (MAGI) cases yet.
+- [ ] Map the metric data contract to the state's tables. The metric queries have run only on synthetic data.
+- [ ] Get CMS and FNA to confirm that files in their templates are acceptable.
+
+### Not built yet
+
+- [ ] Completeness checklists for each gate package (test plans, Go/No-Go with the 26 Go Live criteria,
+      ORR and CR packages) and a hashed record of each submission.
+- [ ] A validator for FNA's SIRT response workbook.
+- [ ] APD watch rules: gate forecasts compared with the approved APD baseline.
+- [ ] Optional phase 2: rule tags inferred from Jira epics.
 
 ## What is here
 
