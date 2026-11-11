@@ -10,7 +10,7 @@ Status as of 2026-11-11. The full reasoning is in [`proposal.md`](proposal.md).
    - Give every item a stable catalog key, because agency IDs repeat (524 unique SIRT IDs cover 821 rows).
    - Record for each item: source and citation, gates, evidence type (from [`research/classification/`](research/classification/)), whether it is a leading indicator, responsibility (vendor, state, third party, shared), coverage (evidenced, tracked only, not covered), and whether state acceptance is required.
    - Record the source that is authoritative for each rule, and flag stale references (for example, the CMS repository's Planning page still cites MARS-E, which ARC-AMPE replaced).
-2. **Schemas.** JSON Schemas for catalog entries, the evidence record, the evidence bundle, state configuration (`mapping.yaml`), the connector interface, the metric data contract, and the test case format.
+2. **Integration contract v1, released before any solicitation relies on it.** JSON Schemas for catalog entries, the evidence record, the evidence bundle, state configuration (`mapping.yaml`), the connector interface, the metric data contract, and the test case format; one rule key syntax (`agency:set:id`) with permanent SIRT keys; tag conventions per test framework; a `check-tags` lint; reference Azure DevOps and GitHub Actions pipeline files; a one-day quickstart.
 3. **File validators** for the agencies' current templates: the new CMS templates from SHO #25-003 (SMC Intake Form, Operational Report Workbook) and the FNA SIRT response workbook.
 4. **Rule-status logic and one calendar for both agencies.** Publish the status definitions (N/A, No evidence, Not met, Stale, At risk, Met) and the combined CMS and FNA calendar, with gate order, APD update triggers for both agencies, ARC-AMPE timelines, and disaster recovery tests as configuration.
 5. **Static report generator.** One self-contained HTML file per build, built from the pipeline's evidence bundle alone. It never reads external data (Jira, production data, security findings, documents).
@@ -28,7 +28,11 @@ Status as of 2026-11-11. The full reasoning is in [`proposal.md`](proposal.md).
 
 ## Optional phase 2
 
-- Inferred tags: outcome tags from a Jira epic-to-outcome map, and program tags from each rule's agency. Not part of the core product.
+- Inferred rule tags from a Jira epic-to-outcome map. Not part of the core product. (Program tags are inferred in the core from each rule's agency.)
+
+## Solicitation support
+
+- Recommended QASP additions for a time-and-materials order: certification-specific measures that add to the state's existing QASP, and an artifact ownership table.
 
 ## Decisions still needed
 
