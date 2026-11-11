@@ -19,7 +19,7 @@ parameters:
     default: capd.yaml
   - name: capdVersion
     type: string
-    default: "git+https://github.com/jisaf/continuous-apd-certification@main"   # pin a release tag in production
+    default: "git+https://github.com/jisaf/continuous-apd-certification@v0.1.0"   # pin a release tag in production
   - name: pythonVersion
     type: string
     default: "3.12"

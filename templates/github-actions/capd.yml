@@ -18,7 +18,7 @@ on:
     inputs:
       config: { type: string, default: capd.yaml }
       reports-artifact: { type: string, default: test-reports }
-      capd-version: { type: string, default: "git+https://github.com/jisaf/continuous-apd-certification@main" }  # or "." for a local checkout
+      capd-version: { type: string, default: "git+https://github.com/jisaf/continuous-apd-certification@v0.1.0" }  # or "." for a local checkout
 
 jobs:
   capd:
