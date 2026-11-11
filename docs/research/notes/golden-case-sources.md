@@ -1,4 +1,4 @@
-# Golden case set: candidate sources (Medicaid + SNAP E&E, Colorado first)
+# Golden case set: candidate sources (Medicaid + SNAP E&E)
 
 Research date: 2026-11-11. Public repositories were shallow-cloned and inspected read-only; no downloaded code was run. License claims for the 18F prototypes (U.S. government work plus CC0 waiver), PolicyEngine US (AGPL-3.0), and MAGI in the Cloud (BSD-3, BlueLabs) were re-checked against each repository's license file.
 Policy context: FNS is now styled "FNA" on usda.gov pages. The 2025 federal law (H.R. 1, enacted 2025)
@@ -11,7 +11,7 @@ License rule used below:
   with the notice, or re-derive the case facts independently.
 - Copyleft (AGPL, MPL) -> cannot copy into a CC0 set. Can reference by URL/commit, or use the AGPL code in AGPL toolkit code.
   Case facts (numbers) are not copyrightable on their own, but a copied, arranged set is risky; re-derive and cite.
-- State works (Colorado HCPF/CDHS): no blanket public-domain rule in Colorado. Treat as "reference and adapt", cite.
+- State works (state Medicaid and SNAP agencies): usually no blanket public-domain rule. Treat as "reference and adapt", cite.
 - Noncommercial (PolyForm NC) -> incompatible with AGPL and CC0. Do not copy.
 
 ---
@@ -32,8 +32,8 @@ License rule used below:
       working-disabled buy-in): 438 cases
     - long_term_care: 148 cases; medically_needy: 72 cases; emergency Medicaid integration: 22 cases
   - gov/hhs/chip: 177 cases
-  - gov/states/co: 107 files, 955 cases (mostly tax). Health/human services subset: co/hcpf (CHP+, OmniSalud) 43 cases;
-    co/cdhs (TANF/Colorado Works, LEAP) 166 cases. 154 test files anywhere mention CO as state.
+  - gov/states/<state>: state-specific folders exist for many states (mostly tax; some health and human services programs).
+    Check the target state's folder for Medicaid, CHIP, and SNAP coverage.
 - Expected outputs: yes, every case.
 - Weaknesses:
   - Most cases are UNIT tests of one variable with intermediate inputs set directly (for example `snap_net_income: 6_350`),
@@ -43,7 +43,7 @@ License rule used below:
   - Periods: mostly 2025 (420) and 2026 (1,225) for SNAP+Medicaid; some to 2027-2030. So current.
 - Sample (gov/usda/snap/eligibility/meets_snap_net_income_test.yaml):
   ```yaml
-  - name: Twelve-person Colorado household just above the published FY 2026 net limit fails
+  - name: Twelve-person household just above the published FY 2026 net limit fails
     period: 2026-01
     input:
       people:
@@ -56,22 +56,9 @@ License rule used below:
       households:
         household:
           members: [person1]
-          state_code: CO
+          state_code: XX   # state code redacted in these notes
     output:
       meets_snap_net_income_test: false
-  ```
-- Sample (gov/states/co/hcpf/chp/co_chp_eligible.yaml):
-  ```yaml
-  - name: Too much income
-    period: 2023
-    input:
-      state_code: CO
-      is_medicaid_eligible: false
-      medicaid_income_level: 2.66
-      age: 1
-      is_pregnant: false
-    output:
-      co_chp_eligible: false
   ```
 - Note: PolicyEngine's SNAP integration.yaml copies CBPP's worked example ("Family of 3, CBPP Example", source
   https://www.cbpp.org/research/food-assistance/a-quick-guide-to-snap-eligibility-and-benefits). CBPP text is copyrighted;
@@ -91,7 +78,7 @@ License rule used below:
   - il.2020.feature 31, va.2020.feature 23, va.2021.feature 23 = 77 scenarios.
   - Covers: gross/net income tests, BBCE gross limits per state, elderly/disabled (65 mentions), medical deduction, dependent care,
     child support, utility/SUA, emergency allotments. Outputs: eligible yes/no + benefit $ amount.
-- Not covered: Colorado, ABAWD, expedited, students, immigration. FY2020/2021 parameters (stale; EA era).
+- Not covered: most states, ABAWD, expedited, students, immigration. FY2020/2021 parameters (stale; EA era).
 - Format: Gherkin (prose-like, easy to convert to YAML/JSON).
 - Sample (snap-api-prototype/features/il-ea.feature):
   ```gherkin
@@ -108,7 +95,7 @@ License rule used below:
       Then we find the family is likely not eligible
       And we find the estimated benefit is $0 per month
   ```
-- Use: copy directly into CC0 set as "historical federal-default" structure templates; recompute expected values for FY2027 + Colorado.
+- Use: copy directly into CC0 set as "historical federal-default" structure templates; recompute expected values for FY2027 and the target state.
 
 ## 3. MAGI in the Cloud (MitC) — HHSIDEAlab/medicaid_eligibility (CMS-adjacent MAGI engine)
 
@@ -124,7 +111,7 @@ License rule used below:
     referral type, refugee assistance, residency.
   - test/fixtures/*.json: 10 full application JSON fixtures (single mom, 3-generation family, 4-person family, disabled person,
     pregnant foster-care woman, etc.). Only 2 include expected determinations.
-  - config/state_config.json: per-state options for ~38 states + default. Colorado NOT listed (falls to default).
+  - config/state_config.json: per-state options for ~38 states + default. States not listed fall back to the default.
 - Policy year: 2014-2015 era (FPL tables then). MAGI logic is stable but thresholds are stale.
 - Sample (test/fixtures/rule_fixtures/adult_group.rb):
   ```ruby
@@ -176,7 +163,7 @@ License rule used below:
   income 150% FPL ($2,745/month, size 3); Leo eligible because child threshold is 160% FPL. APTC household income 172% FPL ($37,940/yr).
 - Example #2: unmarried parents, only Karen files and claims Max. Medicaid households differ per person (Karen 2, Bill 2, Max 3 —
   non-filer and child exception rules). Bill 52% FPL -> Medicaid; Max 150% FPL -> Medicaid; Karen 161% -> APTC.
-- Use: copy into CC0 set (adapt to Colorado thresholds). Excellent for MAGI household composition (42 CFR 435.603) rules.
+- Use: copy into CC0 set (adapt to the target state's thresholds). Excellent for MAGI household composition (42 CFR 435.603) rules.
 
 ## 6. CMS PERM Medicaid/CHIP Eligibility Review Pilots — 100 CMS test cases with state-specific answer keys (NOT public)
 
@@ -188,8 +175,8 @@ License rule used below:
 - Scenario categories (states run >= 3 cases each): mixed household; non-citizen emergency-only; nuclear family eligible;
   over-income Medicaid & CHIP; non-financial ineligible; reasonable opportunity period; adult 19-64 (expansion states).
   Reporting template also lists "Eligible inmate" and "Citizenship not verified".
-- Hosted on CALT (calt.cms.gov, CMS state collaboration site, login only). Colorado (SBM state) should have received a CO answer key.
-- Use: ask HCPF/CMS for the 100 cases + Colorado answer key (or FOIA). Would be the highest-authority MAGI golden set if released.
+- Hosted on CALT (calt.cms.gov, CMS state collaboration site, login only). Each participating state should have received its own answer key.
+- Use: ask the state Medicaid agency or CMS for the 100 cases and the state's answer key (or FOIA). Would be the highest-authority MAGI golden set if released.
   Federal work -> public domain if obtained.
 
 ## 7. CMS scenario taxonomies (no expected outputs)
@@ -227,39 +214,29 @@ License rule used below:
   unreported changes, EBT non-use, categorical eligibility proof, household composition, prorating). A few full computations.
 - Use: source of edge cases for change reporting, error determination, and categorical eligibility evidence. Not a ready golden set.
 
-## 10. SNAP QC Public Use File (USDA/FNA, Mathematica) — real reviewed households, includes Colorado
+## 10. SNAP QC Public Use File (USDA/FNA, Mathematica) — real reviewed households, every state
 
 - URL: https://snapqcdata.net/datafiles (FY1996-FY2024; FY2024 revised 2026-08-18). CSV, SAS, Stata, SPSS + tech doc.
-- FY2024 CSV: 44,891 household records, 1,177 columns; Colorado (STATE=8): 856 records.
+- FY2024 CSV: 44,891 household records, 1,177 columns; each record has a state code (STATE), so any state's households can be selected.
 - Relevant fields: RAWGROSS, RAWNET, FSERNDED, FSSTDDED, FSDEPDED, FSMEDDED, FSCSDED, SHELDED, HOMELESS_DED, FSTOTDED, FSNETINC,
   RAWBEN, FSBEN, BENMAX, MINIMUM_BEN, CAT_ELIG, EXPEDSER, AMTERR (QC error amount), STATUS.
 - No license statement; federal data = public domain.
 - Caveat: values are edited for consistency by Mathematica; benefit is the recorded benefit with QC error amount, not a clean
   rules-computed answer. Use as a statistical regression set ("compute benefit from inputs, compare with RAWBEN +/- AMTERR"),
-  not as hand-verified golden cases. Only source with real Colorado SNAP households and an expedited-service flag.
+  not as hand-verified golden cases. Only source with real state SNAP households and an expedited-service flag.
 
-## 11. Colorado-specific material
+## 11. State-published material (target state)
 
-- HCPF "Medical Assistance Renewal Workbook", effective July 2025 for September 2025 renewals:
-  https://hcpf.colorado.gov/sites/hcpf/files/2025.07.01%20Renewal%20Workbook%20Final.pdf
-  Appendix G has 8+ dated renewal scenarios (manual rescind; automatic and manual reinstatement; resource VCL; renewal packet;
-  change in benefit category) with CBMS outcomes AND notices (termination NOA, approval NOA, reinstatement speed letter).
-  Sample (Example 2): family of 4 (Mom HCBS, Dad WAwD, two children CHP+), renewal due 11/2025; ex parte 09/01/2025 sends packet +
-  VCL for Mom's resources; household returns signature page 10/02/2025 but not VCL; 12/05/2025 worker runs eligibility -> "The mom is
-  terminated ... A termination NOA is triggered for the mom ... as of 01/01/2026, she lost coverage. The dad and children receive an
-  approval NOA, including their coverage begin date of 12/01/2025".
-  No copyright statement found. Colorado state work: reference and adapt, cite.
-- Colorado Staff Development Center (training.colorado.gov) desk aids: SNAP Financial Eligibility FY2026 desk aid (parameters, CO max
-  shelter $744 FY2026), MAGI self-employment / NOL training with worked MAGI examples (e.g. "-$3,000 SE + $25,000 spouse = $22,000"),
-  MAGI household composition desk aid, MBU flowchart, Non-MAGI/LTC income & resource limits, existing vs new case scenarios.
-  Many examples spread across documents; no single case library.
-- HCPF Eligibility Quality Assurance Case Review Process Manual:
-  https://hcpf.colorado.gov/sites/hcpf/files/Eligibility%20Quality%20Assurance%20Case%20Review%20Process%20Manual_1.pdf (not opened).
-- CBMS UAT scripts / Deloitte test decks: not public. Would need HCPF/CDHS/OIT request or CORA records request.
-- MyFriendBen (Gary Community Ventures, Colorado screener): https://github.com/MyFriendBen/benefits-api — last commit 2026-11-11,
-  License: Mozilla Public License 2.0 (file-level copyleft; not CC0-compatible for copying). ~750 test files, uses PolicyEngine for
-  SNAP/Medicaid; cross-state tests for MO, WA, KS, NC, NJ, TX, IL; few Colorado SNAP/Medicaid tests (only a CO jeffco student file).
-  "validations" are a DB model, not shipped data. Low value for our golden set.
+State Medicaid and SNAP agencies often publish material with worked examples. Search the target state's agency and training sites for:
+
+- Medicaid renewal workbooks or procedure manuals. Some include dated renewal, ex parte, and reinstatement scenarios with system outcomes **and notices** (termination and approval notices, reinstatement letters). This is the best public source found for renewal and notice cases.
+- Eligibility worker desk aids: SNAP financial eligibility parameters, MAGI income and household composition examples, non-MAGI and long-term care limits.
+- Eligibility quality assurance case review manuals.
+- The state's own system test scripts and regression decks are usually not public; request them from the agencies or through the state's open records process.
+
+License: state works rarely carry a public-domain grant. Reference and adapt, and cite.
+
+Other state-level projects checked: a state benefits screener (MPL-2.0, mostly PolicyEngine-backed, few SNAP/Medicaid tests) — low value for the golden set.
 
 ## 12. Other leads checked
 
@@ -281,10 +258,9 @@ License rule used below:
 
 - SNAP expedited service determination and 7-day timeliness (only QC flag EXPEDSER and prose criteria).
 - ABAWD with time-limit counting across months and H.R.1 exemptions: only PolicyEngine unit tests (no month-by-month clock cases).
-- Notices (content and correctness): only Colorado renewal workbook narrative examples.
-- Renewals / ex parte: 2 SHVS scenarios + Colorado workbook examples; no SNAP recertification cases.
+- Notices (content and correctness): only state renewal workbook narrative examples.
+- Renewals / ex parte: 2 SHVS scenarios + state workbook examples; no SNAP recertification cases.
 - Integrated Medicaid+SNAP same-household cases (combo case) with both outcomes: none found.
-- Colorado options: CO SNAP SUA tiers, CO BBCE limits, CO MSP/Buy-In, CO non-MAGI (HCBS, LTC; verify whether CO runs a medically needy program), CO-specific
-  aid codes and hierarchy (MA Aid Code Hierarchy desk aid exists as a rule source, not cases).
-- Account transfer (FFM <-> state) payload tests: CMS sample payloads exist (3), Colorado is SBM (Connect for Health Colorado) so less relevant.
+- Target-state options: SNAP standard utility allowance tiers, broad-based categorical eligibility limits, Medicare savings and buy-in programs, non-MAGI (HCBS, long-term care; whether the state runs a medically needy program), state aid codes and hierarchy.
+- Account transfer (FFM <-> state) payload tests: CMS sample payloads exist (3), relevance depends on whether the state uses the federal or a state-based marketplace.
 - Non-MAGI with resources, spend-down, transfer-of-assets penalties: PolicyEngine LTC tests only (unit level).

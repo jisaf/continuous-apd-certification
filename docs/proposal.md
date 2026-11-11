@@ -187,14 +187,14 @@ No state will reshape its data for this toolkit, so the toolkit meets each state
 - **Extension (code).** New connectors, new check types, new report formats, and metrics that SQL cannot express are plugin packages written against the core interface.
 
 ```yaml
-# mapping.yaml (Colorado example, illustrative)
+# mapping.yaml (example state, illustrative)
 entities:
   application:
     source: snowflake
     table: ANALYTICS.ELIG.APPLICATIONS_V
     fields:
       id: APP_ID
-      received_at: "CONVERT_TIMEZONE('America/Denver', SUBMITTED_TS)"
+      received_at: "CONVERT_TIMEZONE('America/Chicago', SUBMITTED_TS)"
       channel:
         column: SUBMIT_CHANNEL_CD
         values: { WEB: online, PHN: phone, PPR: paper, INP: in_person }
@@ -479,19 +479,19 @@ Some final measures only exist late: PERM error rates come from a federal sample
 
 #### The golden case set: seeded from published cases
 
-Several indicators need households with known correct outcomes. No published source gives a ready, licensed, Colorado-specific set, so the set is seeded from existing work and only the gaps are written new. Every expected value is recomputed for current federal rules and Colorado's options, because SNAP rules changed in 2025.
+Several indicators need households with known correct outcomes. No published source gives a ready, licensed, state-specific set, so the set is seeded from existing work and only the gaps are written new. Every expected value is recomputed for current federal rules and the state's options, because SNAP rules changed in 2025.
 
 | Source | What it gives | License | How we use it |
 | --- | --- | --- | --- |
-| CMS PERM eligibility review pilot (2014): 100 test cases with state answer keys, on CMS's login-only state site | MAGI and CHIP outcomes by eligibility group, including mixed households, emergency-only non-citizens, and the adult group | Federal work | Request from HCPF or CMS first; strongest authority |
-| [18F SNAP API prototypes](https://github.com/18F/snap-api-prototype) (Python and JavaScript) | 145 Gherkin scenarios with eligibility and benefit amounts: income tests, broad-based categorical eligibility, deductions, utility allowances | U.S. government work, plus CC0 | Copy into the CC0 set; recompute for Colorado and the current fiscal year |
-| CMS "Income Eligibility Using MAGI Rules" (2021) | Two fully worked MAGI households, including tax-filer and non-filer rules | Federal work | Copy and adapt to Colorado thresholds |
-| HCPF Medical Assistance Renewal Workbook (2025) | Colorado renewal, ex parte, and reinstatement scenarios with outcomes and notices | State work, no public-domain grant | Adapt and cite |
-| [PolicyEngine US](https://github.com/PolicyEngine/policyengine-us) | About 2,500 current SNAP, Medicaid, and CHIP tests, some Colorado | AGPL-3.0 | Use as an independent engine to check our cases; do not copy cases |
+| CMS PERM eligibility review pilot (2014): 100 test cases with state answer keys, on CMS's login-only state site | MAGI and CHIP outcomes by eligibility group, including mixed households, emergency-only non-citizens, and the adult group | Federal work | Request from the state Medicaid agency or CMS first; strongest authority |
+| [18F SNAP API prototypes](https://github.com/18F/snap-api-prototype) (Python and JavaScript) | 145 Gherkin scenarios with eligibility and benefit amounts: income tests, broad-based categorical eligibility, deductions, utility allowances | U.S. government work, plus CC0 | Copy into the CC0 set; recompute for the state and the current fiscal year |
+| CMS "Income Eligibility Using MAGI Rules" (2021) | Two fully worked MAGI households, including tax-filer and non-filer rules | Federal work | Copy and adapt to the state's thresholds |
+| State Medicaid renewal workbooks and eligibility desk aids | State renewal, ex parte, and reinstatement scenarios with outcomes and notices | State work, no public-domain grant | Adapt and cite |
+| [PolicyEngine US](https://github.com/PolicyEngine/policyengine-us) | About 2,500 current SNAP, Medicaid, and CHIP tests, some state-specific | AGPL-3.0 | Use as an independent engine to check our cases; do not copy cases |
 | MAGI in the Cloud (CMS-funded MAGI engine) | 209 rule-level MAGI tests with reason codes (2014–15 rules) | BSD-3 with notice | Use as a cross-check, or keep in a separate third-party folder with its notice |
-| SNAP QC public use file (USDA, FY2024) | 856 reviewed Colorado SNAP households with income, deductions, benefit, and expedited flags | Federal data | Statistical regression check, not hand-checked golden cases |
+| SNAP QC public use file (USDA, FY2024) | 44,891 reviewed SNAP households, each with a state code, income, deductions, benefit, and expedited flags | Federal data | Statistical regression check, not hand-checked golden cases |
 
-Gaps that need new cases: SNAP expedited service and its 7-day clock, ABAWD month counting, notice content, SNAP recertification, households with both Medicaid and SNAP outcomes, and Colorado-specific options. Colorado's own system test scripts are not public; ask HCPF and CDHS, or use a Colorado open records request.
+Gaps that need new cases: SNAP expedited service and its 7-day clock, ABAWD month counting, notice content, SNAP recertification, households with both Medicaid and SNAP outcomes, and state-specific options. A state's own system test scripts are usually not public; ask the state Medicaid and SNAP agencies, or use the state's open records process.
 
 ### What it does not do
 
@@ -514,7 +514,7 @@ Phase 0 helps any state on day one, without vendor changes: like the HPT online 
 | Agency file formats | Output goes in whatever format or template each agency provides (SIRT Excel, Intake Form, ORW, Go/No-Go). The catalog keeps its own stable keys because agency IDs overlap. Assumed acceptable to FNA and CMS; confirm during APD review. |
 | FNA pilot | Assumed: a live pilot with the new system as system of record, plus an optional legacy comparison run, meets 7 CFR 277.18. Confirm with FNA. |
 | Shared catalog hosting | No CMS or FNA hosting assumed. The core repository is the upstream. |
-| First project | Colorado. Full rebuild from scratch by an agile-first civic tech vendor. GitHub for code, Azure DevOps for pipelines, Jira for issues, Snowflake for metrics. First connectors: GitHub, Azure DevOps, Jira, Snowflake. |
+| First project | One state, not named publicly. Assumed profile: full rebuild from scratch by an agile-first civic tech vendor. GitHub for code, Azure DevOps for pipelines, Jira for issues, Snowflake for metrics. First connectors: GitHub, Azure DevOps, Jira, Snowflake. |
 | Dashboard and hosting | No dedicated hosted app for now, because it would trigger a state security review. Start with a static HTML report per build, committed to the repository. Then use tools the state already runs (Snowflake, Power BI, Tableau, Jira). A hosted app is paused. |
 | Program tags | Used only for the toolkit's own purposes (filtering evidence by agency, gates, and views). Never used for cost allocation. |
 | Data model | Fully configurable. A complete reference implementation covers every tracked item; states map their own data to it through configuration, and extend it through code plugins. No state is expected to adopt the reference schema. |
@@ -540,7 +540,7 @@ Phase 0 helps any state on day one, without vendor changes: like the HPT online 
 **Research still to do**
 
 - [ ] **Evidence-type split.** Done; see "How much can be automated".
-- [ ] **Unread sources.** Done for HB 901 chapters 1, 4, 5, 7, and 9 and SHO #25-003; findings are in the gates table, the contract section, and above. Templates: target the new SHO #25-003 templates directly. Golden case sources: researched; see "The golden case set". Next: request the CMS PERM test cases and Colorado answer key from HCPF.
+- [ ] **Unread sources.** Done for HB 901 chapters 1, 4, 5, 7, and 9 and SHO #25-003; findings are in the gates table, the contract section, and above. Templates: target the new SHO #25-003 templates directly. Golden case sources: researched; see "The golden case set". Next: request the CMS PERM test cases and the state's answer key from the state Medicaid agency.
 
 ## Sources
 

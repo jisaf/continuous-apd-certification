@@ -37,7 +37,7 @@ The model is CMS's own [Hospital Price Transparency tools](https://cmsgov.github
 
 ## First project
 
-Colorado: a full rebuild of the integrated Medicaid and SNAP eligibility system by an agile-first civic tech vendor, using GitHub for code, Azure DevOps for pipelines, Jira for issues, and Snowflake for metrics.
+The first project is one state, not named publicly. The assumed profile: a full rebuild of an integrated Medicaid and SNAP eligibility system by an agile-first vendor, using GitHub for code, Azure DevOps for pipelines, Jira for issues, and Snowflake for metrics. The toolkit itself stays state-neutral: everything state-specific is configuration.
 
 ## What is here
 
