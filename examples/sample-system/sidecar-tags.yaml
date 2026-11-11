@@ -1,0 +1,7 @@
+# Sidecar tags: map test IDs (glob patterns) to rule keys, for frameworks that cannot carry tags in
+# their reports. The sample tests carry their own tags, so the example below is commented out.
+#
+# "tests.test_legacy_calculator::test_shelter_*":
+#   - fna:sirt:S0208
+#   - fna:sirt:S0209
+{}

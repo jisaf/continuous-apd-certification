@@ -1,0 +1,4 @@
+{"version": "2.1.0", "runs": [
+  {"tool": {"driver": {"name": "semgrep"}}, "results": [{"level": "note", "message": {"text": "x"}}]},
+  {"tool": {"driver": {"name": "codeql"}}, "results": [{"level": "error", "message": {"text": "sql injection"}}]}
+]}

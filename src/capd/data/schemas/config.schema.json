@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jisaf/continuous-apd-certification/schemas/config.schema.json",
+  "title": "capd.yaml",
+  "type": "object",
+  "required": [
+    "catalogVersion"
+  ],
+  "properties": {
+    "catalogVersion": {
+      "type": "string",
+      "description": "pinned catalog version; updates go through change control"
+    },
+    "state": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "string",
+      "default": "ci"
+    },
+    "gateMode": {
+      "enum": [
+        "report-only",
+        "blocking"
+      ],
+      "default": "report-only"
+    },
+    "quarantineFile": {
+      "type": "string"
+    },
+    "taggedPaths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "test files or folders where every test must carry a rule key"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "connector"
+        ],
+        "properties": {
+          "connector": {
+            "type": "string"
+          },
+          "paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "options": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "sinks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "connector"
+        ],
+        "properties": {
+          "connector": {
+            "type": "string"
+          },
+          "options": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "stateRules": {
+      "type": "array",
+      "items": {
+        "$ref": "catalog-rule.schema.json"
+      }
+    },
+    "ruleOverrides": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^(cms|fna|state):[a-z]+:[A-Za-z0-9.\\-]+$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "applicable": {
+            "type": "boolean"
+          },
+          "justification": {
+            "type": "string"
+          },
+          "threshold": {
+            "type": "number"
+          },
+          "responsibility": {
+            "enum": [
+              "vendor",
+              "state",
+              "third_party",
+              "shared"
+            ]
+          },
+          "freshnessDays": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "gateOrder": {
+      "enum": [
+        "pilot-is-medicaid-go-live",
+        "medicaid-go-live-at-rollout"
+      ],
+      "description": "named scenario; fixed limits (ORR before any Medicaid go-live) always apply"
+    },
+    "sidecarTags": {
+      "type": "string",
+      "description": "YAML file mapping test IDs to rule keys"
+    }
+  }
+}

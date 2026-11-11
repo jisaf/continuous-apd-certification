@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="1" name="sample" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Results>
+    <UnitTestResult testId="a1" testName="PendsSnapWithoutHoldingMedicaid" outcome="Passed" duration="00:00:00.1200000"/>
+    <UnitTestResult testId="a2" testName="CalculatesStandardDeduction" outcome="Failed" duration="00:00:00.0300000"/>
+    <UnitTestResult testId="a3" testName="UntaggedHelper" outcome="Passed" duration="00:00:00.0010000"/>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="PendsSnapWithoutHoldingMedicaid" id="a1">
+      <TestCategory><TestCategoryItem TestCategory="rule:cms:ee:EE21"/></TestCategory>
+      <TestMethod className="Eligibility.Tests.MultiBenefitTests" name="PendsSnapWithoutHoldingMedicaid"/>
+    </UnitTest>
+    <UnitTest name="CalculatesStandardDeduction" id="a2">
+      <TestCategory><TestCategoryItem TestCategory="rule:fna:sirt:S0215"/><TestCategoryItem TestCategory="Smoke"/></TestCategory>
+      <TestMethod className="Eligibility.Tests.SnapBudgetTests" name="CalculatesStandardDeduction"/>
+    </UnitTest>
+    <UnitTest name="UntaggedHelper" id="a3">
+      <TestMethod className="Eligibility.Tests.Helpers" name="UntaggedHelper"/>
+    </UnitTest>
+  </TestDefinitions>
+</TestRun>

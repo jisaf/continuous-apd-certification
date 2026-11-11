@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jisaf/continuous-apd-certification/schemas/catalog-rule.schema.json",
+  "title": "Catalog rule",
+  "type": "object",
+  "required": [
+    "key",
+    "agency",
+    "set",
+    "sourceId",
+    "title",
+    "programs",
+    "gates",
+    "responsibility",
+    "coverage",
+    "acceptance",
+    "freshnessDays",
+    "source"
+  ],
+  "properties": {
+    "key": {
+      "type": "string",
+      "pattern": "^(cms|fna|state):[a-z]+:[A-Za-z0-9.\\-]+$"
+    },
+    "agency": {
+      "enum": [
+        "cms",
+        "fna",
+        "state"
+      ]
+    },
+    "set": {
+      "type": "string"
+    },
+    "sourceId": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "programs": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "medicaid",
+          "snap"
+        ]
+      }
+    },
+    "gates": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "ORR",
+          "CR",
+          "FNA-UAT",
+          "FNA-PILOT"
+        ]
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "enum": [
+            "test",
+            "scan",
+            "metric",
+            "report",
+            "document",
+            "attestation",
+            "assessment",
+            "demonstration"
+          ]
+        }
+      }
+    },
+    "responsibility": {
+      "enum": [
+        "vendor",
+        "state",
+        "third_party",
+        "shared"
+      ]
+    },
+    "coverage": {
+      "enum": [
+        "evidenced",
+        "tracked_only",
+        "not_covered"
+      ]
+    },
+    "acceptance": {
+      "enum": [
+        "required",
+        "not_required"
+      ]
+    },
+    "freshnessDays": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "document"
+      ]
+    }
+  }
+}

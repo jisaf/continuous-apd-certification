@@ -1,0 +1,53 @@
+# GitHub Actions reusable workflow: continuous certification checks.
+# Call it from your workflow after a job that uploads your test and scan reports as an artifact:
+#
+#   jobs:
+#     tests:
+#       ...  # your tests; then: actions/upload-artifact with name: test-reports
+#     certification:
+#       needs: tests
+#       if: always()
+#       uses: ./.github/workflows/capd.yml          # copy this file into .github/workflows/
+#       with: { config: capd.yaml, reports-artifact: test-reports }
+#       permissions: { contents: read, pull-requests: write, actions: read }
+
+name: capd
+
+on:
+  workflow_call:
+    inputs:
+      config: { type: string, default: capd.yaml }
+      reports-artifact: { type: string, default: test-reports }
+      capd-version: { type: string, default: "git+https://github.com/jisaf/continuous-apd-certification@main" }  # or "." for a local checkout
+
+jobs:
+  capd:
+    runs-on: ubuntu-latest
+    permissions: { contents: read, pull-requests: write, actions: read }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Install capd
+        run: |
+          v="${{ inputs.capd-version }}"
+          case "$v" in .|./*|/*) python -m pip install --quiet "$v" ;;      # a local checkout
+                       *) python -m pip install --quiet "capd @ $v" ;; esac   # a git URL or release
+      - uses: actions/download-artifact@v4
+        with: { name: "${{ inputs.reports-artifact }}" }
+      - name: Download baseline from the latest successful run on main
+        if: github.ref != 'refs/heads/main'
+        continue-on-error: true
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          run_id=$(gh run list --branch main --workflow "${{ github.workflow }}" --status success -L 1 --json databaseId -q '.[0].databaseId')
+          [ -n "$run_id" ] && gh run download "$run_id" --name capd-evidence --dir capd-baseline
+      - name: Check certification readiness
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >
+          capd run --config "${{ inputs.config }}" --out-dir capd-out --baseline capd-baseline/bundle.json
+          --report-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: capd-evidence, path: capd-out }

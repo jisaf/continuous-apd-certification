@@ -1,0 +1,82 @@
+# Golden cases converted from 18F snap-api-prototype ut.feature (commit 215f3f3b).
+# CC0 1.0. Historical FY2020 values: a state must recompute expected values for its own rules and year.
+- id: snap-18f-ut-01
+  program: snap
+  state: UT
+  policyPeriod: FY2020
+  rules:
+  - fna:sirt:S0215
+  title: UT scenario 1
+  source:
+    name: 18F SNAP API prototype
+    url: https://github.com/18F/snap-api-prototype
+    file: features/ut.feature@215f3f3b
+    line: 7
+    license: CC0-1.0 (U.S. government work)
+  household:
+    emergencyAllotment: false
+    size: 1
+    elderlyOrDisabled: false
+    earnedIncome: 0
+    otherIncome: 0
+    assets: 0
+  expected:
+    eligible: true
+    monthlyBenefit: 194
+  status: active
+- id: snap-18f-ut-02
+  program: snap
+  state: UT
+  policyPeriod: FY2020
+  rules:
+  - fna:sirt:S0153
+  - fna:sirt:S0176
+  - fna:sirt:S0215
+  title: Household passes net income test but not gross income test
+  source:
+    name: 18F SNAP API prototype
+    url: https://github.com/18F/snap-api-prototype
+    file: features/ut.feature@215f3f3b
+    line: 17
+    license: CC0-1.0 (U.S. government work)
+  household:
+    emergencyAllotment: false
+    size: 3
+    elderlyOrDisabled: false
+    earnedIncome: 0
+    otherIncome: 2400
+    assets: 1000
+    dependentCare: 1000
+  expected:
+    eligible: false
+    monthlyBenefit: 0
+  status: active
+- id: snap-18f-ut-03
+  program: snap
+  state: UT
+  policyPeriod: FY2020
+  rules:
+  - fna:sirt:S0153
+  - fna:sirt:S0176
+  - fna:sirt:S0215
+  - fna:sirt:S0217
+  title: Child support payments deduction does not push household into eligibility
+  source:
+    name: 18F SNAP API prototype
+    url: https://github.com/18F/snap-api-prototype
+    file: features/ut.feature@215f3f3b
+    line: 28
+    license: CC0-1.0 (U.S. government work)
+  household:
+    emergencyAllotment: false
+    size: 3
+    elderlyOrDisabled: false
+    earnedIncome: 0
+    otherIncome: 2400
+    assets: 1000
+    dependentCare: 1000
+    childSupportPaid: 100
+  expected:
+    eligible: false
+    monthlyBenefit: 0
+  status: active

@@ -2,6 +2,8 @@
 
 Status as of 2026-11-11. The full reasoning is in [`proposal.md`](proposal.md).
 
+**MVP built (2026-11-11):** the rules catalog, schemas, CLI, source and sink connectors, conformance kit, static report, ORW and Intake Form validators, mapping-to-views, pre-written packs, golden cases, sample system, pipeline templates, and the report layer (portable SQL, Snowflake setup, DuckDB builder, dashboard). Phase 0 items 1–6 below are done in a first version; the rest of this list is what follows.
+
 ## Phase 0 — Foundation (useful on its own)
 
 1. **Rules catalog, version 0.**

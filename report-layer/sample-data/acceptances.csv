@@ -1,0 +1,5 @@
+rule_key,gate,decision,role,decided_at,note
+cms:cef:CEF09,ORR,accepted,State security officer,2026-10-25 00:00:00,SAR reviewed
+fna:sirt:S0215,FNA-UAT,disputed,Vendor,2026-11-05 00:00:00,Expected value for IL 3-person case under review by policy staff
+cms:ee:EE12,ORR,na_accepted,State Medicaid director,2026-09-01 00:00:00,Presumptive eligibility handled in a separate module
+cms:ee:EE12,CR,na_accepted,State Medicaid director,2026-09-01 00:00:00,Presumptive eligibility handled in a separate module

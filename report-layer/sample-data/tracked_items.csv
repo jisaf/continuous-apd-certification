@@ -1,0 +1,11 @@
+item_key,rule_key,gate,kind,title,owner,due_date,status,result,observed_at,link,source
+LTR-CRL,,CR,document,Certification Request Letter,State Medicaid director,2027-08-15,open,,,https://example.state.gov/docs/crl,state document store
+LTR-SAL,,CR,document,System Acceptance Letter,State project manager,2027-08-01,open,,,https://example.state.gov/docs/sal,state document store
+SEC-SAR,cms:cef:CEF09,ORR,attestation,Independent security and privacy assessment (ARC-AMPE),State security officer,2027-01-15,complete,present,2026-10-20 00:00:00,https://example.state.gov/secure/sar,security tool
+A11Y-508,cms:cef:CEF12,ORR,attestation,Section 508 test report (WCAG 2.2 AA),Vendor accessibility lead,2027-02-01,open,,,https://example.state.gov/docs/508,state document store
+A11Y-DEMO,cms:cef:CEF12,ORR,demonstration,Accessibility demonstration at ORR,State product owner,2027-03-15,open,,,,
+TP-FINAL,,FNA-UAT,document,Complete and Final Test Plan submitted to FNA,State test manager,2026-12-15,submitted,,,https://example.state.gov/docs/test-plan,state document store
+DR-TEST,,ORR,document,Disaster recovery test results,Vendor operations lead,2027-02-15,open,,,,
+MAJ-CHG,,FNA-PILOT,external,Major Change notification to FNA (120 days before implementation or contracting),State SNAP director,2027-03-01,open,,,,
+APDU-AN,,,external,Annual APD Update (both agencies),State APD coordinator,2026-11-01,open,,,,state APD office
+COST-ALLOC,,,external,Cost allocation plan approval (tracked only),State finance,2027-01-31,open,,,,state finance

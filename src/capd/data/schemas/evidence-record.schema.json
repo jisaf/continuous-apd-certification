@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jisaf/continuous-apd-certification/schemas/evidence-record.schema.json",
+  "title": "Evidence record",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "ruleIds",
+    "kind",
+    "result",
+    "environment",
+    "executedBy",
+    "build",
+    "commit",
+    "observedAt",
+    "sourceUri"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "ruleIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(cms|fna|state):[a-z]+:[A-Za-z0-9.\\-]+$"
+      },
+      "uniqueItems": true
+    },
+    "kind": {
+      "enum": [
+        "test",
+        "scan",
+        "metric",
+        "report",
+        "document",
+        "attestation",
+        "assessment",
+        "demonstration"
+      ]
+    },
+    "result": {
+      "enum": [
+        "pass",
+        "fail",
+        "skipped",
+        "error",
+        "value",
+        "present"
+      ]
+    },
+    "value": {
+      "type": "number"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "programs": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "medicaid",
+          "snap"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "environment": {
+      "type": "string",
+      "description": "for example ci, system-test, uat, pilot, production"
+    },
+    "executedBy": {
+      "enum": [
+        "vendor",
+        "state",
+        "ivv",
+        "third_party",
+        "automation"
+      ]
+    },
+    "build": {
+      "type": "string"
+    },
+    "commit": {
+      "type": "string"
+    },
+    "testId": {
+      "type": "string",
+      "description": "stable test identity, used to compare a run with main"
+    },
+    "name": {
+      "type": "string"
+    },
+    "attempts": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "durationMs": {
+      "type": "number",
+      "minimum": 0
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceUri": {
+      "type": "string"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "detail": {
+      "type": "object",
+      "description": "connector-specific, pipeline-produced data only"
+    }
+  }
+}

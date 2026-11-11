@@ -1,0 +1,68 @@
+# capd.yaml — project configuration for the continuous certification pipeline.
+# Validated against src/capd/data/schemas/config.schema.json. Paths are relative to this file.
+
+catalogVersion: "1.0.0"     # Pin the catalog. Updates that add or change rules go through change control.
+state: XX                   # Two-letter state code.
+environment: ci             # Where these results come from: ci, system-test, uat, pilot, production.
+
+# Pull request gate. Start in report-only. The state and the vendor agree, through a reviewed change to
+# this file, when to switch to blocking. Blocking fails a build only when a tagged test that passed on
+# main now fails (after one automatic rerun) and is not quarantined.
+gateMode: report-only
+quarantineFile: quarantine.txt
+
+# Test IDs (glob patterns) where every test must carry a rule key; check-tags reports untagged ones.
+taggedPaths:
+  - "tests.certification.*"
+
+# Optional: map test IDs to rule keys for frameworks that cannot carry tags in their reports.
+# sidecarTags: sidecar-tags.yaml
+
+# Where the pipeline's own results are. Only pipeline-produced data belongs here.
+sources:
+  - connector: junit                  # pytest (-o junit_family=xunit1), JUnit 5, Jest, NUnit/xUnit via loggers
+    paths: ["test-results/**/*.xml"]
+  - connector: cucumber               # Cucumber, SpecFlow, Behave, pytest-bdd --cucumberjson
+    paths: ["test-results/**/cucumber*.json"]
+  - connector: sarif                  # CodeQL, Semgrep, Trivy, ruff, ZAP converters
+    paths: ["scan-results/**/*.sarif"]
+    options: { rules: ["cms:cef:CEF09"], failAt: warning }
+  - connector: axe                    # @axe-core/cli or @axe-core/playwright JSON
+    paths: ["scan-results/axe/*.json"]
+    options: { rules: ["cms:cef:CEF12"] }
+
+# Where results go. Each sink is optional; secrets come from pipeline secret variables, never this file.
+sinks:
+  - connector: file                   # evidence-rows.ndjson for any SQL data platform
+    options: { dir: out }
+  - connector: azure-devops           # run summary + one sticky PR thread (needs SYSTEM_ACCESSTOKEN)
+    options: { summaryPath: out/summary.md }
+  # - connector: github               # one sticky PR comment (needs GITHUB_TOKEN)
+  # - connector: jira                 # one issue per gate + blocker issues (JIRA_EMAIL / JIRA_API_TOKEN)
+  #   options: { baseUrl: "https://yourstate.atlassian.net", project: CERT }
+  # - connector: chat                 # Slack or Teams digest on change only (CAPD_CHAT_WEBHOOK)
+  #   options: { stateFile: out/chat-state.json }
+  # - connector: snowflake            # load into the report layer (pip install "capd[snowflake]")
+  #   options: { database: CERTIFICATION, schema: CERT, warehouse: CERT_WH, role: CERT_LOADER }
+
+# State-specific outcomes (Intake Form format: ST + module + two digits) and rule settings.
+stateRules: []
+#  - key: "state:ee:STEE01"
+#    agency: state
+#    set: ee
+#    sourceId: STEE01
+#    title: "Increase no-touch renewals"
+#    programs: [medicaid]
+#    gates: { CR: [metric] }
+#    responsibility: shared
+#    coverage: evidenced
+#    acceptance: not_required
+#    freshnessDays: 45
+#    source: { document: "Approved APD, section 4" }
+ruleOverrides: {}
+#  "cms:ee:EE12": { applicable: false, justification: "Presumptive eligibility is handled in a separate module" }
+#  "fna:golive:GL03": { threshold: 0.95 }
+
+# How the CMS and FNA gates line up for this state, once both agencies rule. Fixed limits always apply:
+# the ORR comes before any Medicaid go-live; the CR is at least 6 months after go-live.
+gateOrder: pilot-is-medicaid-go-live

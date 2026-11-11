@@ -1,0 +1,4 @@
+[
+ {"url": "https://example.test/apply", "violations": []},
+ {"url": "https://example.test/status", "violations": [{"id": "color-contrast", "impact": "serious", "nodes": [{}]}]}
+]

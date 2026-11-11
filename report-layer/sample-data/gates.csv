@@ -1,0 +1,5 @@
+gate,planned_date,scenario
+ORR,2027-03-15,pilot-is-medicaid-go-live
+FNA-UAT,2027-03-01,pilot-is-medicaid-go-live
+FNA-PILOT,2027-07-01,pilot-is-medicaid-go-live
+CR,2027-11-15,pilot-is-medicaid-go-live

@@ -1,0 +1,189 @@
+# NOTE: This YAML file is currently incomplete and is being written by hand,
+# based on the following sources from USDA.
+
+# SOURCES:
+#
+# "Broad-Based Community Eligibility", USDA, last updated December 2019:
+# https://fns-prod.azureedge.net/sites/default/files/resource-files/BBCE2019%28December%29.pdf
+#
+# "State Options Report", USDA, Options as of October 1, 2017:
+#
+# https://fns-prod.azureedge.net/sites/default/files/snap/14-State-Options.pdf
+#
+# "Standard Utility Allowances", USDA:
+#
+# https://www.fns.usda.gov/snap/eligibility/deduction/standard-utility-allowances
+#
+# Data on standard utility allowances is incomplete; I am adding in state data
+# as needed rather than trying to add every state at once. Some states have
+# more complexity when it comes to standard utility allowances, such as multiple
+# regions in one state, and/or different SUA values for different household sizes.
+# That complexity is not modeled here yet.
+#
+# See the standard_utility_allowances folder and associated README for more
+# information, context, and parsing scripts.
+#
+# "SNAP Emergency Allotments to Current SNAP Households", USDA
+#
+# https://www.fns.usda.gov/disaster/pandemic/snap-emergency-allotments
+#
+# "Most States Are Easing SNAP Participation Rules; Many Have Opted to Provide Added Benefits", Center on Budget and Policy Priorities:
+#
+# https://www.cbpp.org/research/food-assistance/most-states-are-easing-snap-participation-rules-many-have-opted-to-provide
+
+CA:
+    2020:
+        use_emergency_allotment: True  # As of 4/29/2020
+        uses_bbce: True
+        gross_income_limit_factor: 2
+        resource_limit_elderly_or_disabled: NULL
+        resource_limit_elderly_or_disabled_income_twice_fpl: NULL
+        resource_limit_non_elderly_or_disabled: NULL
+        child_support_payments_treatment: EXCLUDE  # According to USDA State Options Report. Options as of October 1, 2017.
+        # mandatory_standard_utility_allowances: True
+        standard_medical_deduction: True
+
+ID:
+    2020:
+        use_emergency_allotment: True  # As of 4/29/2020
+        uses_bbce: False
+        gross_income_limit_factor: 1.3
+        resource_limit_elderly_or_disabled: 5000
+        resource_limit_elderly_or_disabled_income_twice_fpl: 5000
+        resource_limit_non_elderly_or_disabled: 5000
+        child_support_payments_treatment: DEDUCT  # According to USDA State Options Report. Options as of October 1, 2017.
+        # mandatory_standard_utility_allowances: True
+        standard_medical_deduction: True
+
+IL:
+    2020:
+        use_emergency_allotment: True  # As of 4/29/2020
+        uses_bbce: True
+        gross_income_limit_factor: 1.65
+        resource_limit_elderly_or_disabled: NULL
+        resource_limit_elderly_or_disabled_income_twice_fpl: 3500
+        resource_limit_non_elderly_or_disabled: NULL
+        child_support_payments_treatment: EXCLUDE  # According to USDA State Options Report. Options as of October 1, 2017.
+        website: https://abe.illinois.gov/abe/access/
+        mandatory_standard_utility_allowances: True
+        # NOTE: IL uses different standard utility allowances than those listed
+        # in the latest (FY2019) FNS Standard Utility Allowances spreadsheet.
+        #
+        # Is IL is using older, newer, or just different allowances than
+        # those the federal data source suggests? I'm not really sure.
+        # Source for IL standard utility allowances:
+        #
+        # https://www.dhs.state.il.us/page.aspx?item=16170
+        standard_utility_allowances:
+              HEATING_AND_COOLING: 478
+              BASIC_LIMITED_ALLOWANCE: 328
+              SINGLE_UTILITY_ALLOWANCE: 74
+              PHONE: 30
+        standard_medical_deduction: True
+        standard_medical_deduction_amount: 165  # SOURCE: Legal Aid Chicago
+
+MA:
+    2020:
+        use_emergency_allotment: True  # As of 4/29/2020
+        uses_bbce: True
+        gross_income_limit_factor: 2
+        resource_limit_elderly_or_disabled: NULL
+        resource_limit_elderly_or_disabled_income_twice_fpl: 3500
+        resource_limit_non_elderly_or_disabled: NULL
+        child_support_payments_treatment: DEDUCT  # According to USDA State Options Report. Options as of October 1, 2017.
+        # mandatory_standard_utility_allowances: True
+        standard_medical_deduction: True
+
+MI:
+    2020:
+        use_emergency_allotment: True  # As of 4/29/2020
+        uses_bbce: True
+        gross_income_limit_factor: 2
+        resource_limit_elderly_or_disabled: 15000 # NOTE: Double-check this across households with/without elderly or disabled members.
+        resource_limit_elderly_or_disabled_income_twice_fpl: 15000 # NOTE: Double-check this across households with/without elderly or disabled members.
+        resource_limit_non_elderly_or_disabled: 15000 # NOTE: Double-check this across households with/without elderly or disabled members.
+        child_support_payments_treatment: DEDUCT  # According to USDA State Options Report. Options as of October 1, 2017.
+        website: https://newmibridges.michigan.gov/
+        mandatory_standard_utility_allowances: True
+        standard_utility_allowances:
+              HEATING_AND_COOLING: 543
+              BASIC_LIMITED_ALLOWANCE: 0
+              ELECTRICITY: 135
+              GAS_AND_FUEL: 44
+              PHONE: 31
+              SEWAGE: 91
+              TRASH: 19
+              WATER: 91
+        standard_medical_deduction: False
+
+MN:
+    2020:
+        use_emergency_allotment: True  # As of 4/29/2020
+        uses_bbce: True
+        gross_income_limit_factor: 1.65
+        resource_limit_elderly_or_disabled: NULL
+        resource_limit_elderly_or_disabled_income_twice_fpl: NULL
+        resource_limit_non_elderly_or_disabled: NULL
+        child_support_payments_treatment: DEDUCT  # According to USDA State Options Report. Options as of October 1, 2017.
+        website: https://edocs.dhs.state.mn.us/lfserver/public/DHS-3529-ENG
+        mandatory_standard_utility_allowances: True
+        standard_utility_allowances:
+            HEATING_AND_COOLING: 556
+            BASIC_LIMITED_ALLOWANCE: 0
+            ELECTRICITY: 172
+            GAS_AND_FUEL: 0
+            PHONE: 41
+            SEWAGE: 0
+            TRASH: 0
+            WATER: 0
+        standard_medical_deduction: False
+
+UT:
+    2020:
+        use_emergency_allotment: True  # As of 4/29/2020
+        uses_bbce: False
+        child_support_payments_treatment: DEDUCT  # According to USDA State Options Report. Options as of October 1, 2017.
+        website: https://jobs.utah.gov/assistance/index.html
+        mandatory_standard_utility_allowances: True
+        standard_utility_allowances:
+            HEATING_AND_COOLING: 360
+            BASIC_LIMITED_ALLOWANCE: 283
+            ELECTRICITY: 0
+            GAS_AND_FUEL: 0
+            PHONE: 64
+            SEWAGE: 0
+            TRASH: 0
+            WATER: 0
+        standard_medical_deduction: False
+
+VA:
+    2020:
+        use_emergency_allotment: True  # As of 4/30/2020
+        uses_bbce: False
+        child_support_payments_treatment: DEDUCT  # According to USDA State Options Report. Options as of October 1, 2017.
+        website: https://commonhelp.virginia.gov/
+        mandatory_standard_utility_allowances: False  # One of 5 states/territories
+        standard_medical_deduction: True
+        standard_medical_deduction_amount: 140  # Source: CBPP, "SNAP's Excess Medical Expense Deduction," https://www.cbpp.org/sites/default/files/atoms/files/8-20-14fa.pdf
+
+VT:
+    2020:
+        use_emergency_allotment: True  # As of 4/29/2020
+        uses_bbce: True
+        gross_income_limit_factor: 1.85
+        resource_limit_elderly_or_disabled: NULL
+        resource_limit_elderly_or_disabled_income_twice_fpl: NULL
+        resource_limit_non_elderly_or_disabled: NULL
+        child_support_payments_treatment: DEDUCT  # According to USDA State Options Report. Options as of October 1, 2017.
+        website: https://dcf.vermont.gov/mybenefits
+        mandatory_standard_utility_allowances: True
+        standard_utility_allowances:
+            HEATING_AND_COOLING: 822
+            BASIC_LIMITED_ALLOWANCE: 235
+            ELECTRICITY: 0
+            GAS_AND_FUEL: 0
+            PHONE: 36
+            SEWAGE: 0
+            TRASH: 0
+            WATER: 0
+        standard_medical_deduction: False

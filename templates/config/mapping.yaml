@@ -1,0 +1,50 @@
+# mapping.yaml — map the metric data contract to the state's own tables (example, illustrative).
+# Generate the views:   capd mapping views mapping.yaml > contract_views.sql
+# Check what is ready:  capd mapping check mapping.yaml
+# Any field left out becomes NULL, and `capd mapping check` lists the metrics it blocks.
+records:
+  application:
+    table: ANALYTICS.ELIG.APPLICATIONS_V
+    fields:
+      application_id: APP_ID
+      received_at: "CONVERT_TIMEZONE('America/Chicago', SUBMITTED_TS)"
+      channel: { column: SUBMIT_CHANNEL_CD, values: { WEB: online, PHN: phone, PPR: paper, INP: in_person } }
+      programs: PROGRAMS_REQUESTED
+      expedited: EXPEDITED_FLG
+  determination:
+    table: ANALYTICS.ELIG.DETERMINATIONS_V
+    fields:
+      application_id: APP_ID
+      program: { column: PGM_CD, values: { MA: medicaid, SNAP: snap } }
+      result: { column: DECISION_CD, values: { APPR: approved, DENY: denied } }
+      decided_at: DECISION_TS
+      automated: "MANUAL_TOUCH_CNT = 0"
+      method: BUDGET_METHOD
+  notice:
+    table: ANALYTICS.NOTICES.NOTICES_V
+    fields:
+      notice_id: NOTICE_ID
+      application_id: APP_ID
+      notice_type: NOTICE_TYPE
+      channel: DELIVERY_CHANNEL
+      generated_at: GENERATED_TS
+      sent_at: SENT_TS
+      automatic: "GENERATED_BY = 'SYSTEM'"
+  renewal:
+    table: ANALYTICS.ELIG.RENEWALS_V
+    where: "PGM_CD = 'MA'"
+    fields:
+      renewal_id: RENEWAL_ID
+      program: "'medicaid'"
+      due_date: DUE_DT
+      completed_at: COMPLETED_TS
+      ex_parte: EX_PARTE_FLG
+      prepopulated_sent: PREPOP_FORM_FLG
+  work_item:
+    table: ANALYTICS.WORKLOAD.TASKS_V
+    fields:
+      item_id: TASK_ID
+      item_type: TASK_TYPE
+      created_at: CREATED_TS
+      status: { column: TASK_STATUS, values: { C: closed, O: open } }
+      due_date: DUE_DT

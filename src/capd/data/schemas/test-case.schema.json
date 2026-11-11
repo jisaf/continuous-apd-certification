@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jisaf/continuous-apd-certification/schemas/test-case.schema.json",
+  "title": "Golden test case",
+  "description": "Household facts in, expected outcome out. Framework-neutral.",
+  "type": "object",
+  "required": [
+    "id",
+    "program",
+    "rules",
+    "source",
+    "policyPeriod",
+    "household",
+    "expected"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "program": {
+      "enum": [
+        "medicaid",
+        "snap"
+      ]
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(cms|fna|state):[a-z]+:[A-Za-z0-9.\\-]+$"
+      },
+      "minItems": 1
+    },
+    "state": {
+      "type": "string",
+      "description": "two-letter state code the expected values were computed for"
+    },
+    "policyPeriod": {
+      "type": "string",
+      "description": "for example FY2020; expected values are only valid for this period"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "name",
+        "license"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "line": {
+          "type": "integer"
+        },
+        "license": {
+          "type": "string"
+        }
+      }
+    },
+    "household": {
+      "type": "object",
+      "description": "program-specific facts; the system adapter maps these to the system's API"
+    },
+    "expected": {
+      "type": "object",
+      "properties": {
+        "eligible": {
+          "type": "boolean"
+        },
+        "monthlyBenefit": {
+          "type": "number"
+        },
+        "category": {
+          "type": "string"
+        },
+        "notices": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "active",
+        "disputed",
+        "retired"
+      ],
+      "default": "active"
+    },
+    "dispute": {
+      "type": "object",
+      "properties": {
+        "raisedBy": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "raisedOn": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

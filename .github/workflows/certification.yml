@@ -1,0 +1,37 @@
+# Reference build: the GitHub Actions template (./capd.yml, a copy of templates/github-actions/capd.yml)
+# running on the sample system. Every pull request gets the sticky certification comment, and every
+# build on main publishes the capd-evidence artifact that later pull requests use as their baseline.
+name: certification
+
+on:
+  push: { branches: [main] }
+  pull_request:
+
+permissions: { contents: read }
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python -m pip install -e ".[dev]"
+      - name: The sample system's tagged tests and a security scan
+        run: |
+          mkdir -p reports
+          (cd examples/sample-system && python -m pytest -q --tb=short -p no:cacheprovider -o junit_family=xunit1 \
+              --junitxml="$GITHUB_WORKSPACE/reports/junit.xml" --cucumberjson="$GITHUB_WORKSPACE/reports/cucumber.json") || true
+          ruff check --quiet --select S --output-format sarif examples/sample-system/adapter.py > reports/security.sarif || true
+      - uses: actions/upload-artifact@v4
+        with: { name: test-reports, path: reports }
+
+  certification:
+    needs: tests
+    if: always()
+    uses: ./.github/workflows/capd.yml
+    with:
+      config: examples/sample-system/capd-ci.yaml
+      reports-artifact: test-reports
+      capd-version: "."             # install capd from this checkout
+    permissions: { contents: read, pull-requests: write, actions: read }

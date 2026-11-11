@@ -1,0 +1,2 @@
+# Quarantined tests: still run, never block. Fix or remove each within 2 sprints.
+# One test ID per line, as shown in the static report.

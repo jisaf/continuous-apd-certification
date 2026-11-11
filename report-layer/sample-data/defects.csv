@@ -1,0 +1,4 @@
+defect_key,severity,status,opened_at,closed_at,rule_keys
+DEF-101,critical,closed,2026-10-01 00:00:00,2026-10-03 00:00:00,fna:sirt:S0215
+DEF-118,high,open,2026-11-02 00:00:00,,fna:sirt:S0109
+DEF-121,medium,open,2026-11-06 00:00:00,,cms:ee:EE9
