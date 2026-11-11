@@ -19,7 +19,7 @@ def test_golden_cases_match_the_schema():
 
 
 def test_config_templates_validate():
-    for p in [ROOT / "examples/sample-system/capd.yaml", ROOT / "templates/config/capd.yaml"]:
+    for p in [ROOT / "examples/sample-system/capd.yaml", ROOT / "examples/sample-system/capd-ci.yaml", ROOT / "templates/config/capd.yaml"]:
         assert load(p)["catalogVersion"] == "1.0.0", p
 
 
@@ -38,3 +38,7 @@ def test_docs_reference_existing_files():
     readme = (ROOT / "README.md").read_text()
     for link in __import__("re").findall(r"\]\(((?!https?:|#|mailto:)[^)#\s]+)", readme):
         assert (ROOT / link).exists(), f"README: broken link {link}"
+
+
+def test_reference_workflow_matches_the_template():
+    assert (ROOT / ".github/workflows/capd.yml").read_text() == (ROOT / "templates/github-actions/capd.yml").read_text()

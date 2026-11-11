@@ -1,0 +1,22 @@
+# capd configuration used by this repository's own reference build (.github/workflows/certification.yml).
+# The test reports are downloaded to the workspace root, two folders up from this file.
+catalogVersion: "1.0.0"
+state: XX
+environment: ci
+gateMode: report-only
+quarantineFile: quarantine.txt
+taggedPaths:
+  - "tests.test_golden_cases::*"
+sources:
+  - connector: junit
+    paths: ["../../junit.xml"]
+    options: { exclude: ["tests.test_features::*"] }
+  - connector: cucumber
+    paths: ["../../cucumber.json"]
+  - connector: sarif
+    paths: ["../../security.sarif"]
+    options: { rules: ["cms:cef:CEF09"], failAt: error }
+sinks:
+  - connector: github        # one sticky pull request comment, updated in place
+  - connector: file
+    options: { dir: "../../capd-out" }
