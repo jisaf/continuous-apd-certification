@@ -54,5 +54,6 @@ the catalog's change log.
 
    The sign-off certifies that you wrote the change or otherwise have the right to submit it under the
    project's licenses (Apache-2.0 for code, CC0 for data and documentation). There is no contributor
-   license agreement.
+   license agreement. A CI check (`.github/workflows/dco.yml`) fails a pull request with any unsigned
+   commit; fix it with `git rebase --signoff origin/main` and push again.
 5. Open the pull request with a short description of the change and how you tested it.
