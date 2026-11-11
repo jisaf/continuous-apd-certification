@@ -80,14 +80,14 @@ first use" items below.
 | Part | How it is tested |
 | --- | --- |
 | Rules catalog (896 rules), schemas, `capd` CLI | Unit tests on Python 3.10 and 3.12 |
-| Source connectors: JUnit, Cucumber, SARIF, axe | Unit tests with sample reports |
+| Source connectors: JUnit, Cucumber, SARIF, axe, Playwright | Unit tests with sample reports |
 | Pull request gate, static report, evidence bundle | Unit tests, the demo, and this repository's own pull requests |
 | GitHub pull request comment | Live, on this repository's pull requests |
 | ORW, Intake Form, and SIRT response validators | Unit tests against the pinned CMS and FNA templates |
 | Gate package checklists and hashed submission records (`capd package`) | Unit tests and a [sample package](examples/sample-package/) |
 | Docker image | Built and run in CI on every pull request |
 | Report layer SQL and dashboard | Run on DuckDB with sample data; the SQL is checked to parse as Snowflake SQL |
-| Contributor path (connector template, conformance kit, DCO check) | A Playwright connector submitted as a contributor pull request (#9) |
+| Contributor path (connector template, conformance kit, DCO check) | The Playwright connector, added through a contributor pull request (#9) |
 
 ### Before first use
 
