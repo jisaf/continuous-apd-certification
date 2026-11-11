@@ -129,7 +129,7 @@ The toolkit is a set of small tools for technical implementers, each useful alon
 | Connectors | With the core | Read evidence from a source (test reports, trackers, scanners, metric queries) or publish results to a target (pull request comment, CI summary, ledger) | Core interface |
 | Example test packs | Yes, as templates | Pre-written Gherkin scenarios, metric queries, and report checks keyed to rule IDs | Rules catalog IDs |
 | Package generators | With the core | Filled Intake Form, ORW, SIRT response, Go/No-Go evidence index, upload manifest | Core, catalog |
-| Evidence ledger | With the core | History across runs, state acceptance, freshness; kept as a reports branch in git or as tables in the state's Snowflake, with no new server | Core evidence schema |
+| Evidence ledger | With the core | History across runs, state acceptance, freshness; kept as a reports branch in git or as tables in the state's existing data platform, with no new server | Core evidence schema |
 | Director dashboard | With the ledger | Readiness, trends, alerts, and the views described below; static HTML first, then the state's existing BI tools | Evidence history |
 
 ### The connector interface
@@ -228,9 +228,9 @@ The toolkit needs a state's data for two jobs only, so it defines two small cont
 
 The toolkit links three things that exist today but are not connected: the published rules, the vendor's delivery signals, and the state's review packages. The state owns the instance and the evidence; the vendor feeds it.
 
-![Static reports use pipeline data only; external data joins in the optional Snowflake layer](images/architecture.png)
+![Static reports use pipeline data only; external data joins in the optional report layer](images/architecture.png)
 
-Everything in the core box runs inside a pipeline with no server. The rules decide what each piece of evidence proves, and each run leaves an evidence bundle as a build artifact. The static report is built from that bundle alone. External sources (Jira, production data, security findings, documents) never enter the pipeline; they join the evidence only in the optional Snowflake layer.
+Everything in the core box runs inside a pipeline with no server. The rules decide what each piece of evidence proves, and each run leaves an evidence bundle as a build artifact. The static report is built from that bundle alone. External sources (Jira, production data, security findings, documents) never enter the pipeline; they join the evidence only in the optional report layer.
 
 ### 1. Rules catalog
 
@@ -270,7 +270,7 @@ Source connectors collect evidence from tools the vendor already runs. The core 
 | Production metrics | Queries against the reporting database | ORW rows; CR metrics |
 | Documents and sign-offs | State document store; e-signature | CEF evidence; letters; plans |
 
-Of these, test results, coverage and traceability, and scans run in CI come from the pipeline itself. Defects, production metrics, and documents come from external sources. Their connectors load into the Snowflake layer, not into the pipeline's evidence bundle, so the static report never contains them.
+Of these, test results, coverage and traceability, and scans run in CI come from the pipeline itself. Defects, production metrics, and documents come from external sources. Their connectors load into the report layer, not into the pipeline's evidence bundle, so the static report never contains them.
 
 ### 3. Rule engine and validators
 
@@ -291,26 +291,26 @@ A hosted app would trigger a security review in every state, so the views are de
 | --- | --- | --- | --- | --- |
 | 1. Static report per build | Each run writes one self-contained HTML file (no external scripts, no server) and its evidence JSON. The pipeline commits both to a dedicated reports branch or a separate private reports repository, never to the code branch. | None | Latest run, plus links to earlier files | Anyone who can read that repository |
 | 2. Git as the ledger | Each run's evidence JSON is a signed commit on a protected reports branch, so the branch is an append-only history. The report generator reads the branch to draw trends. | None | Full | Same as step 1 |
-| 3. Snowflake tables | The pipeline also loads the evidence JSON into a certification schema in the state's Snowflake account, next to the metric data it already holds. External data (production metrics, security findings, Jira defects) joins the evidence here, never in the static report. | None (existing account) | Full, queryable | Snowflake roles mapped to state groups |
-| 4. Existing BI tools | Starter dashboards on those tables in Streamlit in Snowflake, Snowsight, Power BI, or Tableau, whichever the state already licenses. The toolkit ships the table schema and templates. | None (existing tools) | Full | The BI tool's own access control |
+| 3. Report layer tables | The pipeline also loads the evidence JSON into a certification schema in the state's existing data platform (for the first project, Snowflake), next to the metric data it already holds. External data (production metrics, security findings, Jira defects) joins the evidence here, never in the static report. | None (existing account) | Full, queryable | Platform roles mapped to state groups |
+| 4. Existing BI tools | Starter dashboards on those tables in the BI tool the state already licenses: Power BI, Tableau, or a native tool of its data platform (for example Streamlit in Snowflake). The toolkit ships the table schema and templates. | None (existing tools) | Full | The BI tool's own access control |
 | Side channels | A Jira sink keeps one Jira issue per rule or gate with its current status, so the director sees certification in Jira dashboards the team already uses. A pipeline digest posts a weekly summary to email or chat. | None | Per tool | Per tool |
 
-Static reports contain only data the pipeline produced, so they need no access rules beyond the repository's own. Using existing tools avoids a new system, not data classification: the state still classifies whatever it loads into Snowflake under its own policy.
+Static reports contain only data the pipeline produced, so they need no access rules beyond the repository's own. Using existing tools avoids a new system, not data classification: the state still classifies whatever it loads into the report layer under its own policy.
 
 ### What each layer shows
 
 The two layers have different data and different jobs.
 
 - **Static report: pipeline data only.** It shows only what the pipeline produced in that run: test results, rule status, coverage, scans run in the pipeline, file validation results, and gate dates from configuration. It never pulls external data: no security assessment findings, no Jira text, no production metrics. Its readers can already see everything the pipeline sees, so it needs no roles or evidence classes. Whoever can read the repository can read the report; if the repository is public, so is the report.
-- **Snowflake dashboard: where external data joins.** Production metrics from case data, third-party security findings and the POA&M, and Jira defect data are combined with the pipeline evidence here, behind Snowflake roles.
+- **Report layer: where external data joins.** Production metrics from case data, third-party security findings and the POA&M, and Jira defect data are combined with the pipeline evidence here, behind the data platform's roles. It runs on whatever SQL data platform the state already has; nothing in it requires a particular product.
 
-**The Snowflake layer is mostly patterns and templates, not product code.** Every state's Snowflake account, data, security model, and BI tool differ, so the toolkit ships:
+**The report layer is mostly patterns and templates, not product code.** Every state's data platform, data, security model, and BI tool differ, so the toolkit ships templates in portable SQL, with a first adaptation for the first project's platform (Snowflake):
 
 - a documented certification schema for evidence and rule status;
 - a load pattern for pipeline evidence bundles;
 - metric query templates written against the metric data contract;
 - role and secure-view templates: viewer, acceptor, security, and a write-only loader; views that show restricted items to viewers only as status and counts; suppression of counts under 11;
-- starter dashboards for Streamlit in Snowflake, Power BI, and Tableau, connecting with each person's own login so Snowflake roles apply;
+- starter dashboards for Power BI, Tableau, and platform-native tools, connecting with each person's own login so the platform's roles apply;
 - guidance for loading restricted sources, such as a POA&M export run by the security role.
 
 States adapt these with their own data and security teams. The code the toolkit owns and maintains stays in the pipeline: the core, the connectors, and the static report.
@@ -510,7 +510,7 @@ Phase 0 helps any state on day one, without vendor changes: like the HPT online 
 | FNA pilot | Assumed: a live pilot with the new system as system of record, plus an optional legacy comparison run, meets 7 CFR 277.18. Confirm with FNA. |
 | Shared catalog hosting | No CMS or FNA hosting assumed. The core repository is the upstream. |
 | First project | One state, not named publicly. Assumed profile: full rebuild from scratch by an agile-first civic tech vendor. GitHub for code, Azure DevOps for pipelines, Jira for issues, Snowflake for metrics. First connectors: GitHub, Azure DevOps, Jira, Snowflake. |
-| Dashboard and hosting | No dedicated hosted app for now, because it would trigger a state security review. Start with a static HTML report per build, committed to the repository. Then use tools the state already runs (Snowflake, Power BI, Tableau, Jira). A hosted app is paused. Static reports show pipeline data only; external data joins only in Snowflake, which ships mainly as patterns and templates. |
+| Dashboard and hosting | No dedicated hosted app for now, because it would trigger a state security review. Start with a static HTML report per build, committed to the repository. Then use tools the state already runs (its data platform, Power BI, Tableau, Jira). A hosted app is paused. Static reports show pipeline data only; external data joins only in the report layer on the state's existing data platform, which ships mainly as patterns and templates. |
 | Program tags | Used only for the toolkit's own purposes (filtering evidence by agency, gates, and views). Never used for cost allocation. |
 | Data model | No data model. Two small contracts: a metric data contract (only the fields the metrics read) and a test case format (household facts in, expected outcome out). A complete reference implementation covers every tracked item; states map fields through configuration and extend through code plugins. |
 | Language and packaging | Language-neutral contracts (JSON Schema, documented CLI) with one reference implementation shipped as a package and a container image. |
@@ -525,7 +525,7 @@ Phase 0 helps any state on day one, without vendor changes: like the HPT online 
 
 **For the state and the first project**
 
-- [ ] **Access and restricted evidence.** Agree which Snowflake roles see which external data, starting from the role templates.
+- [ ] **Access and restricted evidence.** Agree which report layer roles see which external data, starting from the role templates.
 
 **For the design**
 

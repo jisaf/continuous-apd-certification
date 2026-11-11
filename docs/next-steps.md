@@ -17,7 +17,7 @@ Status as of 2026-11-11. The full reasoning is in [`proposal.md`](proposal.md).
 ## Phase 1 — Build to ORR (first state project)
 
 - Pipeline connectors: GitHub, Azure DevOps (pipeline step and summary), Jira (one issue per rule or gate out), email and chat digests.
-- Snowflake layer, mostly patterns and templates: certification schema, evidence load pattern, metric query templates, role and secure-view templates, starter dashboards, and loaders for external data (Jira defects, security findings).
+- Report layer on the state's existing data platform (first adaptation: Snowflake), mostly patterns and templates in portable SQL: certification schema, evidence load pattern, metric query templates, role and secure-view templates, starter dashboards, and loaders for external data (Jira defects, security findings).
 - Example test packs: SIRT pre-write candidates and the E&E outcomes with clear behaviour, as Gherkin with rule IDs tagged.
 - Golden case set for the policy indicators (see below).
 - Package generators for the ORR and the FNA UAT Go/No-Go.
@@ -25,7 +25,7 @@ Status as of 2026-11-11. The full reasoning is in [`proposal.md`](proposal.md).
 
 ## Decisions still needed
 
-- Which Snowflake roles see which external data, starting from the role templates.
+- Which report layer roles see which external data, starting from the role templates.
 - Legal review of the [contributor license agreement](../CLA.md).
 - Confirmation from FNA and CMS that generated files in their templates, and the reading of the pilot rule, are acceptable.
 
