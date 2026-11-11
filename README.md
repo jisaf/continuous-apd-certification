@@ -19,7 +19,7 @@ gives the state a running view of readiness:
 - **For an analyst:** a report layer of SQL templates and a dashboard that run on the state's existing data
   platform (Snowflake first) or locally on DuckDB. → [Report layer](docs/report-layer.md)
 
-> **Status: MVP, not yet released.** It runs end to end in a real GitHub pipeline (this repository's own
+> **Status: MVP, release v0.1.0.** It runs end to end in a real GitHub pipeline (this repository's own
 > [certification build](.github/workflows/certification.yml)), but some parts have not run against live
 > services. See [Status and to do](#status-and-to-do). Nothing here is a CMS or FNA product or finding.
 
@@ -91,8 +91,9 @@ first use" items below.
 
 ### Before first use
 
-- [ ] Tag a release (for example `v0.1.0`) and publish the package, so an order can name a fixed version.
-      Today you install from the `main` branch.
+- [x] Tag a release, so an order can name a fixed version: `v0.1.0`
+      (`pip install "capd @ git+https://github.com/jisaf/continuous-apd-certification@v0.1.0"`).
+      It is not on PyPI.
 - [ ] Run the Azure DevOps template in a real Azure DevOps project. It is checked only for structure.
 - [ ] Run the report layer on a real Snowflake account: schemas, roles, loads, the `snowflake` sink, and
       the Streamlit in Snowflake dashboard. The SQL is checked only for syntax.

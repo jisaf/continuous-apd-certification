@@ -6,7 +6,7 @@ run: install, tag a first set of tests, add one pipeline step, and read the repo
 ## 1. Try it locally (15 minutes)
 
 ```sh
-pip install "capd @ git+https://github.com/jisaf/continuous-apd-certification@main"   # pin a release tag in production
+pip install "capd @ git+https://github.com/jisaf/continuous-apd-certification@v0.1.0"   # a release tag
 capd catalog --search "standard deduction"      # find the rules your tests prove
 ```
 
