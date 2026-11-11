@@ -1,0 +1,23 @@
+id,condition_short,primary,secondary,notes
+CEF01,"More efficient, economical administration",DOCUMENT,,"APD, AoA, SS-A, CBA."
+CEF02,Meets SMM Part 11 requirements,DOCUMENT,,Self-attestation; points to business-area outcomes.
+CEF03,Compatible with Medicare systems (duals),DATA_METRIC,DOCUMENT,Evidence of processing dual eligibles = counts from loaded data; may be attestation.
+CEF04,Supports QIO data requirements,DOCUMENT,EXTERNAL,Interface description; often N/A for E&E.
+CEF05,State owns 90% FFP software,DOCUMENT,,Contract clause.
+CEF06,Federal royalty-free license,DOCUMENT,,Contract clause.
+CEF07,Costs per 45 CFR 75 subpart E,DOCUMENT,,Contract/APD.
+CEF08,Agency agrees to use system for APD period,DOCUMENT,,Written agreement.
+CEF09,Safeguarding per 42 CFR 431 subpart F,EXTERNAL,DATA_METRIC,Third-party SCA and pen test required; monthly vulnerability scans and POA&M can be produced continuously from tooling.
+CEF10,"Modular, open interfaces, separated business rules",DOCUMENT,AUTO_TEST,"Diagrams, data model, rules-engine screenshot; published API contracts could be checked automatically."
+CEF11,MITA maturity,DOCUMENT,,SS-A or attestation.
+CEF12,ONC/HIPAA/508/standards alignment,EXTERNAL,MANUAL_DEMO,Third-party SCA/pen test; 508 Level AA report needs manual accessibility testing (automated scans cover part).
+CEF13,Promote reuse,DOCUMENT,,APD narrative.
+CEF14,"Accurate, timely determinations and communications",DATA_METRIC,,Refers to business-area outcome metrics (E&E).
+CEF15,"Transaction data, reports, performance info",DATA_METRIC,EXTERNAL,ORW metrics and SLA/KPI data; T-MSIS OBA confirmation and PERM come from CMS.
+CEF16,Marketplace/Hub/HIE/human services interoperability,DATA_METRIC,EXTERNAL,"Refers to E&E outcomes EE22-EE25 (mix of CMS AT report, state metrics, tests)."
+CEF17,Acceptable MAGI functionality via performance testing,AUTO_TEST,DATA_METRIC,Performance testing against critical success factors; refers to E&E outcomes.
+CEF18,Plans to reduce consequences of failure (DR),DOCUMENT,MANUAL_DEMO,DR plan plus DR test results and POA&M.
+CEF19,Key state personnel named in APD,DOCUMENT,,
+CEF20,Documentation so others can operate,DOCUMENT,,"Transition plan, ConOps, training material."
+CEF21,Minimise cost of alternate hardware/OS,DOCUMENT,,Contract/APD/AoA.
+CEF22,Other statutory/regulatory conditions,DOCUMENT,DATA_METRIC,"Attestation; CMS-37/64, ORW metrics, T-MSIS OBA."

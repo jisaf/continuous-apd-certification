@@ -1,0 +1,28 @@
+id,short_title,orr_type,cr_type,primary,notes
+EE1,Multi-channel application intake,AUTO_TEST+MANUAL_DEMO,DATA_METRIC,DATA_METRIC,ORR: online browsers by automated test; paper/phone/in-person intake needs demo. CR: % by modality (PI #5).
+EE2,User-friendly dynamic online application,AUTO_TEST+MANUAL_DEMO,DATA_METRIC+MANUAL_DEMO,DATA_METRIC,"Skip logic is testable; 'user-friendly' needs usability study/surveys. CR: completion time, abandonment."
+EE3,"Automatic enrollment (SSI, deemed newborns)",AUTO_TEST,DATA_METRIC,DATA_METRIC,
+EE4,MAGI and non-MAGI income methodologies,AUTO_TEST,EXTERNAL+DOCUMENT,EXTERNAL,CMS metric is PERM plus QA process description. Rule test suite at ORR is strong supporting evidence but not the named metric.
+EE5,"Electronic verification, no-touch determinations",AUTO_TEST+EXTERNAL,DATA_METRIC,DATA_METRIC,ORR: interface tests with stubs; Hub/SSA connection needs partner sign-off. CR: % fully automated.
+EE6,Timely determinations (45/90 days),AUTO_TEST,DATA_METRIC,DATA_METRIC,Only a production metric proves timeliness; ORR test only shows clocks/dates are tracked.
+EE7,Reasonable opportunity period,AUTO_TEST,DATA_METRIC,DATA_METRIC,
+EE8,Enrolled pending SSN verification,AUTO_TEST,DATA_METRIC,DATA_METRIC,
+EE9,Automated notices and RFIs,AUTO_TEST,DATA_METRIC,DATA_METRIC,
+EE10,Electronic notices via preferred channel,AUTO_TEST,DOCUMENT,AUTO_TEST,CMS metric is an outcome attestation; an automated test is the natural evidence behind it.
+EE11,Prompt transmission to MMIS,AUTO_TEST,DATA_METRIC,DATA_METRIC,Interface test at ORR needs MMIS test endpoint.
+EE12,Presumptive eligibility applications,AUTO_TEST,DATA_METRIC,DATA_METRIC,
+EE13,Ex parte renewals,AUTO_TEST,DATA_METRIC,DATA_METRIC,
+EE14,Pre-populated renewal forms,AUTO_TEST,DATA_METRIC,DATA_METRIC,
+EE15,Eligibility hierarchy (most advantageous group),AUTO_TEST,AUTO_TEST+EXTERNAL,AUTO_TEST,"Metric lists test results, PERM/CAP and demo; automated tests named explicitly."
+EE16,Accurate eligibility category assignment,AUTO_TEST,EXTERNAL,EXTERNAL,Only metric is PERM. Rule tests are supporting evidence.
+EE17,Incarcerated individuals,AUTO_TEST,DATA_METRIC,DATA_METRIC,"CR metrics are claims counts from MMIS, not E&E data."
+EE18,Emergency Medicaid,AUTO_TEST,DATA_METRIC,DATA_METRIC,CR metrics are claims counts from MMIS.
+EE19,Retroactive eligibility,AUTO_TEST,DATA_METRIC,DATA_METRIC,
+EE20,Accurate effective date,AUTO_TEST,AUTO_TEST+DOCUMENT,AUTO_TEST,Metric: attestation backed by pass/fail tests or demo.
+EE21,Multi-benefit: pend one program without pending Medicaid,AUTO_TEST,DATA_METRIC,DATA_METRIC,"Key for Medicaid+SNAP. ORR test: SNAP pends, Medicaid determined. CR: timeliness of multi-benefit apps."
+EE22,Bi-directional data sharing with IAPs,AUTO_TEST+EXTERNAL,EXTERNAL+DATA_METRIC,EXTERNAL,FFE AT success rates come from CMS Weekly AT Report; SBE/CHIP/BHP counts are state data.
+EE23,Account transfers (determination states),AUTO_TEST,DATA_METRIC,DATA_METRIC,ORR needs FFE test environment.
+EE24,Account transfers (assessment states),AUTO_TEST,DATA_METRIC,DATA_METRIC,
+EE25,Real-time MEC check for FFE,AUTO_TEST+EXTERNAL,DOCUMENT+AUTO_TEST,AUTO_TEST,Test needs Hub/FFE test partner.
+EE26,"Accessibility (disability, LEP)",MANUAL_DEMO,DATA_METRIC,DATA_METRIC,"Default metrics are call-center counts (TTY, translation), mostly outside the E&E system; they measure use, not access. Real proof is 508/assistive-tech testing (MANUAL_DEMO)."
+EE27,Appeals via multiple channels,AUTO_TEST+MANUAL_DEMO,DATA_METRIC,DATA_METRIC,Online channel testable; phone/mail/in-person need demo.
