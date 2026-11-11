@@ -1,0 +1,27 @@
+id,criterion,primary,secondary,notes
+GL01,Transmittal letter,DOCUMENT,,
+GL02,Training,DOCUMENT,DATA_METRIC,Training plan and IBP description; worker processing-time comparison is a metric.
+GL03,Current program performance,DATA_METRIC,DOCUMENT,95% timeliness from legacy/pilot data; mitigation plan.
+GL04,Contingency plan,DOCUMENT,,
+GL05,Escalation plan,DOCUMENT,,
+GL06,Communication plan,DOCUMENT,,
+GL07,Major Change notification,DOCUMENT,,"120 days before implementation, 7 CFR 272.15."
+GL08,SIRT completed,DOCUMENT,AUTO_TEST,Completed SIRT with responses; most SIRT answers could be backed by automated tests (see sirt_classified.csv).
+GL09,Client notices,DATA_METRIC,DOCUMENT,% accurate notices in pilot; accuracy comes from sampled human review of content/print/mail.
+GL10,Reports,REPORT_CHECK,EXTERNAL,Named reports at 95% accuracy on demand; FNS verifies.
+GL11,Valid QC sampling process,DATA_METRIC,AUTO_TEST,Frame completeness/representativeness from pilot data; reproducibility and list fields testable.
+GL12,RO/HQ QC read-only access,AUTO_TEST,DOCUMENT,"Role permission test: read-only, SNAP data only."
+GL13,Duplicate issuances,AUTO_TEST,DOCUMENT,Edits preventing duplicates are testable; process description also asked.
+GL14,Black-out period,DOCUMENT,,
+GL15,Live pilot,DATA_METRIC,DOCUMENT,Pilot caseload diversity statistics; pilot plan.
+GL16,Statewide implementation plan,DOCUMENT,,
+GL17,Testing goals and severity definitions,DATA_METRIC,DOCUMENT,Scenario and defect counts can come from test tooling/CI; severity definitions are a document.
+GL18,Software defect status,DATA_METRIC,DOCUMENT,Defect table by severity from tracker; source lists this criterion twice (merged here).
+GL19,Deferred defects and functionality,DOCUMENT,DATA_METRIC,List plus tested IBPs.
+GL20,Data conversion,DATA_METRIC,DOCUMENT,Conversion rate vs threshold.
+GL21,Post-conversion clean-up,DOCUMENT,DATA_METRIC,Workload assessment.
+GL22,Site readiness,MANUAL_DEMO,DOCUMENT,Checklist validated at sites.
+GL23,System performance and capacity testing,DATA_METRIC,DOCUMENT,Load test and response-time results.
+GL24,Interface testing and acceptance,EXTERNAL,AUTO_TEST,Trading-partner attestations and EBT processor letter.
+GL25,System security fully tested,EXTERNAL,DOCUMENT,Per State Security Plan; may be internal security team rather than third party.
+GL26,QA/IV&V ratings,EXTERNAL,,

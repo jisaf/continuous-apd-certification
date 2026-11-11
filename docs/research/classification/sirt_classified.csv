@@ -1,0 +1,918 @@
+sheet,row,id,citation,question,row_kind,in_821,primary,secondary,prewrite_candidate,notes
+Eligibility (A and B),4,AP-1,7 CFR 273.2 (c)(1)(iv),Does the system capture the application date?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),5,AP-2,7 CFR 273.2 (c)(1)(iv),"Does the system correctly determine the application date (e.g., online applications submitted after hours should be considered received the next business day)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),6,AP-3,7 CFR 273.10 (a)(1)(ii),Does the system capture the benefit start/proration date?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),7,AP-4,7 CFR 273.2(i)(2),Does the system screen for expedited service?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),8,AP-5,7 CFR 273.2(i)(2),Does the system capture the expedited service determination date?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),9,AP-6,7 CFR 273.2(e)(2),Is the type of interview (face-to-face/phone) designated?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),10,AP-7,7 CFR 273.2 (e)(3),Does the system capture the date the interview is scheduled and all dates of interview attempts?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),11,AP-8,7 CFR 273.2(e)(3),Does the system capture the interview date and indicate if an interview occurred?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),12,AP-9,7 CFR 273.2 (c)(1)(i),"Is an online application available?  / (For purposes of this review, online applications include only those that permit a client to apply directly with a State agency and do not include downloadable applications on a State website that the client must print and submit.)",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),13,AP-10,7CFR 273.2(c) (7)(vii)(B) and (C),Does the online application have an electronic signature compliant with State law?,item,yes,DOCUMENT,AUTO_TEST,no,legal compliance with State e-signature law is a legal judgment
+Eligibility (A and B),14,AP-11,7 CFR 273.2 (c)(7)(viii),"If the State plan includes telephonic signatures, does the system link to the audio file for telephonic signatures?",item,yes,AUTO_TEST,EXTERNAL,yes,needs telephony stub; check signature record links to audio
+Eligibility (A and B),15,AP-12,7 CFR 273.2 (c)(7)(ix),"If the State plan includes gestured signatures, does the system track when and how those are received?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),16,AP-13,7 CFR 273.2 (b)(1)(v),"Can the applicant provide their name, address, and signature only on the first screen of all online applications to submit a valid application?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),17,AP-13,,Regular online application,subitem,no,AUTO_TEST,,yes,AP-13 sub-item
+Eligibility (A and B),18,AP-13,,Any multi-program online applications,subitem,no,AUTO_TEST,,yes,AP-13 sub-item
+Eligibility (A and B),19,AP-13,,"Any simplified online applications (e.g., ESAP)",subitem,no,AUTO_TEST,,yes,AP-13 sub-item
+Eligibility (A and B),20,AP-14,7 CFR 273.2 (b)(1)(v); 273.2(n)(1),"Can the applicant submit the application at any point after providing only the name, address, and signature of a responsible household member (and the household’s authorized representative, if needed)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),21,AP-15,7 CFR 273.2 (b)(1)(viii),Does the online application display the most up to date statements on non-discrimination?,item,yes,AUTO_TEST,MANUAL_DEMO,yes,text compare to current reference statement; currency of reference needs review
+Eligibility (A and B),22,AP-16,7 CFR 273.2 (b)(1)(iii),Does the online application display the most up to date statements on perjury?,item,yes,AUTO_TEST,MANUAL_DEMO,yes,text compare to current reference statement; currency of reference needs review
+Eligibility (A and B),23,AP-17,7 CFR 273.2 (b)(1),Does the online application display the most up-to-date statements on client rights and responsibilities?,item,yes,AUTO_TEST,MANUAL_DEMO,yes,text compare to current reference statement; currency of reference needs review
+Eligibility (A and B),24,AP-18,7 CFR 273.2 (b)(1)(v),Can the online application be submitted by a non-applicant on behalf of an applicant without entry of the non-applicant's SSN?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),25,AP-19,7 CFR 273.2 (b)(1)(v),[Non-citizen] Can the online application be submitted by a non-applicant on behalf of an applicant without entry of the non-applicant's citizenship or immigration status?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),26,AP-20,7 CFR 272.10(b),Does applicant-entered data from the online application auto-populate into the new eligibility system?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),27,AP-21,7 CFR 274.6 (b)(1),"Does the system identify multiple internet or paper applications submitted from the same person or household, and contain specified conditions to identify duplicates?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),28,AP-22,7 CFR 273.2 (c)(6),"Does the system document withdrawal of an application, including the reason for withdrawal and contact made to confirm with the household?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),29,AP-23,7 CFR 273.2 (f)(1)(vii),Does the system capture verification of identity types/sources?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),30,AP-24,Best Practice,"Does the system link to an identity verification system (LexisNexis, state DMV, or other system)?",item,yes,AUTO_TEST,EXTERNAL,no,existence of integration with identity vendor
+Eligibility (A and B),31,AP-25,7 CFR 273.2 (b)(1)(ix),Does the system apply program choices by individual household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),32,AP-26,7 CFR 272.4 (e)(1),Does the system check that each household member is not in another active case?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),33,AP-27,7 CFR 273.3(a),Does the system capture the response and data for each household member’s out of state participation inquiry?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),34,AP-28,7 CFR 272.4 (e)(3),If duplicate participation is detected; does the system prevent entry of the duplicate person or case?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),35,AP-29,7 CFR 273.2 (b)(1)(ix),"If it is an integrated eligibility system for multiple programs, does the system correctly designate which data fields are mandatory and which fields can be left blank, depending on the program(s) the household applies for?",item,yes,AUTO_TEST,,no,"many fields, varies by program mix"
+Eligibility (A and B),36,AP-30,7 CFR 273.2 (b)(1)(ix),"If it is an integrated online application, does the application clarify which questions are the minimum requirements for SNAP?",item,yes,MANUAL_DEMO,AUTO_TEST,no,clarity of wording is a judgment
+Eligibility (A and B),38,HH-1,7 CFR 273.1(a)(3),Does the system allow for an unlimited number of household members?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),39,HH-2,7 CFR 273.2 (b)(1)(v);  273.1 (a)(3),Does the system capture the name of each household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),40,HH-3,7 CFR 273.6(b),Does the system capture a Social Security Number (SSN) for each household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),41,HH-4,7 CFR 273.6 (b)(2) and (3),Does the system track household members who have not provided an SSN?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),42,HH-5,7 CFR 273.6(b)(2),Does the system allow for the addition of household members with no SSN?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),43,HH-6,7 CFR 273.1(b);  273.2 (f)(1)(vii),Does the system capture the date of birth for each household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),44,HH-7,7 CFR 273.1(d),Does the system designate the head of household that the household selected?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),45,HH-8,7 CFR 273.1 (b)(1),"Does the system capture mandatory relationships for household composition, including marital status?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),46,HH-9,7 CFR 273.1(a)(3),Does the system capture whether the members purchase and prepare together?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),47,HH-10,7 CFR 273.4(a),[Non-citizen] Does the system capture the citizenship/immigration status of each SNAP household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),48,HH-11,7 CFR 273.4,"[Non-citizen] Does the system capture all categories of non-citizens not subject to meeting additional conditions for eligibility (e.g., five year waiting period or 40 qualifying hours of work)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),49,HH-12,Best Practice,[Non-citizen] Does the system capture the alien registration number of each SNAP non-citizen household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),50,HH-13,7 CFR 273.4 (c)(3)(iv),[Non-citizen] Does the system capture an indigence determination?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),51,HH-14,7 CFR 273.2(a); 273.2(f)(4)(v); 273.9(d)(6)(i),Does the system have a designation for homeless?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),52,HH-15,7 CFR 273.2 (f)(1)(iv),Does the system capture the household’s mailing address?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),53,HH-16,7 CFR 273.2 (f)(1)(vi),Does the system indicate that a residential address has been verified?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),54,HH-17,7 CFR 273.2 (f)(1)(vi),Does the system indicate that a mailing address has been verified?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),55,HH-18,Best Practice,Does the system capture multiple household telephone number(s)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),56,HH-19,7 CFR 272.4 (b)(1),Does the system capture whether any adult household member speaks English proficiently?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),57,HH-20,7 CFR 272.4 (b)(1),Does the system capture whether any adult household member reads English proficiently?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),58,HH-21,7 CFR 272.4 (b)(2),Does the system capture preferred (written/spoken) language for each household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),59,HH-22,7 CFR 272.4(b)(3),Does the system capture the household need for translation services?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),60,HH-23,7 CFR 272.4(b)(3),Does the system capture the household need for interpreter services?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),61,HH-24,NA,Are the following ineligible non-household members identified in the system:,header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Eligibility (A and B),62,HH-24,7 CFR 273.1 (b)(7)(i),[Non-citizen] Ineligible non-citizens?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),63,HH-24,7 CFR 273.1 (b)(7)(i),Ineligible students?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),64,HH-24,7 CFR 273.1 (b)(7)(iii),Individuals disqualified for noncompliance with work requirements?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),65,HH-24,7 CFR 273.1 (b)(7)(iv),Individuals disqualified for failure to provide an SSN?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),66,HH-24,7 CFR 273.1 (b)(7)(v),Individuals disqualified for an IPV?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),67,HH-24,7 CFR 273.1 (b)(7)(vii),Individuals convicted of a drug-related felony?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),68,HH-24,7 CFR 273.1 (b)(7)(viii),"Individuals disqualified in another assistance program, if the State has selected this option?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),69,HH-24,7 CFR 273.1 (b)(7)(ix),Fleeing felons?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),70,HH-24,7 CFR 273.1 (b)(7)(x),Individuals disqualified for failure to cooperate with child support enforcement or for being delinquent on court-ordered child support ?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),71,HH-24,7 CFR 273.1 (b)(7)(xi),Ineligible ABAWDs?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),72,HH-24,7 CFR 273.1 (b)(7)(xii),Individuals convicted of certain crimes who are out of compliance with the terms of their sentence?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),73,HH-25,7 CFR 273.1(e),Can the system correctly identify when a household member is on strike and if their household is eligible?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),74,HH-26,NA,Does the system correctly apply eligibility and budgeting rules and State option(s) for treatment of income and deductions for non-household members as well as those specified in:,header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Eligibility (A and B),75,HH-26,7 CFR 273.11 (c)(1),Intentional Program violation disqualification?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),76,HH-26,7 CFR 273.11 (c)(1),Felony drug conviction disqualification?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),77,HH-26,7 CFR 273.11 (c)(1),Fleeing felon disqualification?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),78,HH-26,7 CFR 273.11 (c)(1),Workfare or work requirement sanctions?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),79,HH-26,7 CFR 273.11 (c)(2),SSN disqualification?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),80,HH-26,7 CFR 273.11 (c)(2),Ineligible ABAWDs?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),81,HH-26,7 CFR 273.11 (c)(2),Child support disqualification?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),82,HH-26,7 CFR 273.11 (c)(2),Comparable disqualification?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),83,HH-26,7 CFR 273.11 (c)(3),[Non-citizen] Ineligible non-citizen members?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),84,HH-26,7 CFR 273.11(d),Other non-household members?,item,yes,AUTO_TEST,,no,open-ended 'other'
+Eligibility (A and B),86,S-1,7 CFR 273.1 (b)(2),Does the system capture which members of the household are 60 or older and/or disabled?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),87,S-2,7 CFR 273.2 (f)(1)(viii)(B),Does the system appropriately identify and verify disability status?,item,yes,AUTO_TEST,EXTERNAL,no,verification source dependent (SSA/medical)
+Eligibility (A and B),88,S-3,7 CFR 273.2(a)(1),"Does the system capture households that may need assistance completing the certification process (e.g., households with disabilities)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),89,S-4,7 CFR 273.2 (j)(2)(i)(D),Does the system identify a household with all SSI recipients?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),90,S-5,7 CFR 273.2 (j)(2)(i)(B); 273.2(j),Does the system identify a household with all TANF/GA recipients?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),91,S-6,7 CFR 273.1 (b)(7)(v),Does the system identify when an entire household has been disqualified and the reason?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),93,E-1,NA,Please explain specific steps that the State has taken to ensure no biases exist in the system.,item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Eligibility (A and B),94,E-2,7 CFR 273.2 (f)(3)(i),Does the system prevent certain types of households from being targeted for enhanced review?,item,yes,MANUAL_DEMO,DOCUMENT,no,reviewer judgment of targeting rules
+Eligibility (A and B),95,E-3,7 CFR 272.6(a),Does the system treat households with different types of last names all the same?,item,yes,AUTO_TEST,,yes,"metamorphic test: vary surname only, outcome unchanged"
+Eligibility (A and B),96,E-4,Best Practice,Is there an error-proofing aspect to the system?,item,yes,MANUAL_DEMO,,no,vague
+Eligibility (A and B),97,E-5,7 CFR 272.6(a),Have flags for enhanced review been reviewed to ensure they are non-discriminatory?,item,yes,DOCUMENT,MANUAL_DEMO,no,evidence of a review having happened
+Eligibility (A and B),99,AR-1,7 CFR 273.2(n),Does the system have a way to indicate that a client has provided an authorized representative designation?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),100,AR-2,7 CFR 273.2 (n)(2),"Does the system differentiate the roles of authorized representative(s)? (i.e., The household has the right to name two authorized representatives: one to make application and report changes for the household and one to use the EBT card. The authorized representative for obtaining benefits may or may not be the same individual designated as an authorized representative for the application process or for meeting reporting requirements.)",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),101,AR-3,7 CFR 273.2 (b)(1)(v),Does the system capture the name(s) of the authorized representatives?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),102,AR-4,7 CFR 273.2 (f)(1)(vii),Does the system capture the address(es) of the authorized representative(s)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),103,AR-5,Best Practice,Does the system capture the telephone number(s) for the authorized representative(s)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),104,AR-6,7 CFR 273.2 (n)(4)(i)(B),Does the system automatically screen authorized representatives through the electronic Disqualified Recipient System (eDRS)?,item,yes,AUTO_TEST,EXTERNAL,yes,eDRS stub; on AR designation a query is made
+Eligibility (A and B),105,AR-7,Best Practice,"Is the system integrated with a verification system (LexisNexis, voter registration, state DMV) to verify authorized representative identity?",item,yes,AUTO_TEST,EXTERNAL,no,existence of integration
+Eligibility (A and B),106,AR-8,7 CFR 273.2 (f)(1)(vii),"If the system is integrated with a verification system and the designated authorized representative fails the process, is there an alternate manual process?",item,yes,DOCUMENT,MANUAL_DEMO,no,manual fallback process
+Eligibility (A and B),108,EI-1,7 CFR 273.9 (d)(2);  273.2 (f)(1)(i),"Does the system capture the gross total earned income for the household, including ineligible household members?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),109,EI-2,7 CFR 273.9(b)(1),Does the system capture the gross earned income by household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),110,EI-3,7 CFR 273.10(c),"Does the system capture a start and stop date (hire date, termination date, date of first check, date of last check) for earned income?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),111,EI-4,7 CFR 273.10(c),Does the system capture the frequency of earned income?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),112,EI-5,7 CFR 273.10(c),Does the system capture whether the earned income is expected to continue?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),113,EI-6,7 CFR 273.10 (e)(1),Does the system capture how to budget income in the benefit month?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),114,EI-7,7 CFR 273.9(b),Does the system capture the source(s) of earned income per household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),115,EI-8,7 CFR 273.2 (f)(1)(i),Does the system capture the verification of earned income type/source per household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),116,EI-9,7 CFR 273.11 (a)(2),Does the system capture the self-employment earned income by household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),117,EI-10,7 CFR 273.11(b),Does the system capture the: / self-employment expenses (allowed/disallowed) or  / self-employment expense standard (if State has one)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),118,EI-11,7 CFR 273.11 (a)(2)(ii) and (iii),Does the system allow for net losses from farm self-employment to be offset from other income? (Note: See UI-6; offset may be made from unearned income also.),item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),119,EI-12,7 CFR 273.9 (b)(1); 273.1 (e)(2),"Are sources of earned income identified, including: / §Training allowances from vocational and rehabilitative programs? / §VISTA? / §On-the-job training? / §Payments from roomer/boarder, (as self-employment income)? / §Work study (other than Federal work study) in excess of excludable amounts?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),120,EI-13,7 CFR 273.9(d)(2),Does the system calculate the earned income deduction?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),121,EI-14,7 CFR 273.9 (d)(2),Does the system apply the earned income deduction only to income coded as earned income?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),122,EI-15,7 CFR 273.12 (c)(3)(iii),Does the system capture instances when the client statement on the application or in the interview differs from what a data match shows?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),123,EI-16,7 CFR 273.9(c),"Does the system identify, based on correct coding, whether earned income is included/excluded based on program type?",item,yes,AUTO_TEST,,no,depends on the State's program mix (integrated system)
+Eligibility (A and B),124,EI-17,7 CFR 273.9 (b)(3),"Can the system attribute disqualified or non-eligible household member earned income to households, as appropriate, in full or prorated share?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),125,EI-18,7 CFR 273.10 (c)(2)(i),"Does the system convert the income entered to a monthly, bi-monthly, bi-weekly or weekly amount as appropriate?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),126,EI-19,7 CFR 273.2 (i)(1)(ii),[Non-citizen] Does the system calculate destitute provisions for income of migrants?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),128,UI-1,7 CFR 273.9(b)(2),Does the system capture the gross unearned income total for households?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),129,UI-2,7 CFR 273.10(c),Does the system capture a start and stop date (if applicable) for unearned income?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),130,UI-3,7 CFR 273.10(c),Does the system capture the frequency of unearned income?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),131,UI-4,7 CFR 273.10 (c)(1),Does the system capture whether the unearned income is expected to continue?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),132,UI-5,7 CFR 273.10 (e)(1),Does the system capture how to budget income in the benefit month?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),133,UI-6,7 CFR 273.9 (b)(2),Does the system capture the individual gross unearned income by household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),134,UI-7,7 CFR 273.9(b)(2),Does the system capture the source(s) of unearned income by household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),135,UI-8,7 CFR 275.12 (a) (i),Does the system capture the verification of unearned income types/sources?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),136,UI-9,7 CFR 273.12 (a)(1)(i)(A),Does the system allow adjustments to unearned income?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),137,UI-10,7 CFR 273.10 (e)(1)(i)(A),"Does the system allow offset(s) from unearned income (e.g., net losses from farm self-employment)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),138,UI-11,7 CFR 273.9 (b)(2),"For integrated systems that produce eligibility determinations for multiple programs, does the system identify whether unearned income is included/excluded based on program type to which the household is applying?",item,yes,AUTO_TEST,,no,depends on the State's program mix (integrated system)
+Eligibility (A and B),139,UI-12,7 CFR 273.9(b)(3),[Non-citizen] Can the system correctly attribute ineligible non-citizen or disqualified household member unearned income to households?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),140,UI-13,7 CFR 273.4 (c)(2),"[Non-citizen] Does the system correctly count the income of a non-citizen's household sponsor, unless the non-citizen household is exempt from sponsor income deeming?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),141,UI-14,7 CFR 273.9 (b)(4),[Non-citizen] Does the system correctly count the income of ineligible non-citizens prior to the enactment of PRWORA living in households with other eligible members?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),142,UI-15,7 CFR 273.9 (b)(3),[Non-citizen] Does the system correctly count the income of ineligible non-citizens under PRWORA living in households with other eligible members?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),143,UI-16,7 CFR 273.9 (b)(3),Can the system attribute disqualified or non-eligible household member unearned income to households as appropriate in full or prorated share?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),146,EX-1,7 CFR 273.9(c)(1),In-kind benefits and excludable vendor payments?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),147,EX-2,7 CFR 273.9 (c)(2),"Income received too infrequently or irregularly to be reasonably anticipated, but not in excess of $30 per quarter?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),148,EX-3,7 CFR 273.9(c)(3),Educational assistance?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),149,EX-4,7 CFR 273.9(c)(4),Loans?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),150,EX-5,7 CFR 273.9(c)(5),"Reimbursements, not to exceed actual expenses?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),151,EX-6,7 CFR 273.9 (c)(6),Moneys received and used for the care and maintenance of a third-party beneficiary who is not a household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),152,EX-7,7 CFR 273.9(c)(7),"Earned income of household members under age 18, in school, and living with parents?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),153,EX-8,7 CFR 273.9(c)(8),Nonrecurring lump-sum payments?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),154,EX-9,7 CFR 273.9(c)(9),Self-employment expenses?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),155,EX-10,7 CFR 273.9 (c)(10),Income excluded by other Federal laws?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),156,EX-11,7 CFR 273.9 (c)(11),Energy assistance?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),157,EX-12,7 CFR 273.9 (c)(12),"Cash donations from charitable organizations, not to exceed $300 per quarter?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),158,EX-13,7 CFR 273.9 (c)(13),Earned income tax credits (EITC)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),159,EX-14,7 CFR 273.9 (c)(14),Payments to E&T participants for costs related to participation in E&T?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),160,EX-15,7 CFR 273.9 (c)(15),Governmental foster care payments for foster care individuals considered to be boarders?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),161,EX-16,7 CFR 273.9 (c)(16),Income of an SSI recipient necessary for fulfilment of a PASS plan?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),162,EX-17,7 CFR 273.9 (c)(17),Legally obligated child support payments (if the State has chosen the option to treat child support as an exclusion)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),163,EX-18,7 CFR 273.9 (c)(18) and (19),"Any complementary assistance program payments excluded for Medicaid or other allowable income excluded for TANF or Medicaid, at the State’s option?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),164,EX-19,7 CFR 273.9 (c)(20),Excludable income received by US military members?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),165,EX-20,26 U.S.C. § 6409,Any refund (or advance payment with respect to a refundable credit) made under the Internal Revenue Code?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),166,EX-21,26 U.S.C. § 6409,"Can the system accommodate additional income exclusions, as Federal law changes?",item,yes,MANUAL_DEMO,DOCUMENT,no,configurability; demo adding an exclusion
+Eligibility (A and B),168,R-1,7 CFR 273.8(a),Does the system correctly identify households subject to the resource test (non-categorically eligible households)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),169,R-2,7 CFR 273.8(b),Does the system correctly calculate total resources?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),170,R-3,7 CFR 273.8(c),Does the system capture individual resource ownership?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),171,R-4,7 CFR 273.8(d),Does the system capture joint resource ownership?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),172,R-5,7 CFR 273.8(e)(8),Does the system correctly exclude inaccessible resources?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),173,R-6,7 CFR 273.8 (e)(3)(i),Does the system correctly capture countable household vehicles?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),174,R-7,7 CFR 273.8  (f)(4),"If the State chooses the option to align its SNAP and TANF vehicle policies, does the system correctly use the least restrictive policy to capture each household vehicle?",item,yes,AUTO_TEST,,no,rule content defined by State TANF/Medicaid policy
+Eligibility (A and B),175,R-8,7 CFR 273.8(f),Does the system correctly value countable household vehicles?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),176,R-9,7 CFR 273.8 (c)(1),"Does the system capture household liquid resources (cash on hand, bank accounts, stocks, bonds)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),177,R-10,7 CFR 273.8 (c)(2),"Does the system capture household nonliquid resources (e.g., real estate other than the primary residence, recreational vehicles)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),178,R-11,7 CFR 273.8(c),Does the system capture other resources?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),179,R-12,7 CFR 273.8(h),Are transfers of resources (3 months prior) identified?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),180,R-13,7 CFR 273.8(c),Does the system capture the verification of resource types/sources?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),181,R-14,7 CFR 273.8 (e)(19),"Does the system correctly exclude the resources not counted for eligibility for Medicaid or TANF assistance, if the State chooses the option to exclude them?",item,yes,AUTO_TEST,,no,rule content defined by State TANF/Medicaid policy
+Eligibility (A and B),182,R-15,7 CFR 273.8 (e)(2),"Does the system correctly exclude non-countable resources (e.g., retirement accounts, education savings accounts, individual development accounts)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),183,R-16,7 CFR 273.8 (e)(13),Can the system correctly attribute disqualified or non-eligible household member resources to the household?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),184,R-17,7 CFR 273.8 (e)(13),"[Non-citizen] Does the system correctly count the resources of a non-citizen's household sponsor, unless the non-citizen household is exempt from sponsor resource deeming?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),185,R-18,7 CFR 273.8 (e)(13),[Non-citizen] Does the system correctly count the resources of ineligible non-citizens living in households with other eligible members?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),187,MD-1,7 CFR 273.9 (d)(3); 273.11 (c)(1),"Does the system check that a household only claims the excess medical deduction for any member who is elderly or disabled? This includes any elderly or disabled member who may be ineligible due to an Intentional Program Violation, felony drug conviction, fleeing felon disqualification, and workfare and or work requirement sanction.",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),188,MD-2,7 CFR 273.9 (d)(3); 273.10 (e)(1)(i)(D),"To determine the amount of the excess medical deduction, does the system correctly estimate the combined total of monthly medical expenses in excess of $35 claimed by each elderly/disabled household member based on available information and verified medical expenses at initial certification?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),189,MD-3,7 CFR 273.9 (d)(3); 273.10 (e)(1)(i)(D),Does the system correctly apply the amount of the excess medical  deduction?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),190,MD-4,7 CFR 273.9 (d)(3),Does the system capture the type/source of each allowable medical expense claimed by an elderly/disabled household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),191,MD-5,7 CFR 273.9 (d)(3); 273.2 (f)(1)(iv),Does the system capture the verification of each medical expense claimed by an elderly/disabled household member?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),193,DD-1,7 CFR 273.9 (d)(4),Does the system capture the household’s total monthly dependent care expenses for a child under age 18 or an incapacitated person of any age?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),194,DD-2,7 CFR 273.9(d)(4),Does the system capture the monthly dependent care expenses by individual?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),195,DD-3,7 CFR 273.9(d)(4),Does the system capture eligibility for dependent care deduction?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),196,DD-4,7 CFR 273.9 (d)(4); 273.2(f)(3),Does the system capture verification of dependent care expense types/sources?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),197,DD-5,7 CFR 273.9(d)(4),Does the system identify whether dependent care expenses are included/excluded based on program type and source?,item,yes,AUTO_TEST,,no,depends on the State's program mix (integrated system)
+Eligibility (A and B),198,DD-6,7 CFR 273.9 (d)(4); 273.11 (c)(1)(i) and (2)(iii),Can the system correctly attribute disqualified or ineligible household member dependent care expenses to household?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),200,SD-1,7 CFR 273.9 (d)(6)(i),"For homeless households, does the system allow the homeless shelter deduction as an alternative to the excess shelter deduction?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),201,SD-2,7 CFR 273.9 (d)(6)(ii),Does the system capture the monthly shelter expense total?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),202,SD-3,7 CFR 273.9  (d)(6)(ii)(A),Does the system capture the rent or mortgage?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),203,SD-4,7 CFR 273.9  (d)(6)(ii)(D),Does the system capture temporarily unoccupied (vacant) home shelter costs?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),204,SD-5,7 CFR 273.9 (d)(6)(ii)(D),Does the system capture the reason why the home is unoccupied?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),205,SD-6,7 CFR 273.9 (d)(6)(ii)(D),"Can the system capture whether the vacant home shelter cost is allowed? (Household must intend to return, current occupants must not claim same costs, home must not be leased or rented during absence).",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),206,SD-7,7 CFR 273.9 (d)(6)(ii)(E),Does the system capture excess shelter expenses for damages due to natural disasters?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),207,SD-8,7 CFR 273.9 (d)(6)(ii)(A),Does the system capture lot rent for location of a mobile home?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),208,SD-9,7 CFR 273.9 (d)(6)(ii)(B),Does the system capture property taxes and frequency?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),209,SD-10,7 CFR 273.9 (d)(6)(ii)(B),Does the system capture property insurance and frequency?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),210,SD-11,7 CFR 273.9 (d)(6)(ii)(C),Does the system capture the utility expenses total?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),211,SD-12,7 CFR 273.9  (d)(6)(ii)(C),Does the system capture the telephone expense and frequency?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),212,SD-13,7 CFR 273.9 (d)(6)(ii)(C),Does the system capture the electricity expense and frequency?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),213,SD-14,7 CFR 273.9 (d)(6)(ii)(C),Does the system capture the gas expense and frequency?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),214,SD-15,7 CFR 273.9 (d)(6)(ii)(C),Does the system capture the oil expense and frequency?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),215,SD-16,7 CFR 273.9 (d)(6)(ii)(C),Does the system capture the water/sewage expense and frequency?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),216,SD-17,7 CFR 273.9 (d)(6)(ii)(C),Does the system capture well install/maintenance?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),217,SD-18,7 CFR 273.9 (d)(6)(ii)(C),Does the system capture septic tank system install/maintenance?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),218,SD-19,7 CFR 273.9 (d)(6)(ii)(C),Does the system capture the trash expense and frequency?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),219,SD-20,7 CFR 273.9 (d)(6)(ii)(C),Does the system capture the heating/cooling expense and frequency?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),220,SD-21,7 CFR 273.9 (d)(6)(iii)(C),Does the system capture the receipt of LIHEAP or other similar energy assistance program?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),221,SD-22,7 CFR 273.9 (d)(6)(iii)(C),Does the system also capture receipt date(s) and amount(s) of LIHEAP payments or other similar energy assistance program received by household?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),222,SD-23,7 CFR 273.9 (d)(6)(iii)(C) and (E),"Depending on the State’s option, does the system properly apply the standard utility allowance that includes heating or cooling to residents of public housing units which have central utility meters and which charge households only for excess heating/cooling costs?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),223,SD-24,7 CFR 273.9 (d)(6)(iii)(A),Does the system correctly determine whether the household is eligible for the Heating and Cooling Standard Utility Allowance (HCSUA)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),224,SD-25,7 CFR 273.9 (d)(6)(iii)(A),Does the system correctly determine whether the household is eligible for the Limited Utility Allowance (LUA)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),225,SD-26,7 CFR 273.9 (d)(6)(iii)(C),Does the system correctly determine whether the household is eligible for single utility allowances?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),226,SD-27,7 CFR 273.9 (d)(6)(ii),Is the maximum excess shelter deduction correctly calculated (for households without an elderly or disabled member)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),227,SD-28,7 CFR 273.9 (d)(6)(ii),Is the excess shelter deduction correctly calculated (for households with an elderly and/or disabled member)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),228,SD-29,7 CFR 273.9 (d)(6)(ii),Does the system correctly apply the excess shelter cap for non-elderly/disabled household members?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),229,SD-30,7 CFR 273.9 (d)(6)(iii)(E),Does the system record what type of utility expense was allowed based on whether the standard utility allowances are mandatory?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),230,SD-31,"7 CFR 273.2 (f)(2), (f)(3)",Does the system capture the verification of shelter expense types/sources?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),231,SD-32,7 CFR 273.9 (d)(6)(ii),"For integrated eligibility systems and multiple program applications, does the system identify whether shelter expenses are included/excluded for SNAP?",item,yes,AUTO_TEST,,no,depends on the State's program mix (integrated system)
+Eligibility (A and B),232,SD-33,7 CFR 273.11 (c)(2)(iii),Can the system attribute disqualified household member shelter expenses to households?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),234,OD-1,7 CFR 273.9(d)(1),Does the system correctly calculate the standard deduction based on household size?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),235,OD-2,7 CFR 273.9 (c)(17),Does the system capture whether the State has chosen to treat child support payments as an exclusion or deduction?,item,yes,AUTO_TEST,DOCUMENT,no,"state configuration setting, not behaviour"
+Eligibility (A and B),236,OD-3,7 CFR 273.9 (d)(5),"If child support payments are treated as a deduction, does the system capture the amount of legally obligated payments, including vendor payments and payments towards arrearages?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),237,OD-4,7 CFR 273.9 (d)(5),"If child support payments are treated as a deduction, does the system check that alimony payments paid to non-household member are not counted towards this deduction?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),238,OD-5,7 CFR 273.2 (f)(1)(xii),"If child support payments are treated as a deduction, does the system capture the verification of child support?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),239,OD-6,7 CFR 273.9 (d)(5),"If child support payments are treated as a deduction, does the system capture the frequency of child support payments?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),241,CAT-1,7 CFR 273.2(j),Does the system capture whether the household is categorically eligible?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),242,CAT-2,7 CFR 273.2(j),"Does the system capture type of categorical eligibility (i.e., BBCE, SSI, TANF cash assistance, or GA)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),243,CAT-3,"7 CFR 273.2 (j)(2)(v), (j)(4)(iii)(A)",Does the system correctly deem resources for categorically eligible households?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),244,CAT-4,"7 CFR 273.2 (j)(2)(v), (j)(4)(iii)(B)",Does the system disregard the gross income limit for categorically eligible households?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),245,CAT-5,"7 CFR 273.2 (j)(2)(v), (j)(4)(iii)(B)",Does the system disregard the net income limit for categorically eligible households?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),246,CAT-6,7 CFR 273.10 (e)(2)(iii),"Depending on state option, are cases of categorically eligible households with 3 or more persons correctly suspended or closed when eligible for zero benefits?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),247,CAT-7,7 CFR 273.2(j),Does the system capture households that are not categorically eligible and thus subject to a resource limit?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),249,WR-1,7 CFR 273.7 (a)(1),Does the system identify and track household members subject to work requirements?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),250,WR-2,7 CFR 273.7 (c)(1)(i),Does the system report work registration status (registered/not registered) at certification?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),251,WR-3,7 CFR 273.7 (c)(1)(ii),Does the system report work registration status (registered/not registered) at recertification?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),252,WR-4,7 CFR 273.7(c)(2),Does the system capture  the work registered household members?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),253,WR-5,7 CFR 273.7(b),Does the system capture and track household members exempt from work registration?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),254,WR-6,7 CFR 273.7(b)(1),Does the system capture the reason for exemption? Including:,header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Eligibility (A and B),255,WR-6,7 CFR 273.7 (b)(1)(vii),Already working at least 30 hours a week or earning wages equivalent to 30 hours of employment at the Federal minimum wage?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),256,WR-6,7 CFR 273.7 (b)(1)(iii),Meeting work requirements for another program (like TANF or unemployment compensation)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),257,WR-6,7 CFR 273.7 (b)(1)(iv),Taking care of a child under 6 or an incapacitated person?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),258,WR-6,7 CFR 273.7 (b)(1)(ii),Unable to work due to a physical or mental limitation?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),259,WR-6,7 CFR 273.7 (b)(1)(vi),Participating regularly in an alcohol or drug treatment program?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),260,WR-6,7 CFR 273.7 (b)(1)(viii),Studying in school or a training program at least half-time?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),261,WR-7,7 CFR 273.7 (c)(2),Does the system identify work registrants who are screened as exempt from mandatory Employment and Training (E&T)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),262,WR-8,7 CFR 273.7 (c)(2),Does the system identify work registrants who are screened as not exempt from mandatory E&T?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),263,WR-9,7 CFR 273.7(e)(5),Does the system correctly identify  E&T voluntary participants?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),264,WR-10,7 CFR 273.7 (c)(11)(ii),Does the system record and track referrals to E&T?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),265,WR-11,7 CFR 273.7 (c)(11)(i),Does the system record and track E&T components assigned to the participant?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),266,WR-12,7 CFR 273.7(i),"If the State has mandatory E&T, does the system track good cause determinations for failure to meet mandatory E&T requirements?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),267,WR-13,7 CFR 273.7 (c)(11)(iv),Does the system track good cause determinations for failure to meet the general work requirements?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),268,WR-14,7 CFR 273.7 (c)(3),"If the individual does not have good cause, does the system appropriately disqualify the individual?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),269,WR-15,7 CFR 273.7 (a)(5),Does the system identify and track refugees participating in a refugee program as appropriate?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),270,WR-16,7 CFR 273.7 (c)(11)(iv),Does the system track the number of disqualifications?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),271,WR-17,7 CFR 273.7 (c)(6)(viii),Does the system generate the number of unduplicated work registrants in the State on October 1?,item,yes,REPORT_CHECK,,yes,
+Eligibility (A and B),272,WR-18,7 CFR 273.7 (c)(6)(ix),"Does the system generate the data needed to complete the FNS 583 Employment and Training Activity Report (i.e., in an XML or Excel file)?",item,yes,REPORT_CHECK,EXTERNAL,no,FNS-583 format; FNS acceptance
+Eligibility (A and B),273,WR-19,7 CFR 273.7 (c)(3),"Does the system auto-fill in the Notice of Adverse Action (NOAA) the 10-day period to come into compliance with the work requirement, including mandatory E&T?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),275,ET-1,7 CFR 273.7 (c)(18)(i),Will E&T providers and other E&T contractors have access to the system to view certain eligibility information related to E&T?,item,yes,AUTO_TEST,DOCUMENT,no,role scope for E&T providers is State-defined
+Eligibility (A and B),276,ET-2,7 CFR 273.7 (c)(17),Does the system generate the information needed to complete the E&T Annual Outcome Report?,item,yes,REPORT_CHECK,,no,E&T Annual Outcome Report
+Eligibility (A and B),277,ET-3,7 CFR 273.7 (c)(6)(ix),Does the system generate the data needed to complete the FNS 583 Employment and Training Activity Report (in either an XML or Excel file)?,item,yes,REPORT_CHECK,EXTERNAL,no,FNS-583 format; FNS acceptance
+Eligibility (A and B),278,ET-4,7 CFR 273.7(d)(1),Does the system include E&T financial management information?  If so:,header,yes,AUTO_TEST,DOCUMENT,no,header row; sub-items carry the checks
+Eligibility (A and B),279,ET-5,7 CFR 273.7 (d)(1)(i)(A),Is 100% Federal funds spending tracked by the system?,item,yes,AUTO_TEST,REPORT_CHECK,no,financial tracking; State accounting setup
+Eligibility (A and B),280,ET-6,7 CFR 273.7(d)(2),Is 50% Federal funds spending tracked by the system?,item,yes,AUTO_TEST,REPORT_CHECK,no,financial tracking; State accounting setup
+Eligibility (A and B),281,ET-7,7 CFR 273.7 (d)(4),"Does the system record and track participant reimbursements (i.e., transportation, dependent care expenses, or other reasonable and necessary expenses) issued to a client?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),282,ET-8,7 CFR 273.7 (d)(4),Can the system identify when participant expenses have been issued even though the client has not complied with work requirements?,item,yes,REPORT_CHECK,,yes,exception query
+Eligibility (A and B),285,ABS-1,7 CFR 273.7 (c)(9)(iii),Does the system identify individuals who are subject to the ABAWD work requirement?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),286,ABS-2,7 CFR 273.7 (c)(9)(iv),Does the system identify individuals exempt from ABAWD requirements?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),287,ABS-3,NA,Does the system capture the reasons for exemptions from the ABAWD work requirement? Including those who are:,header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Eligibility (A and B),288,ABS-3,7 CFR 273.24 (c)(2),Unable to work due to a physical or mental limitation?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),289,ABS-3,7 CFR 273.24 (c)(6),Pregnant?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),290,ABS-3,7 CFR 273.24 (c)(3),Have someone under 18 in the same SNAP household?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),291,ABS-3,7 CFR 273.24 (c)(5),Excused from the general work requirements?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),292,ABS-3,7 CFR 273.24 (c)(1),Individuals turning 50?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),293,ABS-4,7 CFR 273.7 (c)(2),Does the system identify changes in ABAWD status each month and hold a history of the status (people who become subject to or exempt from the ABAWD time limit throughout the year)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),295,ABS-5,7 CFR 273.7 (f)(3),Does the system track whether identified ABAWDs are meeting the ABAWD work requirement month to month and hold a history?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),296,ABS-6,NA,"Does the system track how ABAWDs are meeting the ABAWD work requirement, including by:",header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Eligibility (A and B),297,ABS-6,7 CFR 273.24 (a)(1)(i),Working at least 80 hours a month?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),298,ABS-6,7 CFR 273.24 (a)(1)(ii),Participating in a work program (including E&T) at least 80 hours a month?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),299,ABS-6,7 CFR 273.24 (a)(1)(iii),Participating in a combination of work and work program hours for a total of at least 80 hours a month?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),300,ABS-6,7 CFR 273.24 (a)(1)(iv),Participating in workfare for the number of hours assigned?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),301,ABS-6,7 CFR 273.24 (a)(2)(iv),Indicating when the ABAWD is using multiple of the above options?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),302,ABS-6,7 CFR 273.24 (d)(1)(v),Are excused from the general work requirements?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),304,ABS-7,7 CFR 273.24(b),Does the system track the 3 in 36 countable months of participation and track months in which an ABAWD did not use a countable month/was in compliance?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),305,ABS-8,7 CFR 273.24 (b)(1)(iv),Does the system only consider whether full benefit months are countable months (not partial/prorated benefit months)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),306,ABS-9,7 CFR 273.2 (f)(1)(xiv)(B),Does the system track instances where a client may have already used countable months in another State or was disqualified in another state?,item,yes,AUTO_TEST,EXTERNAL,no,needs other-State/NAC data
+Eligibility (A and B),307,ABS-10,7 CFR 273.24 (b)(3),How does the system track the 36-month period?  (please indicate which one): / a fixed clock (starting at the same time for all ABAWDs or at certification)? / a rolling clock (retrospectively analyzing the previous 36 months?,item,yes,DOCUMENT,,no,open-ended: answer is a description
+Eligibility (A and B),308,ABS-11,7 CFR 273.24(b)(1)(v); 273.7(c)(18)(ii),"In the case of an ABAWD with a provider determination, does the system not count as a countable month the month the ABAWD is informed of the provider determination, and does the system count the next full benefit month as a countable month if the ABAWD does not otherwise meet the ABAWD work requirement?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),310,ABS-12,7 CFR 273.7 (m)(4)(iv),Does the system track good cause for failure to meet the ABAWD requirement?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),311,ABS-13,7 CFR 273.24 (g)(3),Does the system track discretionary exemptions?   / (This includes each month an ABAWD is assigned an exemption and the total number of exemptions used Statewide each quarter.),item,yes,AUTO_TEST,REPORT_CHECK,no,two parts: per-month tracking and statewide quarterly totals
+Eligibility (A and B),312,ABS-14,7 CFR 273.7 (b)(2)(i),Does the system generate a notice and terminate issuance when an ABAWD becomes ineligible?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),314,ABS-15,7 CFR 273.24(e),Does the system track the additional 3 months of eligibility after the first 3 in 36 months are used?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),315,ABS-16,7 CFR 273.24(e),Does the system ensure the additional 3 months of eligibility are consecutive months?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),317,ABS-17,7 CFR 273.24(b),Does the system continue to track ABAWD status and countable months for ABAWDs in areas that are covered by waivers?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),318,ABS-18,7 CFR 273.24 (f)(6),Can the system exempt geographic areas of a State covered by waivers and ensure ABAWDs do not receive countable months in those areas?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),320,ABS-19,7 CFR 273.7 (e)(4)(ii),"Does the system record and track the number of hours an ABAWD is required to participate in E&T, employment, or another work program?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),321,ABS-20,7 CFR 273.7 (f)(2),Does the system track the number of failures to comply with an employment and training program?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),322,ABS-21,7 CFR 273.7 (d)(3)(iii),Does the system track pledge funds?,item,yes,AUTO_TEST,REPORT_CHECK,no,financial tracking; State accounting setup
+Eligibility (A and B),324,S-1,7 CFR 273.5(a),Does the system capture the reason for disqualification/ineligibility?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),325,S-2,NA,"Does the system capture all exemption categories allowing students to be eligible, including those:",header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Eligibility (A and B),326,S-2,7 CFR 273.5(b)(1),Age 17 or younger or age 50 or older?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),327,S-2,7 CFR 273.5(b)(2),Physically or mentally unfit?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),328,S-2,7 CFR 273.5(b)(3),Receiving TANF assistance?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),329,S-2,7 CFR 273.5(b)(4),Enrolled as a result of participation in the Job Opportunities and Basic Skills program?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),330,S-2,7 CFR 273.5(b)(5),Employed for a minimum of 20 hours per week?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),331,S-2,7 CFR 273.5(b)(6),Participating in a State or federally financed work study program?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),332,S-2,7 CFR 273.5(b)(7),Participating in an on-the-job training program?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),333,S-2,7 CFR 273.5(b)(8),Responsible for the care of a dependent household member under the age of 6?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),334,S-2,7 CFR 273.5 (b)(9),Responsible for the care of a dependent household member between the age of 6 and 12 without adequate childcare?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),335,S-2,7 CFR 273.5 (b)(10),A single parent enrolled full-time and responsible for the care of a dependent child under age 12?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),336,S-2,7 CFR 273.5 (b)(11)(i),In an institution of higher education in compliance with a SNAP E&T program?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),337,S-2,7 CFR 273.5 (b)(11)(ii),In an institution of higher education in compliance with an E&T program for low-income households that is operated by a State or local government where one or more of the program components is at least equivalent to a SNAP E&T component?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),338,S-3,7 CFR 273.5 (b)(5),Does the system exempt eligible students enrolled at least half-time from the SNAP general work requirements?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),339,S-4,7 CFR 273.5(a),Does the system address student eligibility based on enrollment status (half time or more)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),340,S-5,"7 CFR 273.9 (b)(1)(vi), (b)(2)(iv), (c)(1)(iv), (c)(3), (c)(5)(ii)(B); 273.10(c)",Does the system correctly calculate student income?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),341,S-6,7 CFR 273.9 (c)(3)(iii),Does the system correctly calculate deductions for educational expenses?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),342,S-7,7 CFR 273.8(e)(9),Does the system correctly calculate student resources prorated as income?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),343,S-8,7 CFR 273.9 (c)(3)(iii),Does the system correctly calculate income exclusions for educational assistance?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),344,S-9,7 CFR 273.5(b)(5),"Does the system correctly account for the state option to average student work hours by month, quarter, trimester, or semester (if applicable)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),345,S-10,7 CFR 273.11 (d)(3),Does the system exclude an ineligible student from an eligible household when calculating income or determining household size?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),347,GRP-1,7 CFR 273.1 (b)(7)(vi),Does the system identify the household member as a resident of an institution (defined as providing the resident with the majority of their meals as part of its normal service)?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),348,GRP-2,7 CFR 273.1 (b)(7)(vi),"Does the system identify exempted group facilities that allow resident eligibility classified by type (Group Living Arrangements (GLA), Drug Addict or Alcoholic program (DAA), Federally subsidized housing for the elderly, Shelter for homeless persons, domestic violence shelter)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),349,GRP-3,7 CFR 273.11 (e)(1) ; (f)(1),Is the facility identified as the authorized representative where applicable?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),350,GRP-4,7 CFR 273.11 (e)(5) and (e)(6); (f)(5) and (f)(6)(iii),"For DAAs and GLAs, does the system correctly divide the benefit allotment between facility & recipient in the month the recipient leaves the facility?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),351,GRP-5,7 CFR 273.11 (g)(2),Is a second issuance in same month for domestic violence shelter residents allowed?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),352,GRP-6,7 CFR 273.11(h),Does the system identify individuals permitted to use benefits at restaurants (where applicable) for purposes of programming household EBT cards to ensure that access to restaurants is limited to eligible households?,item,yes,AUTO_TEST,EXTERNAL,yes,flag for EBT card programming
+Eligibility (A and B),353,GRP-7,7 CFR 272.10 (b)(3)(vi) and (3)(vii),Does the eligibility system or the EBT vendor have the ability to report on the following (indicate those that apply)? / •	Individual Categories / Homeless – Total # and % / Disabled– Total # and % / Elderly – Total # and % / •	Usage / Multiple transactions / Excessive issuance / Rapid transactions / Time of transactions / •	Dollar amount (per benefit),item,yes,REPORT_CHECK,EXTERNAL,no,eligibility system or EBT vendor
+Eligibility (A and B),354,GRP-8,7 CFR 272.10 (b)(3)(iii) and (3)(iv),"Does the system identify if there is a security/password for PIN (e.g., in a domestic violence case)?",item,yes,AUTO_TEST,EXTERNAL,yes,flag in E&E; PIN security often lives in EBT system
+Eligibility (A and B),356,DIS-1,Sec. 5(h)(3) of the Food and Nutrition Act; D-SNAP Guidance,"Does the system process applications, determine eligibility, and calculate benefits for D-SNAP?",item,yes,AUTO_TEST,,no,whole D-SNAP process; too broad
+Eligibility (A and B),357,DIS-2,D-SNAP Guidance (p. 52),Does the system issue notices (approval and denial) of eligibility that specify D-SNAP eligibility and benefit amounts?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),358,DIS-3,D-SNAP Guidance (p. 55-56),Does the system have the ability to check D-SNAP applicants for duplicate participation in regular SNAP?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),359,DIS-4,D-SNAP Guidance (p. 55-56),Does either the eligibility system or EBT system check D-SNAP applicants for duplicate participation against approved D-SNAP applications in other States?,item,yes,AUTO_TEST,EXTERNAL,no,other-State or EBT terminal data
+Eligibility (A and B),360,DIS-5,D-SNAP Guidance (p. 55-56),Does the system check applicants against denied D-SNAP applications?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),361,DIS-6,D-SNAP Guidance (p. 55-56),"Does the system check duplicate participation for all SNAP and D-SNAP cases approved through the EBT terminal (i.e., if state certifies and issues benefits through the EBT terminal and not the eligibility system)?",item,yes,AUTO_TEST,EXTERNAL,no,other-State or EBT terminal data
+Eligibility (A and B),362,DIS-7,"D-SNAP Guidance (p. 65, 71-72)",Does the system separately track and report the amount of D-SNAP benefits issued in order to complete the following reports? / Daily reports / FNS-292b / FNS-46 / FNS-388,item,yes,REPORT_CHECK,,no,feeds several FNS reports
+Eligibility (A and B),363,DIS-8,"D-SNAP Guidance (p. 31, 37-38)",Does the system separately track and report the amount of mass replacement benefits provided for households whose food was purchased with regular SNAP benefits but destroyed in a major disaster event and complete the FNS-46 report?,item,yes,REPORT_CHECK,,no,feeds several FNS reports
+Eligibility (A and B),364,DIS-9,"D-SNAP Guidance (p. 31, 37-38)","Can the system replace a percentage (e.g., 60%, 40%) of a month’s benefits per case number and issuance dates?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),365,DIS-10,"D-SNAP Guidance (p. 47, 66)","Does the system separately track and report disaster supplements issued to ongoing, regular SNAP households that bring their allotment to the maximum for their household size?",item,yes,REPORT_CHECK,,yes,
+Eligibility (A and B),366,DIS-11,D-SNAP Guidance (p. 34),"Regardless of the month of operation when D-SNAP benefits and disaster supplements are issued, is the system able to process and register those benefits as issuances in the corresponding month of the D-SNAP benefit period?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),367,DIS-12,D-SNAP Guidance (p. 78),Does the system check that the address provided for an applicant’s residence at the time of the disaster is within areas authorized to operate D-SNAP?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),368,DIS-13,D-SNAP Guidance (p. 78),"If a State extends D-SNAP eligibility to applicants that worked in areas authorized to operate D-SNAP, does the system check that the address provided for an applicant’s place of employment at the time of the disaster is within those authorized areas?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),369,DIS-14,D-SNAP Guidance (p. 23),"If needed, are State and local office staff able to access the system to operate SNAP and D-SNAP remotely?",item,yes,MANUAL_DEMO,DOCUMENT,no,remote access / role setup is infrastructure
+Eligibility (A and B),370,DIS-15,D-SNAP Guidance (p. 23),"If a State operates D-SNAP application sites at a location other than a local office, can both D-SNAP eligibility and EBT systems be accessed remotely?",item,yes,MANUAL_DEMO,DOCUMENT,no,remote access / role setup is infrastructure
+Eligibility (A and B),371,DIS-16,D-SNAP Guidance (p. 65),Can the system expunge D-SNAP benefits as appropriate based on the State’s approve/required time frame?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),372,DIS-17,D-SNAP Guidance (p. 13-14),"If using the Disaster Gross Income Limit (DGIL) to evaluate financial eligibility for D-SNAP, does the system accurately calculate an applicant’s take-home income for the benefit period?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),373,DIS-18,D-SNAP Guidance (p. 15-16),"If using the Disaster Gross Income Limit (DGIL) to evaluate financial eligibility for D-SNAP, does the system accurately calculate the total amount of actual, unreimbursed disaster expenses?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),374,DIS-19,D-SNAP Guidance (p. 39),"If using the Disaster Standard Expense Deduction (DSED) to evaluate financial eligibility for D-SNAP, does the system check that the applicant’s actual unreimbursed disaster expenses are equal to or greater than $100?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),375,DIS-20,Best Practice,Can new security roles be easily defined in the system for D-SNAP eligibility and issuance workers?,item,yes,MANUAL_DEMO,DOCUMENT,no,remote access / role setup is infrastructure
+Eligibility (A and B),376,DIS-21,"D-SNAP Guidance (p. 23, 34)","Are there back-ups to the D-SNAP, issuance, and regular eligibility systems in case there are system failures during and after a disaster event?",item,yes,DOCUMENT,MANUAL_DEMO,no,backup/DR plan and test
+Eligibility (A and B),377,DIS-22,D-SNAP Guidance (p. 65),"Does the system have a unique identifier for D-SNAP cases (e.g., a unique prefix to case number)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),380,CHG-1,7 CFR 273.12  (a)(1),Does the system identify the type of reporting system to which the household is assigned?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),381,CHG-2,7 CFR 273.12 (a)(1),Does the system allow change reporting (if the State places any households on change reporting)?,item,yes,AUTO_TEST,,no,whole reporting regime; too broad
+Eligibility (A and B),382,CHG-3,7 CFR 273.12 (b)(4),"For change reporting, does the system generate change report forms at certification, recertification, and each time a change report form is returned by the household?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),383,CHG-4,7 CFR 273.12 (a)(5),"Does the State place any households on simplified reporting, and if so does the system allow simplified reporting?",item,yes,AUTO_TEST,DOCUMENT,no,State policy choice plus capability
+Eligibility (A and B),384,CHG-5,7 CFR 273.12 (a)(5)(iii),"For simplified reporting, does the system generate periodic reports (if applicable)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),385,CHG-6,7 CFR 273.12 (a)(5)(iii)(B),"For simplified reporting, does the system allow multiple periodic report timelines (if applicable)?",item,yes,AUTO_TEST,,no,whole reporting regime; too broad
+Eligibility (A and B),386,CHG-7,7 CFR 273.12 (a)(1),Does the system allow monthly reporting (if the State places any households on monthly reporting)?,item,yes,AUTO_TEST,,no,whole reporting regime; too broad
+Eligibility (A and B),387,CHG-8,7 CFR 272.10 (b)(3),"For monthly reporting, does the system generate reports?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),388,CHG-9,7 CFR 273.12 (a)(1),"Does the State place any households on quarterly reporting, and if so does the system allow quarterly reporting?",item,yes,AUTO_TEST,DOCUMENT,no,State policy choice plus capability
+Eligibility (A and B),389,CHG-10,7 CFR 272.10 (b)(3),"For quarterly reporting, does the system generate reports?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),390,CHG-11,7 CFR 273.12 (a)(5)(iii)(E),"If a complete periodic report is not provided timely, does the system generate a reminder notice?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),391,CHG-12,7 CFR 273.12 (a)(5)(iii)(F),"If a periodic report is not provided within 10 days of the due date, does the system generate a timely and adequate notice of termination?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),392,CHG-13,7 CFR 273.12 (a)(5)(iii)(F),Does the system terminate issuance if no report is provided?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),393,CHG-14,7 CFR 273.12 (a)(5)(iv),"Does the system track processing of client reports (monthly, quarterly, periodic)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),394,CHG-15,7 CFR 273.12(c),Are case changes recorded in an audit trail which identifies the EW that made the change?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),395,CHG-16,Best Practice,Do positive database matches with wage-reporting systems initiate a notification to the EW?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),396,CHG-17,7 CFR 273.12 (a)(5)(vi)(B)(5),Do positive database matches with a lottery or gambling entity initiate a notification to the EW?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),397,CHG-18,7 CFR 273.12 (c)(3)(i),Do positive prisoner matches initiate a notification to the EW?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),398,CHG-19,7 CFR 273.12 (c)(3)(i),Do positive death matches initiate a notification to the EW?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),399,CHG-20,7 CFR 273.12 (c)(3)(i),"If there is a positive death or prisoner match for the household, does the system generate a Notice of Match Results?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),400,CHG-21,7 CFR 273.12 (c)(3)(i),"Is there a way for the system to generate/track a request for contact (RFC) notice in response to unclear information only when the information is recent (fewer than 60 days old relative to the current month of participation) and something the household was required to report, or significantly conflicting with the information provided at certification?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),401,CHG-22,7 CFR 273.12 (c)(3)(i)(B),"If the household does not respond to the RFC, does the system generate a Notice of Adverse Action and either terminate the case immediately or suspend the case for 1 month before the termination becomes effective?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),402,CHG-23,7 CFR 273.12 (a)(5)(vi),Does the system allow the EW to track a reported mid-period change that could not be processed until the periodic report or recertification? (This may apply to some changes reported by other programs.),item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),403,CHG-24,7 CFR 273.12 (a)(5)(vi)(B)(2); 273.12(c),"If the system receives info from a source considered “verified upon receipt,” does it automatically update the case, recalculate benefits, suspend/terminate case (as appropriate), and trigger a notice to be sent to the household (if required)?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),404,CHG-25,7 CFR 272.10 (b)(3),Does the system record origin of all reports causing case changes?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),405,CHG-26,7 CFR 273.12 (f)(2)(i),"If an integrated eligibility system, does the system automatically notify other programs of reported changes and new SNAP benefit amount?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),406,CHG-27,7 CFR 273.12 (f)(1),"If an integrated eligibility system, are other program changes and new grant amounts correctly processed for SNAP case?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),407,CHG-28,7 CFR 273.12 (b)(2)(ii),"Are all periodic reports, change report forms, and notices generated in all required languages?",item,yes,MANUAL_DEMO,AUTO_TEST,no,translation quality needs human review
+Eligibility (A and B),409,MC-1,NA,Is the system capable of computing changes and adjusting benefits as needed for:,header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Eligibility (A and B),410,MC-1,7 CFR 273.12 (e)(1)(i)(D),Gross income eligibility limit?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),411,MC-1,7 CFR 273.12 (e)(1)(i)(D),Net income eligibility limit?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),412,MC-1,7 CFR 273.12(e),Resource limit?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),413,MC-1,7 CFR 273.12 (e)(1)(i)(B),Standard deduction?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),414,MC-1,7 CFR 273.12 (e)(1)(i)(C),Shelter cap deduction?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),415,MC-1,7 CFR 273.12 (e)(1)(i)(C),Homeless shelter deduction?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),416,MC-1,7 CFR 273.12(e),Dependent care deduction?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),417,MC-1,7 CFR 273.12(e),Utility standards?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),418,MC-1,7 CFR 273.12(e),Disaster income eligibility standards?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),419,MC-1,7 CFR 273.12 (e)(1)(i),Minimum/maximum monthly SNAP allotments?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),420,MC-1,7 CFR 273.12(e),Other changes in the eligibility and benefit criteria based on legislative or regulatory changes?,item,yes,MANUAL_DEMO,,no,open-ended future changes
+Eligibility (A and B),421,MC-2,7 CFR 273.12(e),"Are changes made to update SNAP income with actual increased amounts of TANF grants, RSDI, GA payments, SSA benefits, and SSI benefits?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),422,MC-3,7 CFR 273.12 (e)(1)(i)(A),"Can the system issue reduced or increased allotments for the entire caseload, if necessary?",item,yes,AUTO_TEST,DATA_METRIC,no,caseload-scale batch
+Eligibility (A and B),423,MC-4,Best Practice,"Can the restorations for the reduced month be made later, if necessary?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),424,MC-5,7 CFR 273.12 (e)(2)(i),Does the system possess facilities to ensure changes in program specifications regarding eligibility and benefit calculations can be affected without major modifications to the system or duplication to household’s cases?,item,yes,DOCUMENT,MANUAL_DEMO,no,architecture claim (rules separated from code)
+Eligibility (A and B),425,MC-6,Best Practice,Is there a back-up process in place in case the system has to be reverted to its previous state?,item,yes,DOCUMENT,MANUAL_DEMO,no,rollback procedure
+Eligibility (A and B),426,MC-7,7 CFR 273.12 (e)(4),"For mass changes due to federal adjustments to eligibility standards, allotments, and deductions, as well as State adjustments to utility standards, can client notices be issued to the households affected by a mass change if the State chooses to send out a notice?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),427,MC-8,7 CFR 273.12 (e)(4),"For all other mass changes, does the system generate a Notice for Mass Change?",item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),428,MC-9,7 CFR 272.4(b),Can the Notice for Mass Change be generated in all required languages?,item,yes,MANUAL_DEMO,AUTO_TEST,no,translation quality needs human review
+Eligibility (A and B),429,MC-10,7 CFR 273.12 (e)(6),Is the system capable of computing benefits at the level previous to the mass change for households who have requested a fair hearing and continuation of benefits?,item,yes,AUTO_TEST,,yes,
+Eligibility (A and B),431,MJC-1,7 CFR 272.15 (b)(1) and (b)(2),Does the system capture the following data for regular and elderly and disabled households:,header,yes,REPORT_CHECK,,no,header; header row; sub-items carry the checks
+Eligibility (A and B),432,MJC-1,7 CFR 272.15 (b)(1)(i),Total number of initial applications received?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),433,MJC-1,7 CFR 272.15 (b)(1)(ii),Total number of initial applications subject to expedited service?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),434,MJC-1,7 CFR 272.15 (b)(1)(iii),Number of initial applications received in person?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),435,MJC-1,7 CFR 272.15 (b)(1)(iii),Number of initial applications received online?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),436,MJC-1,7 CFR 272.15 (b)(1)(iii),Number of initial applications received by phone?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),437,MJC-1,7 CFR 272.15 (b)(1)(iii),Number of initial applications received by mail?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),438,MJC-1,7 CFR 272.15 (b)(1)(iii),Number of initial applications received by fax?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),439,MJC-1,7 CFR 272.15 (b)(1)(iv),Number of initial applications approved timely?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),440,MJC-1,7 CFR 272.15 (b)(1)(v),Number of initial applications approved timely that were subject to expedited service?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),441,MJC-1,7 CFR 272.15 (b)(1)(vi),Number of initial applications approved untimely?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),442,MJC-1,7 CFR 272.15 (b)(1)(vii),Number of initial applications approved untimely that were subject to expedited service?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),443,MJC-1,7 CFR 272.15 (b)(1)(viii),Number of initial applications denied?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),444,MJC-1,7 CFR 272.15 (b)(1)(ix),Number of initial applications denied due to ineligibility?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),445,MJC-1,7 CFR 272.15 (b)(1)(ix),Number of initial applications denied due to State agency’s inability to determine eligibility?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),446,MJC-1,7 CFR 272.15 (b)(1)(x),Number of households due for recertification?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),447,MJC-1,7 CFR 272.15 (b)(1)(xi),Number of recertifications received?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),448,MJC-1,7 CFR 272.15 (b)(1)(xii),Number of recertifications received in person?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),449,MJC-1,7 CFR 272.15 (b)(1)(xii),Number of recertifications online?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),450,MJC-1,7 CFR 272.15 (b)(1)(xii),Number of recertifications received by phone?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),451,MJC-1,7 CFR 272.15 (b)(1)(xii),Number of recertifications received by mail?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),452,MJC-1,7 CFR 272.15 (b)(1)(xii),Number of recertifications received by fax?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),453,MJC-1,7 CFR 272.15 (b)(1)(xiii),Number of households recertified without delay break in benefits?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),454,MJC-1,7 CFR 272.15 (b)(1)(xiv),Number of households recertified with a delay or break in benefits of less than one month?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),455,MJC-1,7 CFR 272.15 (b)(1)(xv),Number of households due for recertification that failed to reapply by deadline?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),456,MJC-1,7 CFR 272.15 (b)(1)(xvi),Number of recertification applications denied?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),457,MJC-1,7 CFR 272.15 (b)(1)(xvii),Number of recertification application denied due to ineligibility?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),458,MJC-1,7 CFR 272.15 (b)(1)(xvii),Number of recertification applications denied due to State agency’s inability to determine eligibility?,item,yes,REPORT_CHECK,,yes,Major Change report data item
+Eligibility (A and B),459,MJC-2,7 CFR 272.15 (b)(2),Information in this section reported separately for households with elderly members and households with members that have a disability?,item,yes,REPORT_CHECK,,yes,
+Eligibility (A and B),461,MJC-3,7 CFR 272.15 (b)(4)(iv),Does the system capture the following data:,header,yes,DATA_METRIC,EXTERNAL,no,header; header row; sub-items carry the checks
+Eligibility (A and B),462,MJC-3,7 CFR 272.15 (b)(4),The total number of calls received by the State prior to implementation of the non-merit staffed call center?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),463,MJC-3,7 CFR 272.15 (b)(4)(iv)(A),The total number of calls received at the call center?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),464,MJC-3,7 CFR 272.15 (b)(4),Total number of calls answered?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),465,MJC-3,7 CFR 272.15 (b)(4)(iv)(D),Total number of abandoned calls?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),466,MJC-3,7 CFR 272.15 (b)(4)(iv)(E),Total number of dropped calls?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),467,MJC-3,7 CFR 272.15 (b)(4),"Of the total number of calls received at the call center, the number of calls transferred to merit system personnel?",item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),468,MJC-3,7 CFR 272.15 (b)(4),Total call idle time?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),469,MJC-3,7 CFR 272.15 (b)(4)(iv)(E),Total blocked calls?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),470,MJC-3,7 CFR 272.15 (b)(4)(iv)(B),Average wait time?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),471,MJC-3,7 CFR 272.15 (b)(4),Average handle time?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),472,MJC-3,7 CFR 272.15 (b)(4)(iv)(B),Average time a client has to initially wait for the call to be answered?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),473,MJC-3,7 CFR 272.15 (b)(4),Average length of client calls?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),474,MJC-3,7 CFR 272.15 (b)(4)(iv)(B),Average time a client has to initially wait for a call to be answered by non-merit staff?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),475,MJC-3,7 CFR 272.15 (b)(4)(iv)(B),Average time a client has to wait to be transferred to a merit staff member?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),476,MJC-3,7 CFR 272.15 (b)(4)(iv)(C),Percentage of calls with excessive wait times?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),477,MJC-3,7 CFR 272.15 (b)(4),Average length of client calls with merit staff?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),478,MJC-3,7 CFR 272.15 (b)(4),Average client wait time for abandoned calls?,item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),479,MJC-3,7 CFR 272.15 (b)(4),Total number of merit personnel employed by the State agency?,item,yes,DOCUMENT,DATA_METRIC,no,staffing count
+Eligibility (A and B),480,MJC-3,7 CFR 272.15 (b)(4),Total number of non-merit staff employed in the call center?,item,yes,DOCUMENT,DATA_METRIC,no,staffing count
+Eligibility (A and B),481,MJC-3,7 CFR 272.15 (b)(4),"The purpose of SNAP client calls made to the call center, broken down by percentage?",item,yes,DATA_METRIC,EXTERNAL,no,"call-center telephony data, not the E&E system"
+Eligibility (A and B),482,MJC-3,7 CFR 272.15 (b)(4),Total number of denied applications?,item,yes,REPORT_CHECK,,yes,
+Eligibility (A and B),483,MJC-3,7 CFR 272.15 (b)(4),Total number of applications denied due to missed client interview?,item,yes,REPORT_CHECK,,yes,
+Eligibility (A and B),484,MJC-3,7 CFR 272.15 (b)(4)(iv)(F),Customer satisfaction based upon surveys to measure the impact of the non-merit call center?,item,yes,MANUAL_DEMO,DATA_METRIC,no,customer survey
+Claims (C),4,C-1,7 CFR 273.18(c),Does the system calculate the claim amount?,item,yes,AUTO_TEST,,yes,
+Claims (C),5,C-2,7 CFR 273.18 (c)(1)(ii),Does the system identify the claim amount?,item,yes,AUTO_TEST,,yes,
+Claims (C),6,C-3,7 CFR 273.18(b),Does the system identify the claim type?,item,yes,AUTO_TEST,,yes,
+Claims (C),7,C-4,7 CFR 273.18 (k)(1),Does the system determine correct allotment reduction percentage per claim type?,item,yes,AUTO_TEST,,yes,
+Claims (C),8,C-5,7 CFR 273.18 (k)(1),Does the system identify retention percentages based on claim type?,item,yes,AUTO_TEST,,yes,
+Claims (C),9,C-6,7 CFR 273.18 (k)(2)(i),Does the system disallow earned income deduction when IPV?,item,yes,AUTO_TEST,,yes,
+Claims (C),10,C-7,7 CFR 273.18 (g)(9),Does the system calculate and apply the pro rata share of a payment when there are cross-program debts and the debtor does not specify to which program to apply the collection?,item,yes,AUTO_TEST,,yes,
+Claims (C),11,C-8,7 CFR 273.18 (m)(2)(iv),Does the system display the date of payment agreement?,item,yes,AUTO_TEST,,yes,
+Claims (C),12,C-9,7 CFR 273.18 (m)(2)(i),Does the system display the discovery date?,item,yes,AUTO_TEST,,yes,
+Claims (C),13,C-10,7 CFR 273.18(m)(2)(iv),Does the system display the date the claim was established?,item,yes,AUTO_TEST,,yes,
+Claims (C),14,C-11,7 CFR 273.18 (m)(2)(ix),Does the system generate demand letters?,item,yes,AUTO_TEST,,yes,
+Claims (C),15,C-12,7 CFR 273.18 (m)(2)(ix),"Does the system display the client notification date? (i.e., date of demand letter)",item,yes,AUTO_TEST,,yes,
+Claims (C),16,C-13,7 CFR 273.18 (e)(8)(i),"Does the system suspend or terminate claims? If so,",header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Claims (C),17,C-13,NA,When are claims suspended or terminated?,item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Claims (C),18,C-13,NA,Are claims suspended or terminated manually?,item-no-citation,yes,DOCUMENT,AUTO_TEST,no,descriptive
+Claims (C),19,C-13,NA,Are claims suspended or terminated automatically?,item-no-citation,yes,DOCUMENT,AUTO_TEST,no,descriptive
+Claims (C),20,C-14,7 CFR 273.18 (m)(1),Does the system permit change to claim type and date of change?,item,yes,AUTO_TEST,,yes,
+Claims (C),21,C-15,7 CFR 273.18(c),Does the system determine the recoupment rate?,item,yes,AUTO_TEST,,yes,
+Claims (C),22,C-16,7 CFR 273.18 (e)(5),Does the system calculate the amount recouped to date?,item,yes,AUTO_TEST,,yes,
+Claims (C),23,C-17,7 CFR 273.18 (g)(5),Does the system offset claims against restoration amounts?,item,yes,AUTO_TEST,,yes,
+Claims (C),24,C-18,7 CFR 273.18 (n)(4)(i),Does the system track Treasury Offset Program (TOP) timeframes?,item,yes,AUTO_TEST,,yes,
+Claims (C),25,C-19,7 CFR 273.18(g),"Does the system track payments by cash, check, TOP offset, recoupment, EBT transaction? Automatically? Or manual entry from separate system?",item,yes,AUTO_TEST,DOCUMENT,no,several payment types plus manual/auto description
+Claims (C),26,C-20,7 CFR 273.18 (g)(2)(ii)(C),Does the system track payments using expunged benefits?,item,yes,AUTO_TEST,,yes,
+Claims (C),27,C-21,7 CFR 273.18 (e)(4),Does the system calculate the outstanding claim balance?,item,yes,AUTO_TEST,,yes,
+Claims (C),28,C-22,7 CFR 273.18 (e)(7),Does the system indicate if the claim was compromised?,item,yes,AUTO_TEST,,yes,
+Claims (C),29,C-23,7 CFR 273.18 (e)(5),Does the system display the delinquency date?,item,yes,AUTO_TEST,,yes,
+Claims (C),30,C-24,7 CFR 273.18 (e)(5),Does the system properly capture the delinquency date as a result of a State accepted repayment agreement?,item,yes,AUTO_TEST,,yes,
+Claims (C),31,C-25,7 CFR 273.18 (e)(4)(i),Is the system capable of tracking timely claims payments and capturing both the payment amounts and the due dates?,item,yes,AUTO_TEST,,yes,
+Claims (C),32,C-26,7 CFR 273.18 (g)(2)(ii)(C),Can the system automatically apply expunged benefits to the correctly prioritized outstanding claim(s)?,item,yes,AUTO_TEST,,yes,
+Claims (C),33,C-27,7 CFR 273.18 (e)(6)(i),Can the claims that are on hold for collection pending a fair hearing decision be tracked?,item,yes,AUTO_TEST,,yes,
+Claims (C),34,C-28,7 CFR 273.18 (e)(8),Can the claims that have been written off or terminated be tracked?,item,yes,AUTO_TEST,,yes,
+Claims (C),35,C-29,7 CFR 273.18(n),"Does the system interface with TOP? If yes,",header,yes,AUTO_TEST,EXTERNAL,no,TOP interface; header row; sub-items carry the checks
+Claims (C),36,C-29,7 CFR 273.18 (n)(5),Are state refunds and TOP refunds able to be tracked and reconciled?,item,yes,AUTO_TEST,EXTERNAL,no,reconcile with Treasury data
+Claims (C),37,C-29,7 CFR 273.18 (n)(5),Are TOP refunds able to be reported?,item,yes,REPORT_CHECK,EXTERNAL,no,
+Claims (C),38,C-29,7 CFR 273.18 (n)(1),Are claims that have met all due process for TOP automatically referred to TOP (in batch)?,item,yes,AUTO_TEST,EXTERNAL,yes,claims meeting due process appear in TOP referral batch
+Claims (C),39,C-30,7 CFR 273.18 (e)(4)(i),Does the system display payment due date or time frame?,item,yes,AUTO_TEST,,yes,
+Claims (C),41,RST-1,7 CFR 273.17 (a)(1) and (2),Does the system capture the restoration determination date?,item,yes,AUTO_TEST,,yes,
+Claims (C),42,RST-1,7 CFR 273.17 (a)(1) and (2),Please indicate the State option: / Date the State received household request for restoration / Date that the State discovered a loss had occurred / Date of Fair Hearing restoration determination date,item,yes,DOCUMENT,,no,open-ended: answer is a description
+Claims (C),43,RST-2,7 CFR 273.17(b),Does the system calculate the restoration benefit amount?,item,yes,AUTO_TEST,,yes,
+Claims (C),44,RST-3,7 CFR 273.17(d),Does the system identify restoration amounts within the benefit history?,item,yes,AUTO_TEST,,yes,
+Claims (C),45,RST-4,7 CFR 273.17 (d)(1),Does the system designate the month(s) for which the benefit is restored?,item,yes,AUTO_TEST,,yes,
+Claims (C),46,RST-5,7 CFR 273.17 (d)(1),Does the system issue retroactive/restored benefits?,item,yes,AUTO_TEST,,yes,
+Claims (C),47,RST-6,7 CFR 273.17 (d)(4),"If not captured under claims, does the system offset restoration against pending household claims amounts?",item,yes,AUTO_TEST,,yes,
+Claims (C),48,RST-7,7 CFR 273.17(e),Does the system allow for currently ineligible households to receive restoration amounts?,item,yes,AUTO_TEST,,yes,
+Claims (C),49,RST-8,7 CFR 273.17(b),Does the system generate client notices of restoration?,item,yes,AUTO_TEST,,yes,
+Claims (C),50,RST-9,7 CFR 273.17 (c)(1),Does the system capture the Fair Hearing request date?,item,yes,AUTO_TEST,,yes,
+Claims (C),51,RST-10,7 CFR 273.17(b),Does the system edit restoration benefits so that none are restored for a period of more than 12 months?,item,yes,AUTO_TEST,,yes,
+Claims (C),52,RST-11,7 CFR 273.17(h),"Does the system code why benefits were restored (for example, the case was closed in error)?",item,yes,AUTO_TEST,,yes,
+Claims (C),53,RST-12,7 CFR 273.17(d) and (h),Does the system identify duplicate restoration benefits (amount and/or beneficiary)?,item,yes,AUTO_TEST,,yes,
+Notices (D),4,CN-1,7 CFR 273.2 (c)(5); 273.28(b),Notice of Required Verification?,item,yes,AUTO_TEST,,yes,
+Notices (D),5,CN-1,7 CFR 273.2(e)(3),Interview scheduling notification?,item,yes,AUTO_TEST,,yes,
+Notices (D),6,CN-1,7 CFR 273.2 (e)(3);  273.14 (b)(3)(iii),Notice of Missed Interview?,item,yes,AUTO_TEST,,yes,
+Notices (D),7,CN-1,7 CFR 273.2(h)(1)(i)©,Notice of Requested/Missing Verification?,item,yes,AUTO_TEST,,yes,
+Notices (D),8,CN-1,7 CFR 273.7(c)(1)(iii),Consolidated Work Notice?,item,yes,AUTO_TEST,,yes,
+Notices (D),9,CN-1,7 CFR 273.10 (e)(2)(iii)(B)(1),Notice of Suspended status (if State suspends)?,item,yes,AUTO_TEST,,yes,
+Notices (D),10,CN-1,7 CFR 273.10 (g)(1)(i),Notice of Eligibility?,item,yes,AUTO_TEST,,yes,
+Notices (D),11,CN-1,7 CFR 273.10 (g)(1)(i)(B); 273.2(i),Notice of Expedited Approval with Postponed Verification (subtype of Notice of Eligibility)?,item,yes,AUTO_TEST,,yes,
+Notices (D),12,CN-1,7 CFR 273.10 (g)(1)(ii),Notice of Denial?,item,yes,AUTO_TEST,,yes,
+Notices (D),13,CN-1,7 CFR 273.10 (g)(1)(ii),Does the Notice of Denial reflect the basis for the denial?,item,yes,AUTO_TEST,MANUAL_DEMO,yes,reason text present; wording quality needs review
+Notices (D),14,CN-1,7 CFR 273.10 (g)(1)(iii); 273.2 (h)(2)(i)(A),Notice of Pending Status?,item,yes,AUTO_TEST,,yes,
+Notices (D),15,CN-1,7 CFR 273.12 (a)(4)(ii),"For households subject to quarterly reporting, notification of quarterly reporting requirement?",item,yes,AUTO_TEST,,yes,
+Notices (D),16,CN-1,7 CFR 273.12 (a)(4)(iii),"For households subject to quarterly reporting, notice of missing or incomplete report?",item,yes,AUTO_TEST,,yes,
+Notices (D),17,CN-1,7 CFR 273.12 (a)(4)(v),"Adequate notice for households subject to quarterly reporting that complete a report resulting in reduction or termination of benefits, adequate notice?",item,yes,AUTO_TEST,,yes,
+Notices (D),18,CN-1,7 CFR 273.12 (a)(5)(ii),"For households subject to simplified reporting, notification of simplified reporting requirement?",item,yes,AUTO_TEST,,yes,
+Notices (D),19,CN-1,7 CFR 273.12 (a)(5)(iii)(D),Adequate notice for households subject to simplified reporting that complete a report resulting in reduction or termination of benefits?,item,yes,AUTO_TEST,,yes,
+Notices (D),20,CN-1,7 CFR 273.12 (a)(5)(iii)(E),Reminder notice for households subject to simplified reporting that fail to file a complete report by the specified filing date?,item,yes,AUTO_TEST,,yes,
+Notices (D),21,CN-1,7 CFR 273.12 (a)(5)(iii),Periodic report form?,item,yes,AUTO_TEST,,yes,
+Notices (D),22,CN-1,7 CFR 273.12 (b)(1); 273.12 (b)(4),Change report form?,item,yes,AUTO_TEST,,yes,
+Notices (D),23,CN-1,7 CFR 273.12 (c)(3)(i)(A),Request for Contact (RFC)?,item,yes,AUTO_TEST,,yes,
+Notices (D),24,CN-1,7 CFR 273.12 (c)(3)(iii),Notice of Match Results?,item,yes,AUTO_TEST,,yes,
+Notices (D),25,CN-1,7 CFR 273.12 (c)(4)(i),"Notice to households that report a change in residence, but fails to provide information regarding the associated changes in shelter costs within 10 days of the report that their allotment will be recalculated without the excess shelter deduction?",item,yes,AUTO_TEST,,yes,
+Notices (D),26,CN-1,7 CFR 273.12 (e)(4),Notice of mass change?,item,yes,AUTO_TEST,,yes,
+Notices (D),27,CN-1,7 CFR 273.13,"Notice of adverse action, prior to any action to reduce or terminate a household’s benefits within the certification period?",item,yes,AUTO_TEST,,yes,
+Notices (D),28,CN-1,7 CFR 273.13(2),Does the Notice of Adverse Action accurately reflect the reason for the proposed action?,item,yes,AUTO_TEST,MANUAL_DEMO,yes,reason text present; wording quality needs review
+Notices (D),29,CN-1,7 CFR 273.14 (b)(1),Notice of Expiration?,item,yes,AUTO_TEST,,yes,
+Notices (D),30,CN-1,7 CFR 273.15(f),Notification of right to request fair hearing?,item,yes,AUTO_TEST,,yes,
+Notices (D),31,CN-1,7 CFR 273.15 (j)(2),Notice confirming the withdrawal of hearing request and providing the household with an opportunity to request a hearing?,item,yes,AUTO_TEST,,yes,
+Notices (D),32,CN-1,7 CFR 273.15(l),Notification of time and place of hearing?,item,yes,AUTO_TEST,,yes,
+Notices (D),33,CN-1,7 CFR 273.16 (e)(9),Notification of disqualification hearing decision?,item,yes,AUTO_TEST,,yes,
+Notices (D),34,CN-1,7 CFR 273.15 (q)(3),Notification of fair hearing decision?,item,yes,AUTO_TEST,,yes,
+Notices (D),35,CN-1,7 CFR 273.15 (q)(3)(i) and (q)(3)(ii),Notification of right to appeal local-level hearings to the State level and State-level hearings to judicial review?,item,yes,AUTO_TEST,,yes,
+Notices (D),36,CN-1,7 CFR 273.16 (e)(3),Notification that disqualification hearing has been scheduled?,item,yes,AUTO_TEST,,yes,
+Notices (D),37,CN-1,7 CFR 273.16 (e)(9)(i); 273.16(e)(9)(ii); 273.16(f)(3);  273.16(g)(3),Notification of disqualification?,item,yes,AUTO_TEST,,yes,
+Notices (D),38,CN-1,7 CFR 273.16 (e)(9)(ii),"Notice to remaining household members, if any, of either the allotment they will receive during the period of disqualification or that they must reapply because the certification period has ended?",item,yes,AUTO_TEST,,yes,
+Notices (D),39,CN-1,7 CFR 273.18 (e)(3)(i),Notification to begin collection action on any claim?,item,yes,AUTO_TEST,,yes,
+Notices (D),40,CN-1,7 CFR 273.21 (j)(2)(ii),Notice of any change from the household’s prior benefit level and basis for its determination for households subject to monthly reporting and retrospective budgeting?,item,yes,AUTO_TEST,,yes,
+Notices (D),41,CN-1,7 CFR 273.21 (j)(3),"For households subject to monthly reporting that fail to file a monthly report, notice that the monthly report is either overdue or incomplete?",item,yes,AUTO_TEST,,yes,
+Notices (D),42,CN-1,7 CFR 273.21 (r)(2)(i),"For households previously subject to monthly reporting who are now exempt from monthly reporting, a notice explaining they are exempt from monthly reporting, no longer required to file future monthly reports, and when the change will go into effect?",item,yes,AUTO_TEST,,yes,
+Notices (D),43,CN-1,7 CFR 273.21 (r)(2)(ii),"For households previously subject to monthly reporting moving to change reporting and prospective budgeting, a notice explaining the change?",item,yes,AUTO_TEST,,yes,
+Notices (D),44,CN-1,7 CFR 273.21 (r)(2)(iii),"For households previously subject to monthly reporting moving to retrospective budgeting and change reporting, a notice that the household is no longer subject to monthly reporting?",item,yes,AUTO_TEST,,yes,
+Notices (D),45,CN-1,7 CFR 273.29,"If the State elects to provide transitional benefits alternatives, a transitional notice?",item,yes,AUTO_TEST,,yes,
+Notices (D),46,CN-1,7 CFR 274.2 (g)(2)(ii),Notice of Adverse Action for retailer-initiated adjustments?,item,yes,AUTO_TEST,,yes,
+Notices (D),47,CN-1,7 CFR 274.2(h)(3),Notice of off-line storage for EBT accounts inactive for three months (91 days) or longer?,item,yes,AUTO_TEST,,yes,
+Notices (D),48,CN-1,7 CFR 274.2(i)(2),Notice of expungement?,item,yes,AUTO_TEST,,yes,
+Notices (D),49,CN-1,7 CFR 274.6 (b)(5)(i),Notice that the household has reached the EBT card replacement threshold?,item,yes,AUTO_TEST,,yes,
+Notices (D),50,CN-1,7 CFR 274.6(b)(6),Excessive Replacement Card Notice?,item,yes,AUTO_TEST,,yes,
+Notices (D),51,CN-1,Best Practice,Optional notice(s) that States elect to send?,item,yes,DOCUMENT,,no,State lists optional notices
+Notices (D),53,CN-2,Best Practice,Can the system generate ad hoc notices?,item,yes,MANUAL_DEMO,AUTO_TEST,no,worker-composed notices
+Notices (D),54,CN-3,Best Practice,Does the system maintain certification notice history?,item,yes,AUTO_TEST,,yes,
+Notices (D),55,CN-4,Best Practice,Does the system make copies of client notices (with complete notice verbiage) available?,item,yes,AUTO_TEST,,yes,
+Notices (D),56,CN-5,7 CFR 272.4 (b)(3)(ii)(B),Do notices comply with the bilingual requirements?,item,yes,MANUAL_DEMO,AUTO_TEST,no,translation quality
+Notices (D),57,CN-6,Best Practice,"Can notices be customized (i.e., are workers able to add comments/additional information or are notices standardized)?",item,yes,MANUAL_DEMO,DOCUMENT,no,descriptive
+Notices (D),58,CN-7,Best Practice,"If so, please describe what notices can be ad hoc and/or manually entered by the eligibility worker.",item,yes,DOCUMENT,,no,open-ended: answer is a description
+Notices (D),59,CN-8,Best Practice,"If so, please describe what automatic text selections are available to eligibility workers to enter into automated notices.",item,yes,DOCUMENT,,no,open-ended: answer is a description
+Notices (D),60,CN-9,Best Practice,Does the system allow for additional mail-processing days when generating dates on Notices of Adverse Action?,item,yes,AUTO_TEST,,yes,
+Notices (D),61,CN-10,Best Practice,Can notices be printed locally?,item,yes,MANUAL_DEMO,,no,physical printing
+Notices (D),62,CN-11,Best Practice,Do all client notices display the most up to date non-discrimination statement?,item,yes,AUTO_TEST,MANUAL_DEMO,yes,text compare to current statement
+Notices (D),63,CN-12,7 CFR 273.13 (a)(3)(v),"Do the notices (denial, reduction or termination of benefits) include the household’s right to request a fair hearing?",item,yes,AUTO_TEST,,yes,
+Notices (D),64,CN-13,Best Practice,Is there a spell and/or grammar check available on notices where workers can ad hoc or manually enter in text?,item,yes,MANUAL_DEMO,,no,"UI feature, judged by use"
+Notices (D),65,CN-14,Best Practice,Can the system send communication via email regarding the availability of online notices (if the State has taken the electronic notice State option)?,item,yes,AUTO_TEST,,yes,
+Notices (D),66,CN-15,Best Practice,"Does the system have a way to link correspondence with a case (e.g., bar code)?",item,yes,AUTO_TEST,,no,bar code / mailroom integration
+Notices (D),67,CN-16,Best Practice,Can the household opt in/out of receiving electronic notices?,item,yes,AUTO_TEST,,yes,
+Notices (D),68,CN-17,Best Practice,"Does the system use text/SMS messaging to conduct supplementary communication with the household? If yes, please explain.",item,yes,AUTO_TEST,DOCUMENT,no,optional channel plus description
+Operations (E and F),4,ED-1,7 CFR 272.4(e)(1),"What elements can the system search with to find individuals/cases (i.e. SSN, unique ID, last name, DOB, etc.)?",item,yes,AUTO_TEST,DOCUMENT,no,open list of search keys
+Operations (E and F),5,ED-2,7 CFR 272.4(e)(1),Can more than one element be used at the same time to narrow a search?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),6,ED-3,7 CFR 273.14(a),Does the system automatically terminate the case at the end of the certification period if the household has not applied for recertification?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),7,ED-4,7 CFR 273.21(b),Does the system allow for retrospective budgeting where appropriate?,item,yes,AUTO_TEST,,no,whole budgeting method; too broad
+Operations (E and F),8,ED-5,7 CFR 272.10 (b)(1)(xii),Does the system allow for prospective budgeting where appropriate?,item,yes,AUTO_TEST,,no,whole budgeting method; too broad
+Operations (E and F),9,ED-6,Best Practice,Does the system identify errors needing resolution?,item,yes,MANUAL_DEMO,AUTO_TEST,no,vague
+Operations (E and F),10,ED-7,Best Practice,Does the system flag high risk-criteria cases for a secondary level review?,item,yes,AUTO_TEST,,no,risk criteria are State-defined
+Operations (E and F),11,ED-8,7 CFR 272.10 (b)(1)(viii),Does the system track pending cases?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),12,ED-9,7 CFR 272.10 (b)(1)(viii),Does the system track pending verifications?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),13,ED-10,7 CFR 272.10 (b)(2)(ii),Does the database prevent duplication of case numbers?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),14,ED-11,7 CFR 272.4(e),Does the system assign unique household member identifier?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),15,ED-12,7 CFR 272.10 (b)(2)(ii),Does the system prevent duplicate household member identifiers?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),16,ED-13,7 CFR 273.2(f),Does the system generate/create verification checklists?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),17,ED-14,7 CFR 273.2(e)(3),Does the system prevent denying an application prior to the 30th day?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),18,ED-15,"7 CFR 273.2 (g)(3),10(g)(1)(iii)",Does the system automatically deny an application by 30/60th day (or less if the State has a waiver)?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),19,ED-16,7 CFR 273.2(f),Does the system prevent denying or terminating a case during the 10 day period clients have to provide verifications?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),21,STA-1,NA,Are staff alerts generated for:,header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Operations (E and F),22,STA-1,Best Practice,Pending applications?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),23,STA-1,Best Practice,Pending changes?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),24,STA-1,Best Practice,Pending verification?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),25,STA-1,Best Practice,Data matches?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),26,STA-1,Best Practice,Recertification?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),27,STA-1,Best Practice,Duplicate participation?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),28,STA-1,Best Practice,Work registration renewal/updating status?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),29,STA-1,Best Practice,Work registration change in status?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),30,STA-1,Best Practice,Remaining ABAWD months?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),31,STA-1,Best Practice,"IEVS, BENDEX and SDX alerts and changes?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),32,STA-1,Best Practice,"Other data matched, death, prisoner, invalid SSN?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),33,STA-1,Best Practice,SSN not provided?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),34,STA-1,Best Practice,Child Support referrals and non-cooperation situations?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),35,STA-1,Best Practice,SNAP recertification when TANF cases are terminated?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),36,STA-1,Best Practice,Monthly reports from suspended households?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),37,STA-1,Best Practice,"Significant birthdays (18 yr., 22 yr., 50 yr., 60 yr.)?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),38,STA-1,Best Practice,End of disqualification period?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),39,STA-1,Best Practice,Expedited case time frames?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),40,STA-1,Best Practice,30-day processing time frames (Approvals/Denials)?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),41,STA-1,Best Practice,Fair Hearings requests and decisions?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),42,STA-1,Best Practice,Language needs / limited English proficiency?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),43,STA-1,Best Practice,Special needs / identified disability?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),44,STA-1,Best Practice,Multiple card replacement?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),45,STA-1,Best Practice,Individuals with an E&T provider determination for whom the State must take one of the four actions in 7 CFR 273.7(c)(18)(i)(B)?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),46,STA-1,NA,"Other: If yes, please describe.",item-no-citation,yes,DOCUMENT,,no,open 'other'
+Operations (E and F),47,STA-2,Best Practice,Are staff alerts provided for management to show needed action or overdue action by worker?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),48,STA-3,Best Practice,Is the system capable of disabling staff alerts?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),49,STA-4,NA,"If so, under what circumstances?",item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),51,EB-1,7 CFR 273.8-10,Does the system perform preliminary determination of financial ineligibility (which must be certified by eligibility worker)?,item,yes,AUTO_TEST,,no,covers all eligibility rules; too broad
+Operations (E and F),52,EB-2,"7 CFR 273.1, 3, 4, 5, 6, 7, 16",Does the system perform preliminary determination of non-financial ineligibility (which must be certified by eligibility worker)?,item,yes,AUTO_TEST,,no,covers all eligibility rules; too broad
+Operations (E and F),53,EB-3,"7 CFR 273.1, 3-10, 16","For ineligibility, does the system provide information to support the determination (which must be certified by eligibility worker)?",item,yes,AUTO_TEST,MANUAL_DEMO,no,adequacy of support info is judgment
+Operations (E and F),54,EB-4,7 CFR 273.10,Does the system show the budget to support the benefit allotment?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),55,EB-5,7 CFR 273.10 (a)(1)(iii),Does the system show the proration amount?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),56,EB-6,NA,Does the system:,header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Operations (E and F),57,EB-6,7 CFR 273.10 (e)(2)(iii),Identify household size?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),58,EB-6,7 CFR 273.2(a)(2),Calculate retroactive benefits to the month/date of application?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),59,EB-6,7 CFR 273.10 (a)(1)(iii),Convert income to monthly?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),60,EB-6,"7 CFR 273. 10(c)(1)(i), 10(c)(3), 10(d)(3), 11(a)(1)","Average income/expenses over certification period, where appropriate?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),61,EB-6,7 CFR 273.9 (d)(6)(iii),"Authorize/prevent changes between actual utility costs and LUA/SUA/TUA during certification period, if applicable?",item,yes,AUTO_TEST,,no,depends on State SUA policy
+Operations (E and F),62,EB-6,7 CFR 273.12 (c)(2)(ii),Suspend case for one month due to temporary circumstances?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),63,EB-6,7 CFR 273.15(g),Identify Fair Hearing request date?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),64,EB-6,7 CFR 273.15(q),Identify Fair Hearing decision date?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),65,EB-6,7 CFR 273.15(k),Continue benefits after an adverse action if a Fair Hearing is requested?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),66,EB-6,7 CFR 273.11(j),"Prohibit an increase in benefits if household’s income is reduced due to failure to comply with means-tested program (i.e., TANF)?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),67,EB-6,7 CFR 273.11(j),Reduce allotment by a percentage not to exceed 25% for failure to comply with means-tested programs?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),68,EB-7,7 CFR 274.2 (c)(2),Does the system issue combined allotments?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),69,EB-8,7 CFR 273.10 (g)(1),"Does the system capture the benefit determination date (i.e., date household was determined eligible for benefits)?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),70,EB-9,7 CFR 273.10(f),Is the certification period captured?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),71,EB-10,7 CFR 273.10(f),"If the State chooses to vary certification periods, can the system capture multiple certification periods?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),72,EB-11,7 CFR 273.2 (c)(1)(v),Can the system print an eligibility summary or completed application for client review?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),73,EB-12,"7 CFR 273.2 (j)(2)(v), (j)(4)(iii)(B); 273.4(c)(2)",Is the system capable of computing benefits for households with deemed income?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),74,EB-13,7 CFR 273.24(b),"In the eligibility summary, does the system identify the household members who are subject to ABAWD requirements?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),75,EB-14,7 CFR 272.10 (b)(1),"Does the system contain mandatory data fields (e.g., can any fields be left blank)?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),77,TBA-1,7 CFR 273.26(c),"Does the system allow for “transitional benefits” when TANF, MOE or SFCA (State-funded cash assistance) income ends, if applicable?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),78,TBA-1,7 CFR 273.26(c),"The State can limit transitional benefits to households in which all members receive the TANF, MOE or SFCA benefits, or in which at least one member receives these benefits. Can the system appropriately determine which members to include based on the option the State has chosen?",item,yes,AUTO_TEST,,no,State option defines rule
+Operations (E and F),79,TBA-1,7 CFR 273.27(a),"If transitional benefits are issued, does the system only issue them for a maximum of 5 months?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),80,TBA-1,7 CFR 273.27(a),"Does the system remove the TANF payment, without the worker requiring verification or additional information, when calculating the transitional benefit amount?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),81,TBA-1,7 CFR 273.26 (d)(1),"If a household’s TANF ended due to the household having a TANF sanction, does the system not issue transitional benefits?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),82,TBA-1,7 CFR 273.26(c),"If a household member is sanctioned but the remaining members still receive cash benefits, can the system issue transitional benefits to the remaining members if the cash assistance ends for another reason?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),83,TBA-2,7 CFR 273.26(d),Does the system not issue transitional benefits if an entire SNAP household is ineligible due to any of the following:,header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Operations (E and F),84,TBA-2,7 CFR 273.26 (d)(3)(i),IPV?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),85,TBA-2,7 CFR 273.26(d)(3)(ii),Failing to comply with a work requirement?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),86,TBA-2,7 CFR 273.26 (d)(3)(iv),Ineligible student status?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),87,TBA-2,7 CFR 273.26 (d)(3)(v),Ineligible citizen status [Non-citizen]?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),88,TBA-2,7 CFR 273.26 (d)(3)(vi),Disqualified for failing to provide information needed for an eligibility or recertification determination?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),89,TBA-2,7 CFR 273.26 (d)(3)(vii),Disqualified for transferring resources in effort to qualify for SNAP?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),90,TBA-2,7 CFR 273.26 (d)(3)(viii),Disqualified for receipt of multiple SNAP benefits?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),91,TBA-2,7 CFR 273.26 (d)(3)(ix),Disqualified for being a fleeing felon?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),92,TBA-2,7 CFR 273.26 (d)(3)(x),ABAWD failed to comply?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),93,TBA-3,7 CFR 273.26(e),Does the system not issue transitional benefits if the State excludes all ineligible members due to:,header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Operations (E and F),94,TBA-3,7 CFR 273.26 (e)(1),"Failing to perform an action under Federal, State or local law relating to a means-tested program?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),95,TBA-3,7 CFR 273.26 (e)(2) and (3),Failing to cooperate with child support agencies or has delinquent child support payments?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),96,TBA-4,7 CFR 273.28,Does the system allow the household to apply for a recertification while receiving transitional benefits?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),97,TBA-4,7 CFR 273.28(d),"If the household fails to comply with the recertification process, does the system continue the transitional benefits?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),98,TBA-4,7 CFR 273.28(e),"If the household is eligible for a lower benefit amount than its transitional benefits, will the system allow the household to withdraw their recertification application?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),99,TBA-4,7 CFR 273.28(e),"If the household chooses not to withdraw their recertification, can the system deny the application and continue the transitional benefits; or can the lower benefit amount be issued with the new certification period, depending on what the State allows?",item,yes,AUTO_TEST,,no,either/or behaviour
+Operations (E and F),100,TBA-4,7 CFR 273.28(f),"Does the system appropriately start the new certification period, on the first day of the month following the month the recertification application was submitted? (i.e., If an application was received on the 25th of the 3rd transitional benefit month, will the new certification start on the 1st day of what would have been the 4th transitional benefit month?)",item,yes,AUTO_TEST,,yes,
+Operations (E and F),101,TBA-4,7 CFR 273.28(g),"If the household is entitled to a higher benefit amount than their transitional benefit amount, will the system issue a supplement if the transitional benefits were already issued?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),103,QC-1,7 CFR 275.11(c),Does the system provide for monthly selection of active cases and negative actions for QC?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),104,QC-2,7 CFR 275.11(e),Does the system include all required cases in each of the sampling frames?,item,yes,AUTO_TEST,DATA_METRIC,no,frame completeness vs universe
+Operations (E and F),105,QC-2,7 CFR 275.11(e),Does the system remove duplicate records in each of the sampling frames?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),106,QC-2,7 CFR 275.11 (e)(1),"Is the active frame (select one): /  a single data file, or  /  two separate data files for ongoing cases and newly added cases?",item,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),107,QC-2,7 CFR 275.11 (e)(2),"Is the negative frame (select one): /  a single data file, or  /  separate data files for terminations, rejected applications and suspensions?",item,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),108,QC-2,NA,"If separate frames need to be combined for duplication, when does that occur?",item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),109,QC-3,NA,When are each of the sampling frames available?,item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),110,QC-4,NA,When is sample selection made?,item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),111,QC-5,NA,What are sources of sampling frames?,item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),112,QC-6,7 CFR 275.11(f),Is there a system in place that can replicate the sampling frame and selection for any given month?,item,yes,AUTO_TEST,,yes,re-run selection for a month gives same sample
+Operations (E and F),113,QC-7,7 CFR 275.4(c),"After the frames are constructed, are they retained for the minimum record retention period?",item,yes,DOCUMENT,AUTO_TEST,no,retention policy
+Operations (E and F),114,QC-8,7 CFR 275.11(e),Where are the frames retained?,item,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),115,QC-9,7 CFR 275.11 (a)(3),"Is systematic selection design used? If not, what type of selection is used?",item,yes,DOCUMENT,AUTO_TEST,no,
+Operations (E and F),116,QC-10,7 CFR 275.11 (a)(3),Does the system provide random start whether self-generated or user provided?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),117,QC-11,NA,What options does the system have for changing intervals and random starts?,item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),118,QC-12,7 CFR 275.11(e),"Does the system select records for ME, supervisory, or Quality Assurance review (e.g., active, denied, terminated and recertification cases)?",item,yes,AUTO_TEST,,no,review criteria State-defined
+Operations (E and F),119,QC-13,7 CFR 275.2(d),Does the system provide FNS on-line access for QC?   / (This access is required for reimbursement with State Exchange Funds.),item,yes,AUTO_TEST,DOCUMENT,yes,read-only federal role
+Operations (E and F),120,QC-14,7 CFR 275.11 (a)(1),How does the system assign new review numbers to each sampled case?,item,yes,DOCUMENT,AUTO_TEST,no,
+Operations (E and F),121,QC-15,Best Practice,Are review numbers unique within a fiscal year?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),122,QC-16,NA,Will the QC process be integrated into the new system? If so:,header,yes,DOCUMENT,,no,header; header row; sub-items carry the checks
+Operations (E and F),123,QC-16,7 CFR 275.21(b),"Does the system adhere to the requirements that are outlined in the FNS Handbook 310 in reference to the completion procedures for the FNS 380, FNS 380-1, and FNS 245?",item,yes,MANUAL_DEMO,REPORT_CHECK,no,conformance to FNS Handbook 310 forms
+Operations (E and F),124,QC-16,Best Practice,"Does the system have a way to submit the completed work of the Quality Control Reviewer to a supervisor for review, and does it allow for the case to be returned if issues are found?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),125,QC-16,FNS Handbook 310,Does the system have a way to track changes requested or made by a supervisor and have this information available for FNS review?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),126,QC-16,7 CFR 275.21(b),"Does the system have a way to compile all documents related to the QC review, including the certification file as well as information collected during the QC review?",item,yes,AUTO_TEST,MANUAL_DEMO,no,completeness of QC file
+Operations (E and F),127,QC-16,7 CFR 275.21 (b)(2),Does the system track time frames as to the 115-day due date in order to ensure the tracking of overdue cases?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),128,QC-16,7 CFR 275.4(a),Does the system allow for document retention to adhere to FNS document retention requirements for QC records?,item,yes,DOCUMENT,AUTO_TEST,no,retention policy
+Operations (E and F),129,QC-16,7 CFR 275.4(a),"Will FNS have access to the QC Review portion, similar to previous system access requirements (view only)?",item,yes,AUTO_TEST,,yes,view-only role
+Operations (E and F),130,QC-16,NA,"Does the system (select one): /    Allow the reviewer to upload verifications, or /    Is there a separate document imaging system?",item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),131,QC-16,7 CFR 275.12(d),Is there a mechanism that allows the reviewer to add the Element number on verifications?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),132,QC-16,Best Practice,Is there a maintenance contract for the QC Review portion of System?,item,yes,DOCUMENT,,no,contract
+Operations (E and F),133,QC-16,7 CFR 275.12(d),If there are changes to the QC element review such as additional elements added will the State have a means to make these changes?,item,yes,DOCUMENT,MANUAL_DEMO,no,
+Operations (E and F),135,CR-1,NA,Is a complete audit trail that includes the following for each transaction captured by the system that includes:,header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Operations (E and F),136,CR-1,7 CFR 275.5,the action?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),137,CR-1,7 CFR 275.5,the date action was taken?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),138,CR-1,7 CFR 275.5,effective date of the action?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),139,CR-1,7 CFR 275.5,the caseworker who performed the action?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),140,CR-2,7 CFR 275.4(a),Are case history records available on-line for three Federal fiscal years?,item,yes,AUTO_TEST,DOCUMENT,no,seed 3-year-old records; retention config
+Operations (E and F),141,CR-3,7 CFR 275.4(a),Are case history records available off-line for three Federal fiscal years?,item,yes,DOCUMENT,MANUAL_DEMO,no,archive procedure
+Operations (E and F),142,CR-4,NA,Can off-line records be accessed electronically?,item-no-citation,yes,MANUAL_DEMO,DOCUMENT,no,
+Operations (E and F),143,CR-5,Best Practice,"Does the system contain a section for Case Notes that identifies edits to case notes, including the person editing the notes, date of edit, and does the system preserve the prior version?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),144,CR-6,Best Practice,"Does the system include electronic documentation storage (e.g., for verification documents)?  If so,",header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Operations (E and F),145,CR-6,Best Practice,How do clients submit electronic documentation?,item,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),146,CR-6,Best Practice,How is client documentation linked to the case file?,item,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),147,CR-6,Best Practice,Where are electronic client documents stored?,item,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),149,PM-1,7 CFR 272.3(a),Is the current State policy manual accessible within the eligibility system for caseworkers?,item,yes,MANUAL_DEMO,DOCUMENT,no,content/currency of manuals needs review
+Operations (E and F),150,PM-2,Best Practice,"Is an online help tool linked by specific eligibility factors to the eligibility system? If yes, describe.",item,yes,MANUAL_DEMO,DOCUMENT,no,content/currency of manuals needs review
+Operations (E and F),151,PM-3,Best Practice,"Are older versions of State policy manuals available online for caseworkers in situations where previous policy is needed, such as claims?",item,yes,MANUAL_DEMO,DOCUMENT,no,content/currency of manuals needs review
+Operations (E and F),152,PM-4,7 CFR 272.3(a),Is the current eligibility system’s user guide available online for caseworkers?,item,yes,MANUAL_DEMO,DOCUMENT,no,content/currency of manuals needs review
+Operations (E and F),153,PM-5,7 CFR 272.10 (b)(2); 274.1(a),"Is there a link/access to the EBT process or protocol (e.g., issuance of an EBT card) for those who are authorized to perform this function?",item,yes,MANUAL_DEMO,DOCUMENT,no,content/currency of manuals needs review
+Operations (E and F),155,SYS-1,NA,What are average response times for the following administrative actions:,header,yes,DATA_METRIC,AUTO_TEST,no,header; performance test; header row; sub-items carry the checks
+Operations (E and F),156,SYS-1,NA,Inquiry?,item-no-citation,yes,DATA_METRIC,AUTO_TEST,no,response-time measurement
+Operations (E and F),157,SYS-1,NA,Processing of data entry?,item-no-citation,yes,DATA_METRIC,AUTO_TEST,no,response-time measurement
+Operations (E and F),158,SYS-1,NA,Screen refresh?,item-no-citation,yes,DATA_METRIC,AUTO_TEST,no,response-time measurement
+Operations (E and F),159,SYS-1,NA,Other Actions?,item-no-citation,yes,DATA_METRIC,AUTO_TEST,no,response-time measurement
+Operations (E and F),160,SYS-2,NA,What is the system’s data capacity and what do you expect usage to be at full implementation?,item-no-citation,yes,DOCUMENT,DATA_METRIC,no,capacity plan
+Operations (E and F),161,SYS-3,NA,"During stress testing, what was the number of concurrent users who could use the system without negatively impacting system performance?",item-no-citation,yes,DATA_METRIC,DOCUMENT,no,load test / usage figures
+Operations (E and F),162,SYS-4,NA,How many concurrent users are now using or are expected to use the system?,item-no-citation,yes,DATA_METRIC,DOCUMENT,no,load test / usage figures
+Operations (E and F),163,SYS-5,NA,"What are the save points in the eligibility system that protect loss of data? / Save points are points within a transaction that can be ""rolled back to"" without affecting any work done in the transaction before the save point was created.",item-no-citation,yes,DOCUMENT,AUTO_TEST,no,design description
+Operations (E and F),164,SYS-6,NA,Name all the other ADP systems that feed into and integrate with this eligibility system.,item-no-citation,yes,DOCUMENT,,no,
+Operations (E and F),165,SYS-7,NA,What are the back-ups to the issuance and eligibility systems in case there are system failures?,item-no-citation,yes,DOCUMENT,MANUAL_DEMO,no,backup/DR
+Operations (E and F),166,SYS-8,NA,Describe the user roles and the security levels in this system.,item-no-citation,yes,DOCUMENT,AUTO_TEST,no,role design; role tests possible
+Operations (E and F),167,SYS-9,NA,Are separation of duties based on security included in the description of user roles?,item-no-citation,yes,DOCUMENT,AUTO_TEST,no,role design; role tests possible
+Operations (E and F),168,SYS-10,NA,Is there an alert if the issuance file does not transmit?,item-no-citation,yes,AUTO_TEST,,yes,
+Operations (E and F),169,SYS-11,NA,"Has there been extended system downtime? If so,",header,yes,DATA_METRIC,DOCUMENT,no,downtime history; header row; sub-items carry the checks
+Operations (E and F),170,SYS-11,NA,Is the State and/or system vendor tracking and determining the root cause and implementing fixes?,item-no-citation,yes,DOCUMENT,,no,
+Operations (E and F),171,SYS-11,NA,Has this resulted in an interruption of program operations?,item-no-citation,yes,DOCUMENT,DATA_METRIC,no,
+Operations (E and F),172,SYS-12,NA,"Are there Service Level Agreements (SLAs) surrounding system performance, either by vendor or central IT? If so:",header,yes,DOCUMENT,,no,SLA exists; header row; sub-items carry the checks
+Operations (E and F),173,SYS-12,NA,Is the system meeting these SLAs?,item-no-citation,yes,DATA_METRIC,DOCUMENT,no,SLA attainment
+Operations (E and F),174,SYS-13,NA,How often are performance reports shared by the vendor and/or central IT?,item-no-citation,yes,DOCUMENT,,no,
+Operations (E and F),175,SYS-13,NA,Does it include online and batch functionality?,item-no-citation,yes,DOCUMENT,,no,
+Operations (E and F),176,SYS-14,NA,Is there a maximum number of individuals in a case that may adversely have an impact to the system performance?  If so:,header,yes,DOCUMENT,DATA_METRIC,no,header row; sub-items carry the checks
+Operations (E and F),177,SYS-14,NA,Is there an offline process in place to mitigate any performance degradations/delays?,item-no-citation,yes,DOCUMENT,,no,
+Operations (E and F),178,SYS-15,NA,Have there been any long-running scripts resulting in error messages for users? If so:,header,yes,DATA_METRIC,DOCUMENT,no,error logs; header row; sub-items carry the checks
+Operations (E and F),179,SYS-15,NA,What is the root cause?,item-no-citation,yes,DOCUMENT,,no,
+Operations (E and F),181,MI-1,NA,How are reports generated?  Please select one: / from the eligibility system.  / from a separate database.,item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),182,MI-2,Best Practice,Can reports be sorted by office?,item,yes,REPORT_CHECK,,yes,
+Operations (E and F),183,MI-3,Best Practice,Can reports be sorted by caseworker?,item,yes,REPORT_CHECK,,yes,
+Operations (E and F),186,AW-1,NA,Is the system capable of operationalizing the terms and conditions of the waiver?,item-no-citation,yes,AUTO_TEST,,no,waiver-specific terms
+Operations (E and F),187,AW-2,NA,"Can the system disable mechanisms or processes, such as notices, that are now waived?",item-no-citation,yes,AUTO_TEST,,no,waiver-specific terms
+Operations (E and F),188,AW-3,NA,Can the system implement the specific processes that apply to waived populations?,item-no-citation,yes,AUTO_TEST,,no,waiver-specific terms
+Operations (E and F),189,AW-4,NA,Can the system maintain regular processes for non-waived populations at the same time?,item-no-citation,yes,AUTO_TEST,,no,waiver-specific terms
+Operations (E and F),190,AW-5,NA,Can the system track and report all required data reporting metrics?,item-no-citation,yes,REPORT_CHECK,,no,waiver-specific metrics
+Operations (E and F),191,AW-6,NA,"If the waiver is no longer available to the State, can the system reinstate disabled mechanisms or processes to comply with regulations within 90 days?",item-no-citation,yes,DOCUMENT,MANUAL_DEMO,no,reinstatement plan
+Operations (E and F),194,DP-1,7 CFR 282,"If operating any demonstration projects, does the system identify cases as being demo cases?",item,yes,AUTO_TEST,,yes,
+Operations (E and F),195,DP-2,NA,"If operating a Combined Application Project (CAP), does the system correctly:",header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Operations (E and F),196,DP-2,7 CFR 273.10 (a)(1),Modify the benefit start/proration date?,item,yes,AUTO_TEST,,no,rule defined by project approval
+Operations (E and F),197,DP-2,7 CFR 273.2 (c)(1)(iv),Capture date of application for CAP applications?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),198,DP-2,7 CFR 273.2(e)(1) and (e)(3),Waive the interview for CAP-eligible households?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),199,DP-2,7 CFR 273.2(f),"Waive verifications, as indicated in the project approval?",item,yes,AUTO_TEST,,no,rule defined by project approval
+Operations (E and F),200,DP-2,7 CFR 273.9(b)(1),"Flag earned income received for more than three consecutive months, if indicated in the project approval?",item,yes,AUTO_TEST,,no,rule defined by project approval
+Operations (E and F),201,DP-2,7 CFR 273.10(e),Calculate allotments according to the approved benefit structure?,item,yes,AUTO_TEST,,no,rule defined by project approval
+Operations (E and F),202,DP-2,7 CFR 273.9(d),Waive deductions for participating households as indicated in the project approval?,item,yes,AUTO_TEST,,no,rule defined by project approval
+Operations (E and F),203,DP-2,7 CFR 273.12,Waive certain reporting requirements for participating households?,item,yes,AUTO_TEST,,no,rule defined by project approval
+Operations (E and F),204,DP-2,Best Practice,Convert cases that lose CAP eligibility to a regular SNAP case (if eligible) without auto-closing the case?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),205,DP-3,7 CFR 273.12(e),Are mass changes made to update SNAP income with actual increased amounts of Combined Application Project (CAP) allotments?,item,yes,AUTO_TEST,,no,rule defined by project approval
+Operations (E and F),206,DP-4,NA,"If operating an Elderly Simplified Application Project (ESAP), does the system:",header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Operations (E and F),207,DP-4,7 CFR 273.2(f),"Waive verifications, as indicated in the project approval?",item,yes,AUTO_TEST,,no,rule defined by project approval
+Operations (E and F),208,DP-4,7 CFR 273.12,"Waive reporting requirements for participating households, as indicated in the project approval?",item,yes,AUTO_TEST,,no,rule defined by project approval
+Operations (E and F),209,DP-4,7 CFR 273.12 (a)(5)(iii)(B),Reinstate the periodic report requirement while maintaining the ESAP certification period if an ESAP household loses ESAP eligibility during the certification period?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),210,DP-4,7 CFR 273.10(f)(4),Maintain the certification period if the household becomes ineligible for ESAP during the certification period?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),211,DP-4,Best Practice,Convert cases that lose ESAP eligibility to regular a SNAP case (if eligible) without auto-closing the case?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),212,DP-5,7 CFR 271.3(c),"Is the system capable of computing changes and adjusting benefits as needed for certification periods, if the State operates a Combined Application Project (CAP) or an Elderly Simplified Application Project (ESAP)?",item,yes,AUTO_TEST,,no,rule defined by project approval
+Operations (E and F),213,DP-6,NA,"If the State has a Standard Medical Deduction (SMD) demonstration project, does the system:",header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Operations (E and F),214,DP-6,7 CFR 273.2 (f)(8)(i),Allow self-attestation as verification at recertification for eligible households claiming the deduction?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),215,DP-6,7 CFR 273.9(d)(3),Apply the standard medical deduction for households that exceed the $35 threshold but remain below the standard medical expense?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),216,DP-6,7 CFR 273.9(d)(3),Allow for a deduction of actual expenses if the household’s medical expenses exceed the State’s standard?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),219,ISS-1,NA,"What are the data batch filing times (e.g., once/day, twice/day)?",item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),220,ISS-2,7 CFR 274.1(a),What household data is sent to the EBT system for EBT account set-up?,item,yes,DOCUMENT,AUTO_TEST,no,interface spec
+Operations (E and F),221,ISS-3,7 CFR 274.1(a),"When is demographic data sent to the EBT system? / date of filing, / date of eligibility determination, or / on some other date?",item,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),222,ISS-4,7 CFR 272.6(g),Does the system provide demographic data and benefit issuance records to EBT with sufficient time to meet expedited processing timeframes and regular processing timeframes?,item,yes,DATA_METRIC,AUTO_TEST,no,timing of EBT feed vs processing standards
+Operations (E and F),223,ISS-5,7 CFR 274.1(h)(1),When is the monthly benefit file for ongoing households sent to EBT?,item,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),224,ISS-6,7 CFR 274.1(h)(1),"When is the daily benefit file for applications, etc., sent to EBT vendor?",item,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),225,ISS-7,7 CFR 274.1(h)(1),Does the system uniquely identify each benefit record?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),226,ISS-8,7 CFR 274.2(d),Does each monthly benefit record contain an availability date so that households may access their monthly benefit on the same day each month?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),227,ISS-9,"7 CFR 274.1(h), 274.2(i)(1)",Does each benefit record identify the month for which the benefit is issued?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),228,ISS-10,NA,Does the system identify each benefit as:,header,yes,AUTO_TEST,,no,header row; sub-items carry the checks
+Operations (E and F),229,ISS-10,7 CFR 274.2(d),Initial issuance?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),230,ISS-10,7 CFR 274.1(h)(4),Regular issuance?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),231,ISS-10,7 CFR 274.1(h)(4),Supplemental issuance (for regular SNAP situations and for household disaster situations)?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),232,ISS-10,D-SNAP Guidance (p. 62),Replacement issuance (for regular SNAP situations and for household disaster situations)?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),233,ISS-10,7 CFR 274.1(h)(4),Mass Replacement Issuance for a percent of the monthly issuance amount versus a dollar amount or full amount (waiver for major disaster event)?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),234,ISS-10,D-SNAP,Mass Supplemental Issuance (for household disaster situations)?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),235,ISS-10,Guidance (p. 18),DSNAP issuance (waiver for major disaster event)?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),236,ISS-10,7 CFR 274.1(h)(4),Restoration of benefits?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),237,ISS-11,7 CFR 274.1 (h)(4),Does the system differentiate between the month of availability and month for which the amount is issued in cases of restored and retroactive benefits?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),238,ISS-12,7 CFR 274.2(g)(2),"If your State has the Transitional Benefits Alternative option, does the system allow for account adjustments to correct an auditable, out-of-balance settlement condition that occurs during the redemption process?",item,yes,AUTO_TEST,EXTERNAL,no,EBT-side settlement
+Operations (E and F),239,ISS-13,7 CFR 274.2(g)(2),Can the system correctly determine if the adjustment results in a debit or credit to the household?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),240,ISS-14,7 CFR 274.6(b)(1),Does the system have edits that prevent duplicate issuances?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),241,ISS-15,7 CFR 274.6 (a)(6)(i),Does the system require a secondary review for any issuances other than initial/regular?,item,yes,AUTO_TEST,,yes,
+Operations (E and F),243,RCN-1,7 CFR 274.1(f)(2),Has the interface with the EBT contractor been tested?,item,yes,EXTERNAL,AUTO_TEST,no,EBT processor sign-off
+Operations (E and F),244,RCN-2,7 CFR 274.4 (a)(1)(ii),"Does the State send all benefit records on a daily basis (e.g., via overnight batch, online or daily file) to the EBT contractor?",item,yes,DATA_METRIC,AUTO_TEST,no,daily file history
+Operations (E and F),245,RCN-3,7 CFR 274.4 (a)(1)(v),"For benefit records not sent via overnight batch, does the State ensure that the issuance amounts authorized by the eligibility system are reconciled to those posted in the EBT system?",item,yes,DATA_METRIC,EXTERNAL,no,reconciliation results
+Operations (E and F),246,RCN-4,7 CFR 274.4 (c)(1)(i),Are benefit records that are rejected by EBT identified and reported to the eligibility system?,item,yes,AUTO_TEST,EXTERNAL,yes,inject reject file; record flagged
+Operations (E and F),247,RCN-5,7 CFR 274.4 (c)(1)(ii),"If a benefit record is rejected by EBT, when is it returned to the eligibility system?",item,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),248,RCN-6,7 CFR 274.8 (b)(2)(iii),How would an error in the daily issuance reconciliation be resolved?,item,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),249,RCN-7,7 CFR 274.8 (b)(2)(iii),What actions are taken to rectify the situation for cases with rejected benefit records?,item,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),250,RCN-8,7 CFR 274.4 (a)(1)(ii),Are daily issuance totals reconciled to amounts posted and available for clients to spend?,item,yes,DATA_METRIC,EXTERNAL,no,daily reconciliation
+Operations (E and F),251,RCN-8,NA,What is the tolerance for error?,item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Operations (E and F),252,RCN-9,7 CFR 274.4 (a)(1)(iii),Does the eligibility system use EBT transaction daily history file to track EBT transactions (debits and credits) back to each benefit record?,item,yes,AUTO_TEST,EXTERNAL,no,EBT transaction history file format
+Operations (E and F),253,RCN-10,Best Practice,Does an alert come up if the benefit file is rejected by the EBT vendor side?,item,yes,AUTO_TEST,,yes,
+Reporting (E10 & E13),4,,,New cases,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),5,,,Expedited cases,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),6,,,Apps pending,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),7,,,Apps overdue,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),8,,,Apps denied,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),9,,,Recerts coming due next month,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),10,,,Recerts due by end of month,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),11,,,Recerts pending,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),12,,,Recerts denied,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),13,,,Recert overdue,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),14,,,Verifications pending,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),15,,,Closed cases (apps and recerts),item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),16,,,Suspended cases,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),17,,,Changes processed,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),18,,,Claims established,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),19,,,Claims pending,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),20,,,Late expedited actions,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),21,,,Late certification actions,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),22,,,·  Reason for late action,subitem,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),23,,,·  Agency,subitem,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),24,,,·  Client,subitem,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),25,,,Cases certified this period,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),26,,,"Client reports (monthly, quarterly, simplified)",item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),28,,,·  ABAWDs,subitem,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),29,,,·  Months used,subitem,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),30,,,·  To be disqualified for non-compliance of an activity,subitem,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),32,,,Supplemental,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),33,,,Replacements,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),34,,,Retroactive,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),35,,,Restored,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),36,,,DSNAP,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),37,,,Expungements,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),38,,,Off-line Storage (if applicable),item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),39,,,Disqualifications,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),40,,,Mass change exception report for SNAP Cost-of-Living Adjustment (October),item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),41,,,Mass change exception report for SSA Cost-of-Living Adjustment (January),item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),43,,,Demographics (please list what information is captured under comments),item,no,REPORT_CHECK,,no,asks to list fields
+Reporting (E10 & E13),44,,,Client Income,item,no,REPORT_CHECK,,no,vague
+Reporting (E10 & E13),45,,,Household Characteristics,item,no,REPORT_CHECK,,no,vague
+Reporting (E10 & E13),46,,,Language / LEP status,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),47,,,Client Complaints,item,no,REPORT_CHECK,,no,complaint data may be outside system
+Reporting (E10 & E13),49,,,Applications,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),50,,,Recertifications,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),51,,,Denied apps (including reasons for denial),item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),52,,,SNAP benefits,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),53,,,Caseload,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),55,,,Fraud referrals,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),56,,,Claims referrals,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),57,,,Pending claims,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),58,,,E&T referrals,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),59,,,ABAWDs,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),60,,,Fair hearings,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),61,,,Application withdrawals,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),62,,,Timeliness 7th/30th day,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),63,,,Recertification timeliness,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),64,,,Expedited recertification timeliness,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),65,,,Periodic reports due or overdue,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),66,,,Denials before 30th day,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),67,,,EBT card replacement,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),69,,,Real-time reports for staff to monitor their work (explain in comments column),item,no,REPORT_CHECK,,no,asks for explanation
+Reporting (E10 & E13),70,,,Caseloads by worker,item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),71,,,Timeliness (by worker and county),item,no,REPORT_CHECK,,yes,E10 report item
+Reporting (E10 & E13),74,FNS-46,,FNS-46 Issuance Reconciliation,item,yes,REPORT_CHECK,EXTERNAL,no,federal report format; FNS verifies
+Reporting (E10 & E13),75,FNS-101,,FNS-101 Participation by Race,item,yes,REPORT_CHECK,EXTERNAL,no,federal report format; FNS verifies
+Reporting (E10 & E13),76,FNS-209,,FNS-209 Status of Claims Against Households,item,yes,REPORT_CHECK,EXTERNAL,no,federal report format; FNS verifies
+Reporting (E10 & E13),77,,,"Form FNS-292A, Report of Commodity Distribution for Disaster Relief",item,no,REPORT_CHECK,EXTERNAL,no,"commodity report, mostly outside E&E system"
+Reporting (E10 & E13),78,,,"Form FNS-292B, Report of Disaster Supplemental Nutrition Assistance Benefit Issuance",item,no,REPORT_CHECK,EXTERNAL,no,federal report format; FNS verifies
+Reporting (E10 & E13),79,FNS-366a,,FNS-366a Budget Projection,item,yes,REPORT_CHECK,EXTERNAL,no,federal report format; FNS verifies
+Reporting (E10 & E13),80,FNS-366b,,FNS-366b Program Activity Statement,item,yes,REPORT_CHECK,EXTERNAL,no,federal report format; FNS verifies
+Reporting (E10 & E13),81,FNS-388,,FNS-388 Issuance and Participation,item,yes,REPORT_CHECK,EXTERNAL,no,federal report format; FNS verifies
+Reporting (E10 & E13),82,FNS-388a,,FNS-388a Project Area Issuance & Participation,item,yes,REPORT_CHECK,EXTERNAL,no,federal report format; FNS verifies
+Reporting (E10 & E13),83,FNS-583,,FNS-583 Quarterly E&T,item,yes,REPORT_CHECK,EXTERNAL,no,federal report format; FNS verifies
+Reporting (E10 & E13),84,FNS-759,,FNS-759 Education and Administrative Reporting System (EARS) Report,item,yes,REPORT_CHECK,EXTERNAL,no,"SNAP-Ed report, mostly outside E&E system"
+Reporting (E10 & E13),85,FNS-778,,FNS-778 Federal Financial Report,item,yes,REPORT_CHECK,EXTERNAL,no,federal report format; FNS verifies
+Reporting (E10 & E13),86,,,Annual E&T Outcome Report,item,no,REPORT_CHECK,EXTERNAL,no,federal report format; FNS verifies
+Data Match (E11 & E12),3,DM-1,7 CFR 272.4(e),What data items does the system check to determine duplicate participation:,header,yes,DOCUMENT,,no,open-ended: answer is a description; header row; sub-items carry the checks
+Data Match (E11 & E12),4,DM-1,7 CFR 272.4(e)(1),Name?,item,yes,AUTO_TEST,,yes,
+Data Match (E11 & E12),5,DM-1,Best Practice,Alias Name?,item,yes,AUTO_TEST,,yes,
+Data Match (E11 & E12),6,DM-1,7 CFR 272.4(e)(1),Date of Birth?,item,yes,AUTO_TEST,,yes,
+Data Match (E11 & E12),7,DM-1,7 CFR 272.4(e)(1),Address?,item,yes,AUTO_TEST,,yes,
+Data Match (E11 & E12),8,DM-1,Best Practice,Case Number?,item,yes,AUTO_TEST,,yes,
+Data Match (E11 & E12),9,DM-1,7 CFR 272.4(e)(1),SSN?,item,yes,AUTO_TEST,,yes,
+Data Match (E11 & E12),10,DM-1,7 CFR 253.1,"FDPIR, if applicable?",item,yes,AUTO_TEST,EXTERNAL,no,FDPIR data
+Data Match (E11 & E12),11,DM-1,NA,Other?  Please describe:,item,yes,DOCUMENT,,no,
+Data Match (E11 & E12),12,DM-2,NA,"Are matches for duplicate participation done: / In near real time, or / Through batches?",item-no-citation,yes,DOCUMENT,AUTO_TEST,no,real-time vs batch description
+Data Match (E11 & E12),13,DM-2,NA,"If through batches, what is the frequency of batches?",item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Data Match (E11 & E12),14,DM-3,7 CFR 273.3(b),"Is intra-jurisdictional (counties, regions, other states) information regarding multiple applications and duplicate participation available: / In near real time or / Through batches?",item,yes,DOCUMENT,EXTERNAL,no,
+Data Match (E11 & E12),15,DM-3,NA,"If through batches, what is the frequency of batches?",item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Data Match (E11 & E12),16,DM-4,7 CFR 272.8(a)(5),Does the system provide for automatic notices to the School Lunch Program for direct certification based on SNAP eligibility?,item,yes,AUTO_TEST,EXTERNAL,no,school meal partner format
+Data Match (E11 & E12),17,DM-4,NA,"If so, what is the frequency of the notices?",item-no-citation,yes,DOCUMENT,,no,open-ended: answer is a description
+Data Match (E11 & E12),18,DM-5,Best Practice,Can the system be queried for School Lunch Program eligibility?,item,yes,AUTO_TEST,,no,
+Data Match (E11 & E12),19,DM-6,Best Practice,Can the system be queried on-line by local school districts and/or the State department of education regarding SNAP participation (both inbound and outbound)?,item,yes,AUTO_TEST,EXTERNAL,no,external school district access
+Data Match (E11 & E12),24,,7 CFR 272.8 (a)(1)(i),State Wages,item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),25,,"7 CFR 272.8 (a)(1)(iv), (a)(2)(iii)",State Unemployment,item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),26,,7 CFR 272.8 (a)(1)(iii),State Taxes,item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),27,,7 CFR 272.8(a)(3),Child Support,item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),28,,7 CFR 272.8 (a)(2)(ii),Medicaid,item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),29,,7 CFR 272.8 (a)(2)(i),TANF,item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),30,,7 CFR 272.13,Prisoner (if applicable),item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),31,,7 CFR 272.14,Death (if applicable),item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),32,,7 CFR 273.3(b),State to State PARIS matches,item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),33,,7 CFR 272.16,New Hires Match,item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),34,,7 CFR 272.17,Lottery/Gambling Match,item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),35,,NA,Other,item-no-citation,no,DOCUMENT,,no,E12 'Other'
+Data Match (E11 & E12),36,,,Federal Data Matches,item,no,AUTO_TEST,,yes,
+Data Match (E11 & E12),37,,7 CFR 273.2(f)(7),Federal RSDI (BENDEX),item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),38,,7 CFR 273.2(f)(7),Federal SSI (SDX),item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),39,,7 CFR 273.6(f),SSN,item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),40,,7 CFR 272.8 (a)(1)(iii),Federal Taxes,item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),41,,7 CFR 272.11,Immigration (SAVE),item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),42,,7 CFR 272.8 (a)(1)(iii),IRS unearned income (BEERS),item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),43,,Best Practice,State Online Query – Internet (SOLQ-I),item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),44,,7 CFR 273.2 (f)(11),Disqualified household members (eDRS),item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),45,,7 CFR 272.16,New Hire Database (NDNH),item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),46,,7 CFR 272.13,Prisoner,item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),47,,7 CFR 272.14,Death,item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),48,,7 CFR 272.8(a),Income and Eligibility Verification System (IEVS),item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),49,,Pending publication of final rule,National Accuracy Clearinghouse (NAC),item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),50,,7 CFR 273.7 (c)(18)(i),E&T work programs (if applicable),item,no,AUTO_TEST,EXTERNAL,no,E12 match source; interface needs partner stub/attestation
+Data Match (E11 & E12),51,,NA,Other,item-no-citation,no,DOCUMENT,,no,E12 'Other'
