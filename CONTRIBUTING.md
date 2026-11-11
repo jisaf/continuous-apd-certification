@@ -14,11 +14,17 @@ Open a GitHub issue for any of these.
 - **Never include security findings** about any real system.
 - **Cite sources.** For any rule, give the document, section, and a link.
 
-## Code contributions
+## Licensing and sign-off
 
-Outside code contributions need a signed [contributor license agreement](CLA.md). The agreement is a draft under legal review, so outside code cannot be merged yet. Documentation and research fixes under CC0 are welcome now.
+Code contributions are accepted under Apache-2.0, and data and documentation under CC0 (see [`LICENSING.md`](LICENSING.md)). There is no contributor license agreement. Instead, sign off each commit under the [Developer Certificate of Origin](https://developercertificate.org/):
 
-When code exists, every change will need:
+```sh
+git commit -s -m "Describe the change"
+```
+
+The sign-off certifies that you wrote the change or otherwise have the right to submit it under the project's licenses. Do not submit code copied from projects whose licenses are not compatible (see "Third-party material" in `LICENSING.md`).
+
+When code exists, every change will also need:
 
 - tests;
 - for connectors, a passing run of the shared connector conformance suite;

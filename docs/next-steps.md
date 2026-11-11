@@ -26,7 +26,6 @@ Status as of 2026-11-11. The full reasoning is in [`proposal.md`](proposal.md).
 ## Decisions still needed
 
 - Which report layer roles see which external data, starting from the role templates.
-- Legal review of the [contributor license agreement](../CLA.md).
 - Confirmation from FNA and CMS that generated files in their templates, and the reading of the pilot rule, are acceptable.
 
 ## Golden case set
