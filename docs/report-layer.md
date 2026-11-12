@@ -33,6 +33,22 @@ synthetic metric data, then runs the metric queries into `out/report-layer/metri
 
 ## Set it up on Snowflake
 
+**One step:** [`snowflake/setup.py`](../report-layer/snowflake/setup.py) runs steps 1 to 5 below with a role
+that can create databases and roles (for a trial account, `ACCOUNTADMIN`):
+
+```sh
+pip install "capd[snowflake]" duckdb
+export SNOWFLAKE_ACCOUNT=... SNOWFLAKE_USER=... SNOWFLAKE_PASSWORD=...   # or SNOWFLAKE_PRIVATE_KEY_PATH
+python report-layer/snowflake/setup.py --warehouse COMPUTE_WH \
+    --evidence "out/demo/*/bundle.json" --sample-data --synthetic --compare-duckdb
+```
+
+Leave out `--sample-data` and `--synthetic` to set up an empty layer for your own data. `--compare-duckdb`
+checks that rule status and blockers on Snowflake match the DuckDB build row for row. CI runs the same script
+on fakesnow, a local imitation of Snowflake (`--fake`); that is not a substitute for a run on a real account.
+
+**By hand:**
+
 1. **Schemas.** Run [`snowflake/10_schema.sql`](../report-layer/snowflake/10_schema.sql). It creates the
    `CERTIFICATION` database, the `CERT` schema, the restricted `CERT_RESTRICTED` schema, and the `BUNDLES` table.
 2. **Tables and views.** With `USE SCHEMA CERTIFICATION.CERT;`, run `sql/10_tables.sql`, then either

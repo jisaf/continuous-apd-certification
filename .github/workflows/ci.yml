@@ -55,5 +55,9 @@ jobs:
         run: examples/sample-system/run-demo.sh
       - name: Report layer on DuckDB
         run: python report-layer/duckdb/build_local.py --evidence "out/demo/*/evidence-rows.ndjson"
+      - name: Snowflake setup script on fakesnow (a local imitation of Snowflake), compared with DuckDB
+        run: |
+          python -m pip install fakesnow "snowflake-connector-python<4"
+          python report-layer/snowflake/setup.py --fake --evidence "out/demo/*/bundle.json" --sample-data --synthetic --compare-duckdb
       - uses: actions/upload-artifact@v4
         with: { name: demo-output, path: out }
